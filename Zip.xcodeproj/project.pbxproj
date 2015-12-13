@@ -10,6 +10,9 @@
 		347E3A781C1DFFB500A11FD3 /* Zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 347E3A771C1DFFB500A11FD3 /* Zip.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		347E3A7F1C1DFFB500A11FD3 /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 347E3A741C1DFFB500A11FD3 /* Zip.framework */; };
 		347E3A841C1DFFB500A11FD3 /* ZipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347E3A831C1DFFB500A11FD3 /* ZipTests.swift */; };
+		347E3AD81C1E04C900A11FD3 /* Zip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347E3AD71C1E04C900A11FD3 /* Zip.swift */; };
+		347E3B1F1C1E1CB500A11FD3 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 347E3B1E1C1E1CB500A11FD3 /* libz.1.2.5.tbd */; };
+		347E3B6B1C1E24D300A11FD3 /* minizip in Resources */ = {isa = PBXBuildFile; fileRef = 347E3B6A1C1E24D300A11FD3 /* minizip */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +32,9 @@
 		347E3A7E1C1DFFB500A11FD3 /* ZipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		347E3A831C1DFFB500A11FD3 /* ZipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZipTests.swift; sourceTree = "<group>"; };
 		347E3A851C1DFFB500A11FD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		347E3AD71C1E04C900A11FD3 /* Zip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zip.swift; sourceTree = "<group>"; };
+		347E3B1E1C1E1CB500A11FD3 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
+		347E3B6A1C1E24D300A11FD3 /* minizip */ = {isa = PBXFileReference; lastKnownFileType = folder; path = minizip; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				347E3B1F1C1E1CB500A11FD3 /* libz.1.2.5.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,8 +78,11 @@
 		347E3A761C1DFFB500A11FD3 /* Zip */ = {
 			isa = PBXGroup;
 			children = (
+				347E3B6A1C1E24D300A11FD3 /* minizip */,
+				347E3B1E1C1E1CB500A11FD3 /* libz.1.2.5.tbd */,
 				347E3A771C1DFFB500A11FD3 /* Zip.h */,
 				347E3A791C1DFFB500A11FD3 /* Info.plist */,
+				347E3AD71C1E04C900A11FD3 /* Zip.swift */,
 			);
 			path = Zip;
 			sourceTree = "<group>";
@@ -177,6 +187,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				347E3B6B1C1E24D300A11FD3 /* minizip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				347E3AD81C1E04C900A11FD3 /* Zip.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +320,8 @@
 		347E3A891C1DFFB500A11FD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -315,15 +329,23 @@
 				INFOPLIST_FILE = Zip/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Zip",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.roymarmelstein.Zip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/zlib/** ${SRCROOT}/minizip/**";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		347E3A8A1C1DFFB500A11FD3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -331,9 +353,14 @@
 				INFOPLIST_FILE = Zip/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Zip",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.roymarmelstein.Zip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/zlib/** ${SRCROOT}/minizip/**";
 			};
 			name = Release;
 		};
@@ -376,6 +403,7 @@
 				347E3A8A1C1DFFB500A11FD3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		347E3A8B1C1DFFB500A11FD3 /* Build configuration list for PBXNativeTarget "ZipTests" */ = {
 			isa = XCConfigurationList;
@@ -384,6 +412,7 @@
 				347E3A8D1C1DFFB500A11FD3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
