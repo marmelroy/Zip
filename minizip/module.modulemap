@@ -1,4 +1,0 @@
-module minizip [system] {
-    header "include.h"
-    export *
-}
