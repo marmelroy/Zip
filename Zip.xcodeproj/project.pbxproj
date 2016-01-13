@@ -8,12 +8,43 @@
 
 /* Begin PBXBuildFile section */
 		3430F5D61C45B7FB007473A6 /* ZipHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3430F5D51C45B7FB007473A6 /* ZipHelpers.swift */; };
+		3430F6201C45C805007473A6 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3430F61F1C45C805007473A6 /* libz.tbd */; };
+		3430F62D1C45C851007473A6 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 3430F6221C45C851007473A6 /* crypt.h */; };
+		3430F62E1C45C851007473A6 /* include.h in Headers */ = {isa = PBXBuildFile; fileRef = 3430F6231C45C851007473A6 /* include.h */; };
+		3430F62F1C45C851007473A6 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 3430F6241C45C851007473A6 /* ioapi.c */; };
+		3430F6301C45C851007473A6 /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 3430F6251C45C851007473A6 /* ioapi.h */; };
+		3430F6311C45C851007473A6 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 3430F6271C45C851007473A6 /* mztools.c */; };
+		3430F6321C45C851007473A6 /* mztools.h in Headers */ = {isa = PBXBuildFile; fileRef = 3430F6281C45C851007473A6 /* mztools.h */; };
+		3430F6331C45C851007473A6 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 3430F6291C45C851007473A6 /* unzip.c */; };
+		3430F6341C45C851007473A6 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = 3430F62A1C45C851007473A6 /* unzip.h */; };
+		3430F6351C45C851007473A6 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 3430F62B1C45C851007473A6 /* zip.c */; };
+		3430F6361C45C851007473A6 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 3430F62C1C45C851007473A6 /* zip.h */; };
+		3430F6381C45C89A007473A6 /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 3430F6371C45C89A007473A6 /* Common.h */; };
+		3430F64F1C45C8AD007473A6 /* aes.h in Headers */ = {isa = PBXBuildFile; fileRef = 3430F63A1C45C8AD007473A6 /* aes.h */; };
+		3430F6501C45C8AD007473A6 /* aes_via_ace.h in Headers */ = {isa = PBXBuildFile; fileRef = 3430F63B1C45C8AD007473A6 /* aes_via_ace.h */; };
+		3430F6511C45C8AD007473A6 /* aescrypt.c in Sources */ = {isa = PBXBuildFile; fileRef = 3430F63C1C45C8AD007473A6 /* aescrypt.c */; };
+		3430F6521C45C8AD007473A6 /* aeskey.c in Sources */ = {isa = PBXBuildFile; fileRef = 3430F63D1C45C8AD007473A6 /* aeskey.c */; };
+		3430F6531C45C8AD007473A6 /* aesopt.h in Headers */ = {isa = PBXBuildFile; fileRef = 3430F63E1C45C8AD007473A6 /* aesopt.h */; };
+		3430F6541C45C8AD007473A6 /* aestab.c in Sources */ = {isa = PBXBuildFile; fileRef = 3430F63F1C45C8AD007473A6 /* aestab.c */; };
+		3430F6551C45C8AD007473A6 /* aestab.h in Headers */ = {isa = PBXBuildFile; fileRef = 3430F6401C45C8AD007473A6 /* aestab.h */; };
+		3430F6561C45C8AD007473A6 /* brg_endian.h in Headers */ = {isa = PBXBuildFile; fileRef = 3430F6411C45C8AD007473A6 /* brg_endian.h */; };
+		3430F6571C45C8AD007473A6 /* brg_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 3430F6421C45C8AD007473A6 /* brg_types.h */; };
+		3430F6581C45C8AD007473A6 /* entropy.c in Sources */ = {isa = PBXBuildFile; fileRef = 3430F6431C45C8AD007473A6 /* entropy.c */; };
+		3430F6591C45C8AD007473A6 /* entropy.h in Headers */ = {isa = PBXBuildFile; fileRef = 3430F6441C45C8AD007473A6 /* entropy.h */; };
+		3430F65A1C45C8AD007473A6 /* fileenc.c in Sources */ = {isa = PBXBuildFile; fileRef = 3430F6451C45C8AD007473A6 /* fileenc.c */; };
+		3430F65B1C45C8AD007473A6 /* fileenc.h in Headers */ = {isa = PBXBuildFile; fileRef = 3430F6461C45C8AD007473A6 /* fileenc.h */; };
+		3430F65C1C45C8AD007473A6 /* hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = 3430F6471C45C8AD007473A6 /* hmac.c */; };
+		3430F65D1C45C8AD007473A6 /* hmac.h in Headers */ = {isa = PBXBuildFile; fileRef = 3430F6481C45C8AD007473A6 /* hmac.h */; };
+		3430F65E1C45C8AD007473A6 /* prng.c in Sources */ = {isa = PBXBuildFile; fileRef = 3430F6491C45C8AD007473A6 /* prng.c */; };
+		3430F65F1C45C8AD007473A6 /* prng.h in Headers */ = {isa = PBXBuildFile; fileRef = 3430F64A1C45C8AD007473A6 /* prng.h */; };
+		3430F6601C45C8AD007473A6 /* pwd2key.c in Sources */ = {isa = PBXBuildFile; fileRef = 3430F64B1C45C8AD007473A6 /* pwd2key.c */; };
+		3430F6611C45C8AD007473A6 /* pwd2key.h in Headers */ = {isa = PBXBuildFile; fileRef = 3430F64C1C45C8AD007473A6 /* pwd2key.h */; };
+		3430F6621C45C8AD007473A6 /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = 3430F64D1C45C8AD007473A6 /* sha1.c */; };
+		3430F6631C45C8AD007473A6 /* sha1.h in Headers */ = {isa = PBXBuildFile; fileRef = 3430F64E1C45C8AD007473A6 /* sha1.h */; };
 		347E3A781C1DFFB500A11FD3 /* Zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 347E3A771C1DFFB500A11FD3 /* Zip.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		347E3A7F1C1DFFB500A11FD3 /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 347E3A741C1DFFB500A11FD3 /* Zip.framework */; };
 		347E3A841C1DFFB500A11FD3 /* ZipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347E3A831C1DFFB500A11FD3 /* ZipTests.swift */; };
 		347E3AD81C1E04C900A11FD3 /* Zip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347E3AD71C1E04C900A11FD3 /* Zip.swift */; };
-		347E3B1F1C1E1CB500A11FD3 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 347E3B1E1C1E1CB500A11FD3 /* libz.1.2.5.tbd */; };
-		347E3B6B1C1E24D300A11FD3 /* minizip in Resources */ = {isa = PBXBuildFile; fileRef = 347E3B6A1C1E24D300A11FD3 /* minizip */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +59,40 @@
 
 /* Begin PBXFileReference section */
 		3430F5D51C45B7FB007473A6 /* ZipHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipHelpers.swift; sourceTree = "<group>"; };
+		3430F61F1C45C805007473A6 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		3430F6221C45C851007473A6 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		3430F6231C45C851007473A6 /* include.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include.h; sourceTree = "<group>"; };
+		3430F6241C45C851007473A6 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		3430F6251C45C851007473A6 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		3430F6261C45C851007473A6 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		3430F6271C45C851007473A6 /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		3430F6281C45C851007473A6 /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		3430F6291C45C851007473A6 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		3430F62A1C45C851007473A6 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		3430F62B1C45C851007473A6 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		3430F62C1C45C851007473A6 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		3430F6371C45C89A007473A6 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		3430F63A1C45C8AD007473A6 /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes.h; sourceTree = "<group>"; };
+		3430F63B1C45C8AD007473A6 /* aes_via_ace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes_via_ace.h; sourceTree = "<group>"; };
+		3430F63C1C45C8AD007473A6 /* aescrypt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aescrypt.c; sourceTree = "<group>"; };
+		3430F63D1C45C8AD007473A6 /* aeskey.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aeskey.c; sourceTree = "<group>"; };
+		3430F63E1C45C8AD007473A6 /* aesopt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aesopt.h; sourceTree = "<group>"; };
+		3430F63F1C45C8AD007473A6 /* aestab.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aestab.c; sourceTree = "<group>"; };
+		3430F6401C45C8AD007473A6 /* aestab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aestab.h; sourceTree = "<group>"; };
+		3430F6411C45C8AD007473A6 /* brg_endian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brg_endian.h; sourceTree = "<group>"; };
+		3430F6421C45C8AD007473A6 /* brg_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brg_types.h; sourceTree = "<group>"; };
+		3430F6431C45C8AD007473A6 /* entropy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = entropy.c; sourceTree = "<group>"; };
+		3430F6441C45C8AD007473A6 /* entropy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = entropy.h; sourceTree = "<group>"; };
+		3430F6451C45C8AD007473A6 /* fileenc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fileenc.c; sourceTree = "<group>"; };
+		3430F6461C45C8AD007473A6 /* fileenc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fileenc.h; sourceTree = "<group>"; };
+		3430F6471C45C8AD007473A6 /* hmac.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hmac.c; sourceTree = "<group>"; };
+		3430F6481C45C8AD007473A6 /* hmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hmac.h; sourceTree = "<group>"; };
+		3430F6491C45C8AD007473A6 /* prng.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = prng.c; sourceTree = "<group>"; };
+		3430F64A1C45C8AD007473A6 /* prng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prng.h; sourceTree = "<group>"; };
+		3430F64B1C45C8AD007473A6 /* pwd2key.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pwd2key.c; sourceTree = "<group>"; };
+		3430F64C1C45C8AD007473A6 /* pwd2key.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pwd2key.h; sourceTree = "<group>"; };
+		3430F64D1C45C8AD007473A6 /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha1.c; sourceTree = "<group>"; };
+		3430F64E1C45C8AD007473A6 /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha1.h; sourceTree = "<group>"; };
 		347E3A741C1DFFB500A11FD3 /* Zip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Zip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		347E3A771C1DFFB500A11FD3 /* Zip.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Zip.h; sourceTree = "<group>"; };
 		347E3A791C1DFFB500A11FD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -36,7 +101,6 @@
 		347E3A851C1DFFB500A11FD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		347E3AD71C1E04C900A11FD3 /* Zip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zip.swift; sourceTree = "<group>"; };
 		347E3B1E1C1E1CB500A11FD3 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
-		347E3B6A1C1E24D300A11FD3 /* minizip */ = {isa = PBXFileReference; lastKnownFileType = folder; path = minizip; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,7 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				347E3B1F1C1E1CB500A11FD3 /* libz.1.2.5.tbd in Frameworks */,
+				3430F6201C45C805007473A6 /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,9 +123,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3430F6211C45C83F007473A6 /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				3430F6371C45C89A007473A6 /* Common.h */,
+				3430F6221C45C851007473A6 /* crypt.h */,
+				3430F6231C45C851007473A6 /* include.h */,
+				3430F6241C45C851007473A6 /* ioapi.c */,
+				3430F6251C45C851007473A6 /* ioapi.h */,
+				3430F6261C45C851007473A6 /* module.modulemap */,
+				3430F6271C45C851007473A6 /* mztools.c */,
+				3430F6281C45C851007473A6 /* mztools.h */,
+				3430F6291C45C851007473A6 /* unzip.c */,
+				3430F62A1C45C851007473A6 /* unzip.h */,
+				3430F62B1C45C851007473A6 /* zip.c */,
+				3430F62C1C45C851007473A6 /* zip.h */,
+			);
+			path = minizip;
+			sourceTree = "<group>";
+		};
+		3430F6391C45C8AD007473A6 /* aes */ = {
+			isa = PBXGroup;
+			children = (
+				3430F63A1C45C8AD007473A6 /* aes.h */,
+				3430F63B1C45C8AD007473A6 /* aes_via_ace.h */,
+				3430F63C1C45C8AD007473A6 /* aescrypt.c */,
+				3430F63D1C45C8AD007473A6 /* aeskey.c */,
+				3430F63E1C45C8AD007473A6 /* aesopt.h */,
+				3430F63F1C45C8AD007473A6 /* aestab.c */,
+				3430F6401C45C8AD007473A6 /* aestab.h */,
+				3430F6411C45C8AD007473A6 /* brg_endian.h */,
+				3430F6421C45C8AD007473A6 /* brg_types.h */,
+				3430F6431C45C8AD007473A6 /* entropy.c */,
+				3430F6441C45C8AD007473A6 /* entropy.h */,
+				3430F6451C45C8AD007473A6 /* fileenc.c */,
+				3430F6461C45C8AD007473A6 /* fileenc.h */,
+				3430F6471C45C8AD007473A6 /* hmac.c */,
+				3430F6481C45C8AD007473A6 /* hmac.h */,
+				3430F6491C45C8AD007473A6 /* prng.c */,
+				3430F64A1C45C8AD007473A6 /* prng.h */,
+				3430F64B1C45C8AD007473A6 /* pwd2key.c */,
+				3430F64C1C45C8AD007473A6 /* pwd2key.h */,
+				3430F64D1C45C8AD007473A6 /* sha1.c */,
+				3430F64E1C45C8AD007473A6 /* sha1.h */,
+			);
+			path = aes;
+			sourceTree = "<group>";
+		};
 		347E3A6A1C1DFFB500A11FD3 = {
 			isa = PBXGroup;
 			children = (
+				3430F61F1C45C805007473A6 /* libz.tbd */,
 				347E3A761C1DFFB500A11FD3 /* Zip */,
 				347E3A821C1DFFB500A11FD3 /* ZipTests */,
 				347E3A751C1DFFB500A11FD3 /* Products */,
@@ -80,7 +192,8 @@
 		347E3A761C1DFFB500A11FD3 /* Zip */ = {
 			isa = PBXGroup;
 			children = (
-				347E3B6A1C1E24D300A11FD3 /* minizip */,
+				3430F6391C45C8AD007473A6 /* aes */,
+				3430F6211C45C83F007473A6 /* minizip */,
 				347E3B1E1C1E1CB500A11FD3 /* libz.1.2.5.tbd */,
 				347E3A771C1DFFB500A11FD3 /* Zip.h */,
 				347E3A791C1DFFB500A11FD3 /* Info.plist */,
@@ -106,7 +219,26 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3430F65D1C45C8AD007473A6 /* hmac.h in Headers */,
+				3430F65F1C45C8AD007473A6 /* prng.h in Headers */,
+				3430F6561C45C8AD007473A6 /* brg_endian.h in Headers */,
 				347E3A781C1DFFB500A11FD3 /* Zip.h in Headers */,
+				3430F6361C45C851007473A6 /* zip.h in Headers */,
+				3430F6631C45C8AD007473A6 /* sha1.h in Headers */,
+				3430F6551C45C8AD007473A6 /* aestab.h in Headers */,
+				3430F62D1C45C851007473A6 /* crypt.h in Headers */,
+				3430F65B1C45C8AD007473A6 /* fileenc.h in Headers */,
+				3430F62E1C45C851007473A6 /* include.h in Headers */,
+				3430F6341C45C851007473A6 /* unzip.h in Headers */,
+				3430F6531C45C8AD007473A6 /* aesopt.h in Headers */,
+				3430F6591C45C8AD007473A6 /* entropy.h in Headers */,
+				3430F6301C45C851007473A6 /* ioapi.h in Headers */,
+				3430F64F1C45C8AD007473A6 /* aes.h in Headers */,
+				3430F6501C45C8AD007473A6 /* aes_via_ace.h in Headers */,
+				3430F6611C45C8AD007473A6 /* pwd2key.h in Headers */,
+				3430F6321C45C851007473A6 /* mztools.h in Headers */,
+				3430F6571C45C8AD007473A6 /* brg_types.h in Headers */,
+				3430F6381C45C89A007473A6 /* Common.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,7 +322,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				347E3B6B1C1E24D300A11FD3 /* minizip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,8 +339,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3430F6621C45C8AD007473A6 /* sha1.c in Sources */,
+				3430F65E1C45C8AD007473A6 /* prng.c in Sources */,
+				3430F65C1C45C8AD007473A6 /* hmac.c in Sources */,
+				3430F62F1C45C851007473A6 /* ioapi.c in Sources */,
+				3430F6331C45C851007473A6 /* unzip.c in Sources */,
 				347E3AD81C1E04C900A11FD3 /* Zip.swift in Sources */,
+				3430F6581C45C8AD007473A6 /* entropy.c in Sources */,
+				3430F6521C45C8AD007473A6 /* aeskey.c in Sources */,
+				3430F6541C45C8AD007473A6 /* aestab.c in Sources */,
+				3430F6351C45C851007473A6 /* zip.c in Sources */,
+				3430F6311C45C851007473A6 /* mztools.c in Sources */,
+				3430F6511C45C8AD007473A6 /* aescrypt.c in Sources */,
 				3430F5D61C45B7FB007473A6 /* ZipHelpers.swift in Sources */,
+				3430F6601C45C8AD007473A6 /* pwd2key.c in Sources */,
+				3430F65A1C45C8AD007473A6 /* fileenc.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,7 +484,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.roymarmelstein.Zip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/zlib/** ${SRCROOT}/minizip/**";
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/zlib/** ${SRCROOT}/Zip/minizip/**";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -364,7 +508,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.roymarmelstein.Zip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/zlib/** ${SRCROOT}/minizip/**";
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/zlib/** ${SRCROOT}/Zip/minizip/**";
 			};
 			name = Release;
 		};

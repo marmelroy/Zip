@@ -25,12 +25,12 @@ public enum ZipError: ErrorType {
 
 public class Zip {
     
+    public init () {
+    
+    }
+    
     public func unzipFile(path: String, destination: String, overwrite: Bool, password: String?) throws {
-        guard let zip: zipFile = unzOpen(path) else {
-            throw ZipError.UnzipError
-        }
-        let fileAttributes = try NSFileManager.defaultManager().attributesOfItemAtPath(path)
-        let fileSize = fileAttributes[NSFileSize]
+        let zip = unzOpen(path)
         var currentPosition = 0.0
         var globalInfo: unz_global_info = unz_global_info(number_entry: 0, number_disk_with_CD: 0, size_comment: 0)
         unzGetGlobalInfo(zip, &globalInfo)
@@ -38,14 +38,12 @@ public class Zip {
         if unzGoToFirstFile(zip) != UNZ_OK {
             throw ZipError.UnzipError
         }
-        let canceled = false
         var ret: Int32 = 0
         var crc_ret: Int32 = 0
         
         let bufferSize = 4096
         var buffer = Array<CUnsignedChar>(count: bufferSize, repeatedValue: 0)
         let fileManager = NSFileManager.defaultManager()
-        var directoriesModificationDates = NSMutableSet()
         if let password = password where password.characters.count > 0 {
             ret = unzOpenCurrentFilePassword(zip, password.cStringUsingEncoding(NSASCIIStringEncoding)!)
         }
