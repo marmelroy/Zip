@@ -9,10 +9,12 @@
 import Foundation
 import minizip
 
+/// Zip error type
 public enum ZipError: ErrorType {
-    case FileNotFound
-    case UnzipError
+    case FileNotFound // File not found
+    case UnzipError // Unzip error
 
+    /// Description variable
     public var description: String {
         switch self {
         case .FileNotFound: return NSLocalizedString("File not found.", comment: "")
@@ -24,8 +26,24 @@ public enum ZipError: ErrorType {
 
 public class Zip {
     
-    public init () {}
+    /**
+     Init
+     
+     - returns: Zip object
+     */
+    public init () {
+    }
     
+    /**
+     Unzip file
+     
+     - parameter path:        Path of zipped file. NSURL.
+     - parameter destination: Path to unzip to. NSURL.
+     - parameter overwrite:   Overwrite bool.
+     - parameter password:    Optional password if file is protected.
+     
+     - throws: Error if unzipping fails or if fail is not found. Can be printed with a description variable.
+     */
     public func unzipFile(path: NSURL, destination: NSURL, overwrite: Bool, password: String?) throws {
         // Check file exists at path.
         let fileManager = NSFileManager.defaultManager()
