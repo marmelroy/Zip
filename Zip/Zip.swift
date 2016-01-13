@@ -8,16 +8,15 @@
 
 import Foundation
 import minizip
-import Darwin
 
 public enum ZipError: ErrorType {
+    case FileNotFound
     case UnzipError
-    case FileError
 
     public var description: String {
         switch self {
-        case .UnzipError: return NSLocalizedString("Failed to open zip file.", comment: "")
-        case .FileError: return NSLocalizedString("File error.", comment: "")
+        case .FileNotFound: return NSLocalizedString("File not found.", comment: "")
+        case .UnzipError: return NSLocalizedString("Failed to unzip zip file.", comment: "")
         }
     }
 }
@@ -25,25 +24,23 @@ public enum ZipError: ErrorType {
 
 public class Zip {
     
-    public init () {
-    
-    }
+    public init () {}
     
     public func unzipFile(path: String, destination: String, overwrite: Bool) throws {
+        // Check file exists at path.
+        let fileManager = NSFileManager.defaultManager()
+        if fileManager.fileExistsAtPath(path) == false {
+            throw ZipError.FileNotFound
+        }
         let zip = unzOpen(path)
-        var currentPosition = 0.0
-        var globalInfo: unz_global_info = unz_global_info(number_entry: 0, number_disk_with_CD: 0, size_comment: 0)
-        unzGetGlobalInfo(zip, &globalInfo)
         // Begin unzipping
         if unzGoToFirstFile(zip) != UNZ_OK {
             throw ZipError.UnzipError
         }
         var ret: Int32 = 0
         var crc_ret: Int32 = 0
-        
-        let bufferSize = 4096
-        var buffer = Array<CUnsignedChar>(count: bufferSize, repeatedValue: 0)
-        let fileManager = NSFileManager.defaultManager()
+        let bufferSize: UInt32 = 4096
+        var buffer = Array<CUnsignedChar>(count: Int(bufferSize), repeatedValue: 0)
         repeat {
             ret = unzOpenCurrentFile(zip)
             if ret != UNZ_OK {
@@ -51,14 +48,11 @@ public class Zip {
             }
             var fileInfo = unz_file_info()
             memset(&fileInfo, 0, sizeof(unz_file_info))
-            
             ret = unzGetCurrentFileInfo(zip, &fileInfo, nil, 0, nil, 0, nil, 0)
             if ret != UNZ_OK {
                 unzCloseCurrentFile(zip)
                 throw ZipError.UnzipError
             }
-            
-            currentPosition = currentPosition + Double(fileInfo.compressed_size)
             let fileNameSize = Int(fileInfo.size_filename) + 1
             let fileName = UnsafeMutablePointer<CChar>.alloc(fileNameSize)
             if fileName == nil {
@@ -79,9 +73,8 @@ public class Zip {
                 strPath = strPath.stringByReplacingOccurrencesOfString("\\", withString: "/")
             }
             let fullPath = (destination as NSString).stringByAppendingPathComponent(strPath as String)
-            // TODO: GET DOS DATE FROM FILEINFO
-            let modDate = NSDate()
-            let directoryAttributes = [NSFileCreationDate: modDate, NSFileModificationDate: modDate]
+            let creationDate = NSDate()
+            let directoryAttributes = [NSFileCreationDate: creationDate, NSFileModificationDate: creationDate]
             if isDirectory {
                 try fileManager.createDirectoryAtPath(fullPath, withIntermediateDirectories: true, attributes: directoryAttributes)
             }
@@ -93,22 +86,15 @@ public class Zip {
                 unzCloseCurrentFile(zip)
                 ret = unzGoToNextFile(zip)
             }
-            
             var filePointer: UnsafeMutablePointer<FILE>
             filePointer = fopen(fullPath, "wb")
             while filePointer != nil {
-                let readBytes = unzReadCurrentFile(zip, &buffer, 4096)
+                let readBytes = unzReadCurrentFile(zip, &buffer, bufferSize)
                 if readBytes > 0 {
                     fwrite(buffer, Int(readBytes), 1, filePointer)
                 }
                 else {
                     break
-                }
-            }
-            if filePointer != nil {
-                if ((fullPath as NSString).pathExtension.lowercaseString == "zip") {
-                    // nested zip
-                    try unzipFile(fullPath, destination: (fullPath as NSString).stringByDeletingLastPathComponent, overwrite: overwrite)
                 }
             }
             fclose(filePointer)
@@ -117,10 +103,7 @@ public class Zip {
                 throw ZipError.UnzipError
             }
             ret = unzGoToNextFile(zip)
-
         } while (ret == UNZ_OK && ret != UNZ_END_OF_LIST_OF_FILE)
-        
-        
     }
 
 }

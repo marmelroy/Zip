@@ -16,8 +16,7 @@ class ViewController: UIViewController {
         do {
             let destinationPath = tempUnzipPath()!
             let fileAbsoluteUrl = NSBundle.mainBundle().pathForResource("master", ofType: "zip")
-            let fileManager = NSFileManager.defaultManager()
-            let fileExists = fileManager.fileExistsAtPath(fileAbsoluteUrl!)
+            print(destinationPath)
             try Zip().unzipFile(fileAbsoluteUrl!, destination: destinationPath, overwrite: true)
         }
         catch {
@@ -30,27 +29,6 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    
-    func tempCopyPath() -> String? {
-        var path = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true)[0]
-        path += "master.zip"
-        let url = NSURL(fileURLWithPath: path)
-        
-        do {
-            try NSFileManager.defaultManager().createDirectoryAtURL(url, withIntermediateDirectories: true, attributes: nil)
-        } catch {
-            return nil
-        }
-        
-        if let path = url.path {
-            return path
-        }
-        
-        return nil
-    }
-
-
 
     func tempUnzipPath() -> String? {
         var path = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true)[0]

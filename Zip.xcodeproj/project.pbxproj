@@ -98,7 +98,6 @@
 		347E3A831C1DFFB500A11FD3 /* ZipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZipTests.swift; sourceTree = "<group>"; };
 		347E3A851C1DFFB500A11FD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		347E3AD71C1E04C900A11FD3 /* Zip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zip.swift; sourceTree = "<group>"; };
-		347E3B1E1C1E1CB500A11FD3 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,7 +191,6 @@
 			children = (
 				3430F6391C45C8AD007473A6 /* aes */,
 				3430F6211C45C83F007473A6 /* minizip */,
-				347E3B1E1C1E1CB500A11FD3 /* libz.1.2.5.tbd */,
 				347E3A771C1DFFB500A11FD3 /* Zip.h */,
 				347E3A791C1DFFB500A11FD3 /* Info.plist */,
 				347E3AD71C1E04C900A11FD3 /* Zip.swift */,
