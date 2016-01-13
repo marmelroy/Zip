@@ -26,13 +26,13 @@ public class Zip {
     
     public init () {}
     
-    public func unzipFile(path: String, destination: String, overwrite: Bool) throws {
+    public func unzipFile(path: NSURL, destination: String, overwrite: Bool, password: String?) throws {
         // Check file exists at path.
         let fileManager = NSFileManager.defaultManager()
-        if fileManager.fileExistsAtPath(path) == false {
+        if fileManager.fileExistsAtPath(path.absoluteString) == false {
             throw ZipError.FileNotFound
         }
-        let zip = unzOpen(path)
+        let zip = unzOpen64(path.absoluteString)
         // Begin unzipping
         if unzGoToFirstFile(zip) != UNZ_OK {
             throw ZipError.UnzipError
@@ -46,9 +46,9 @@ public class Zip {
             if ret != UNZ_OK {
                 throw ZipError.UnzipError
             }
-            var fileInfo = unz_file_info()
+            var fileInfo = unz_file_info64()
             memset(&fileInfo, 0, sizeof(unz_file_info))
-            ret = unzGetCurrentFileInfo(zip, &fileInfo, nil, 0, nil, 0, nil, 0)
+            ret = unzGetCurrentFileInfo64(zip, &fileInfo, nil, 0, nil, 0, nil, 0)
             if ret != UNZ_OK {
                 unzCloseCurrentFile(zip)
                 throw ZipError.UnzipError
@@ -58,7 +58,7 @@ public class Zip {
             if fileName == nil {
                 throw ZipError.UnzipError
             }
-            unzGetCurrentFileInfo(zip, &fileInfo, fileName, UInt(fileNameSize), nil, 0, nil, 0)
+            unzGetCurrentFileInfo64(zip, &fileInfo, fileName, UInt(fileNameSize), nil, 0, nil, 0)
             fileName[Int(fileInfo.size_filename)] = 0
             
             var strPath = String.fromCString(fileName)! as NSString
@@ -70,7 +70,7 @@ public class Zip {
             free(fileName)
             
             if (strPath.rangeOfCharacterFromSet(NSCharacterSet(charactersInString: "/\\")).location != NSNotFound) {
-                strPath = strPath.stringByReplacingOccurrencesOfString("\\", withString: "/")
+            strPath = strPath.stringByReplacingOccurrencesOfString("\\", withString: "/")
             }
             let fullPath = (destination as NSString).stringByAppendingPathComponent(strPath as String)
             let creationDate = NSDate()
