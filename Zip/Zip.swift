@@ -66,25 +66,28 @@ public class Zip {
             }
             unzGetCurrentFileInfo64(zip, &fileInfo, fileName, UInt(fileNameSize), nil, 0, nil, 0)
             fileName[Int(fileInfo.size_filename)] = 0
-            var strPath = String.fromCString(fileName)! as NSString
+            guard var pathString = String(CString: fileName, encoding: NSUTF8StringEncoding) else {
+                throw ZipError.UnzipError
+            }
             var isDirectory = false
             let fileInfoSizeFileName = Int(fileInfo.size_filename-1)
             if (fileName[fileInfoSizeFileName] == "/".cStringUsingEncoding(NSUTF8StringEncoding)!.first! || fileName[fileInfoSizeFileName] == "\\".cStringUsingEncoding(NSUTF8StringEncoding)!.first!) {
                 isDirectory = true;
             }
             free(fileName)
-            
-            if (strPath.rangeOfCharacterFromSet(NSCharacterSet(charactersInString: "/\\")).location != NSNotFound) {
-            strPath = strPath.stringByReplacingOccurrencesOfString("\\", withString: "/")
+            if pathString.rangeOfCharacterFromSet(NSCharacterSet(charactersInString: "/\\")) != nil {
+                pathString = pathString.stringByReplacingOccurrencesOfString("\\", withString: "/")
             }
-            let fullPath = destination.URLByAppendingPathComponent(strPath as String).path!
+            guard let fullPath = destination.URLByAppendingPathComponent(pathString).path else {
+                throw ZipError.UnzipError
+            }
             let creationDate = NSDate()
             let directoryAttributes = [NSFileCreationDate: creationDate, NSFileModificationDate: creationDate]
             if isDirectory {
                 try fileManager.createDirectoryAtPath(fullPath, withIntermediateDirectories: true, attributes: directoryAttributes)
             }
             else {
-                try fileManager.createDirectoryAtPath((fullPath as NSString).stringByDeletingLastPathComponent, withIntermediateDirectories: true, attributes: directoryAttributes)
+                try fileManager.createDirectoryAtPath(destination.path!, withIntermediateDirectories: true, attributes: directoryAttributes)
             }
             
             if fileManager.fileExistsAtPath(fullPath) && !isDirectory && !overwrite {
