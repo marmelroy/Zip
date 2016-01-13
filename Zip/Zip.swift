@@ -42,7 +42,12 @@ public class Zip {
         let bufferSize: UInt32 = 4096
         var buffer = Array<CUnsignedChar>(count: Int(bufferSize), repeatedValue: 0)
         repeat {
-            ret = unzOpenCurrentFile(zip)
+            if let cPassword = password?.cStringUsingEncoding(NSASCIIStringEncoding) {
+                ret = unzOpenCurrentFilePassword(zip, cPassword)
+            }
+            else {
+                ret = unzOpenCurrentFile(zip);
+            }
             if ret != UNZ_OK {
                 throw ZipError.UnzipError
             }
