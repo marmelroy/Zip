@@ -99,7 +99,7 @@ public class Zip {
         }
         
         var filePointer: UnsafeMutablePointer<FILE>
-        filePointer = try ZIPFopen(fullPath)
+        filePointer = fopen(fullPath, "wb")            
         let readBytes = unzReadCurrentFile(zip, &buffer, 4096)
         fwrite(buffer, Int(readBytes), 1, filePointer)
         if filePointer != nil {
