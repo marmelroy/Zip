@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func tempUnzipPath() -> String? {
+    func tempUnzipPath() -> NSURL? {
         var path = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true)[0]
         path += "/\(NSUUID().UUIDString)"
         let url = NSURL(fileURLWithPath: path)
@@ -41,12 +41,7 @@ class ViewController: UIViewController {
         } catch {
             return nil
         }
-        
-        if let path = url.path {
-            return path
-        }
-        
-        return nil
+        return url
     }
 
 }

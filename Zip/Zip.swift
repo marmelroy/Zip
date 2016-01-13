@@ -26,21 +26,22 @@ public class Zip {
     
     public init () {}
     
-    public func unzipFile(path: NSURL, destination: String, overwrite: Bool, password: String?) throws {
+    public func unzipFile(path: NSURL, destination: NSURL, overwrite: Bool, password: String?) throws {
         // Check file exists at path.
         let fileManager = NSFileManager.defaultManager()
         if fileManager.fileExistsAtPath(path.absoluteString) == false {
             throw ZipError.FileNotFound
         }
-        let zip = unzOpen64(path.absoluteString)
-        // Begin unzipping
-        if unzGoToFirstFile(zip) != UNZ_OK {
-            throw ZipError.UnzipError
-        }
+        // Unzip set up
         var ret: Int32 = 0
         var crc_ret: Int32 = 0
         let bufferSize: UInt32 = 4096
         var buffer = Array<CUnsignedChar>(count: Int(bufferSize), repeatedValue: 0)
+        // Begin unzipping
+        let zip = unzOpen64(path.absoluteString)
+        if unzGoToFirstFile(zip) != UNZ_OK {
+            throw ZipError.UnzipError
+        }
         repeat {
             if let cPassword = password?.cStringUsingEncoding(NSASCIIStringEncoding) {
                 ret = unzOpenCurrentFilePassword(zip, cPassword)
@@ -65,7 +66,6 @@ public class Zip {
             }
             unzGetCurrentFileInfo64(zip, &fileInfo, fileName, UInt(fileNameSize), nil, 0, nil, 0)
             fileName[Int(fileInfo.size_filename)] = 0
-            
             var strPath = String.fromCString(fileName)! as NSString
             var isDirectory = false
             let fileInfoSizeFileName = Int(fileInfo.size_filename-1)
@@ -77,7 +77,7 @@ public class Zip {
             if (strPath.rangeOfCharacterFromSet(NSCharacterSet(charactersInString: "/\\")).location != NSNotFound) {
             strPath = strPath.stringByReplacingOccurrencesOfString("\\", withString: "/")
             }
-            let fullPath = (destination as NSString).stringByAppendingPathComponent(strPath as String)
+            let fullPath = destination.URLByAppendingPathComponent(strPath as String).path!
             let creationDate = NSDate()
             let directoryAttributes = [NSFileCreationDate: creationDate, NSFileModificationDate: creationDate]
             if isDirectory {
