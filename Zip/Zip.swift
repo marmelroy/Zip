@@ -25,10 +25,12 @@ public enum ZipError: ErrorType {
 
 public class Zip {
     
+    public init () {
+    
+    }
+    
     public func unzipFile(path: String, destination: String, overwrite: Bool, password: String?) throws {
-        guard let zip: zipFile = unzOpen(path) else {
-            throw ZipError.UnzipError
-        }
+        let zip = unzOpen(path)
         var currentPosition = 0.0
         var globalInfo: unz_global_info = unz_global_info(number_entry: 0, number_disk_with_CD: 0, size_comment: 0)
         unzGetGlobalInfo(zip, &globalInfo)
