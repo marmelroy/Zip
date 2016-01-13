@@ -35,6 +35,18 @@ public class Zip {
     }
     
     /**
+     Quick unzip file. Unzips to the app's documents folder.
+     
+     - parameter path: Path of zipped file. NSURL.
+     
+     - throws: Error if unzipping fails or if fail is not found. Can be printed with a description variable.
+     */
+    public func unzipFile(path: NSURL) throws {
+        let documentsUrl = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as NSURL
+        try self.unzipFile(path, destination: documentsUrl, overwrite: true, password: nil)
+    }
+    
+    /**
      Unzip file
      
      - parameter path:        Path of zipped file. NSURL.
@@ -107,7 +119,6 @@ public class Zip {
             else {
                 try fileManager.createDirectoryAtPath(destination.path!, withIntermediateDirectories: true, attributes: directoryAttributes)
             }
-            
             if fileManager.fileExistsAtPath(fullPath) && !isDirectory && !overwrite {
                 unzCloseCurrentFile(zip)
                 ret = unzGoToNextFile(zip)

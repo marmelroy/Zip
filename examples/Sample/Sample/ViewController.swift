@@ -18,7 +18,7 @@ class ViewController: UIViewController {
             let fileAbsolutePath = NSBundle.mainBundle().pathForResource("master", ofType: "zip")
             let fileAbsoluteURL = NSURL(string: fileAbsolutePath!)!
             print(destinationPath)
-            try Zip().unzipFile(fileAbsoluteURL, destination: destinationPath, overwrite: true, password: nil)
+            try Zip().unzipFile(fileAbsoluteURL)
         }
         catch {
             print("oops")
