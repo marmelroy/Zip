@@ -18,7 +18,7 @@ class ViewController: UIViewController {
             let fileAbsoluteUrl = NSBundle.mainBundle().pathForResource("master", ofType: "zip")
             let fileManager = NSFileManager.defaultManager()
             let fileExists = fileManager.fileExistsAtPath(fileAbsoluteUrl!)
-            try Zip().unzipFile(fileAbsoluteUrl!, destination: destinationPath, overwrite: true, password: nil)
+            try Zip().unzipFile(fileAbsoluteUrl!, destination: destinationPath, overwrite: true)
         }
         catch {
             print("oops")

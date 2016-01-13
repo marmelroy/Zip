@@ -29,7 +29,7 @@ public class Zip {
     
     }
     
-    public func unzipFile(path: String, destination: String, overwrite: Bool, password: String?) throws {
+    public func unzipFile(path: String, destination: String, overwrite: Bool) throws {
         let zip = unzOpen(path)
         var currentPosition = 0.0
         var globalInfo: unz_global_info = unz_global_info(number_entry: 0, number_disk_with_CD: 0, size_comment: 0)
@@ -44,77 +44,82 @@ public class Zip {
         let bufferSize = 4096
         var buffer = Array<CUnsignedChar>(count: bufferSize, repeatedValue: 0)
         let fileManager = NSFileManager.defaultManager()
-        if let password = password where password.characters.count > 0 {
-            ret = unzOpenCurrentFilePassword(zip, password.cStringUsingEncoding(NSASCIIStringEncoding)!)
-        }
-        else {
+        repeat {
             ret = unzOpenCurrentFile(zip)
-        }
-        if ret != UNZ_OK {
-            throw ZipError.UnzipError
-        }
-        var fileInfo = unz_file_info()
-        memset(&fileInfo, 0, sizeof(unz_file_info))
-        
-        ret = unzGetCurrentFileInfo(zip, &fileInfo, nil, 0, nil, 0, nil, 0)
-        if ret != UNZ_OK {
-            unzCloseCurrentFile(zip)
-            throw ZipError.UnzipError
-        }
-        
-        currentPosition = currentPosition + Double(fileInfo.compressed_size)
-        let fileNameSize = Int(fileInfo.size_filename) + 1
-        let fileName = UnsafeMutablePointer<CChar>.alloc(fileNameSize)
-        if fileName == nil {
-            throw ZipError.UnzipError
-        }
-        unzGetCurrentFileInfo(zip, &fileInfo, fileName, UInt(fileNameSize), nil, 0, nil, 0)
-        fileName[Int(fileInfo.size_filename)] = 0
-
-        var strPath = String.fromCString(fileName)! as NSString
-        var isDirectory = false
-        let fileInfoSizeFileName = Int(fileInfo.size_filename-1)
-        if (fileName[fileInfoSizeFileName] == "/".cStringUsingEncoding(NSUTF8StringEncoding)!.first! || fileName[fileInfoSizeFileName] == "\\".cStringUsingEncoding(NSUTF8StringEncoding)!.first!) {
-            isDirectory = true;
-        }
-        free(fileName)
-        
-        if (strPath.rangeOfCharacterFromSet(NSCharacterSet(charactersInString: "/\\")).location != NSNotFound) {
-            strPath = strPath.stringByReplacingOccurrencesOfString("\\", withString: "/")
-        }
-        let fullPath = (destination as NSString).stringByAppendingPathComponent(strPath as String)
-        // TODO: GET DOS DATE FROM FILEINFO
-        let modDate = NSDate()
-        let directoryAttributes = [NSFileCreationDate: modDate, NSFileModificationDate: modDate]
-        if isDirectory {
-            try fileManager.createDirectoryAtPath(fullPath, withIntermediateDirectories: true, attributes: directoryAttributes)
-        }
-        else {
-            try fileManager.createDirectoryAtPath((fullPath as NSString).stringByDeletingLastPathComponent, withIntermediateDirectories: true, attributes: directoryAttributes)
-        }
-        
-        if fileManager.fileExistsAtPath(fullPath) && !isDirectory && !overwrite {
-            unzCloseCurrentFile(zip)
-            ret = unzGoToNextFile(zip)
-        }
-        
-        var filePointer: UnsafeMutablePointer<FILE>
-        filePointer = fopen(fullPath, "wb")            
-        let readBytes = unzReadCurrentFile(zip, &buffer, 4096)
-        fwrite(buffer, Int(readBytes), 1, filePointer)
-        if filePointer != nil {
-            if ((fullPath as NSString).pathExtension.lowercaseString == "zip") {
-                // nested zip
-                try unzipFile(fullPath, destination: (fullPath as NSString).stringByDeletingLastPathComponent, overwrite: overwrite, password: password)
+            if ret != UNZ_OK {
+                throw ZipError.UnzipError
             }
-        }
-        fclose(filePointer)
-        crc_ret = unzCloseCurrentFile(zip)
-        if crc_ret == UNZ_CRCERROR {
-            throw ZipError.UnzipError
-        }
-        ret = unzGoToNextFile(zip)
-        currentPosition++
+            var fileInfo = unz_file_info()
+            memset(&fileInfo, 0, sizeof(unz_file_info))
+            
+            ret = unzGetCurrentFileInfo(zip, &fileInfo, nil, 0, nil, 0, nil, 0)
+            if ret != UNZ_OK {
+                unzCloseCurrentFile(zip)
+                throw ZipError.UnzipError
+            }
+            
+            currentPosition = currentPosition + Double(fileInfo.compressed_size)
+            let fileNameSize = Int(fileInfo.size_filename) + 1
+            let fileName = UnsafeMutablePointer<CChar>.alloc(fileNameSize)
+            if fileName == nil {
+                throw ZipError.UnzipError
+            }
+            unzGetCurrentFileInfo(zip, &fileInfo, fileName, UInt(fileNameSize), nil, 0, nil, 0)
+            fileName[Int(fileInfo.size_filename)] = 0
+            
+            var strPath = String.fromCString(fileName)! as NSString
+            var isDirectory = false
+            let fileInfoSizeFileName = Int(fileInfo.size_filename-1)
+            if (fileName[fileInfoSizeFileName] == "/".cStringUsingEncoding(NSUTF8StringEncoding)!.first! || fileName[fileInfoSizeFileName] == "\\".cStringUsingEncoding(NSUTF8StringEncoding)!.first!) {
+                isDirectory = true;
+            }
+            free(fileName)
+            
+            if (strPath.rangeOfCharacterFromSet(NSCharacterSet(charactersInString: "/\\")).location != NSNotFound) {
+                strPath = strPath.stringByReplacingOccurrencesOfString("\\", withString: "/")
+            }
+            let fullPath = (destination as NSString).stringByAppendingPathComponent(strPath as String)
+            // TODO: GET DOS DATE FROM FILEINFO
+            let modDate = NSDate()
+            let directoryAttributes = [NSFileCreationDate: modDate, NSFileModificationDate: modDate]
+            if isDirectory {
+                try fileManager.createDirectoryAtPath(fullPath, withIntermediateDirectories: true, attributes: directoryAttributes)
+            }
+            else {
+                try fileManager.createDirectoryAtPath((fullPath as NSString).stringByDeletingLastPathComponent, withIntermediateDirectories: true, attributes: directoryAttributes)
+            }
+            
+            if fileManager.fileExistsAtPath(fullPath) && !isDirectory && !overwrite {
+                unzCloseCurrentFile(zip)
+                ret = unzGoToNextFile(zip)
+            }
+            
+            var filePointer: UnsafeMutablePointer<FILE>
+            filePointer = fopen(fullPath, "wb")
+            while filePointer != nil {
+                let readBytes = unzReadCurrentFile(zip, &buffer, 4096)
+                if readBytes > 0 {
+                    fwrite(buffer, Int(readBytes), 1, filePointer)
+                }
+                else {
+                    break
+                }
+            }
+            if filePointer != nil {
+                if ((fullPath as NSString).pathExtension.lowercaseString == "zip") {
+                    // nested zip
+                    try unzipFile(fullPath, destination: (fullPath as NSString).stringByDeletingLastPathComponent, overwrite: overwrite)
+                }
+            }
+            fclose(filePointer)
+            crc_ret = unzCloseCurrentFile(zip)
+            if crc_ret == UNZ_CRCERROR {
+                throw ZipError.UnzipError
+            }
+            ret = unzGoToNextFile(zip)
+
+        } while (ret == UNZ_OK && ret != UNZ_END_OF_LIST_OF_FILE)
+        
         
     }
 

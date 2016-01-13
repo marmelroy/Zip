@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3430F5D61C45B7FB007473A6 /* ZipHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3430F5D51C45B7FB007473A6 /* ZipHelpers.swift */; };
 		3430F6201C45C805007473A6 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3430F61F1C45C805007473A6 /* libz.tbd */; };
 		3430F62D1C45C851007473A6 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 3430F6221C45C851007473A6 /* crypt.h */; };
 		3430F62E1C45C851007473A6 /* include.h in Headers */ = {isa = PBXBuildFile; fileRef = 3430F6231C45C851007473A6 /* include.h */; };
@@ -58,7 +57,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3430F5D51C45B7FB007473A6 /* ZipHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipHelpers.swift; sourceTree = "<group>"; };
 		3430F61F1C45C805007473A6 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		3430F6221C45C851007473A6 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
 		3430F6231C45C851007473A6 /* include.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include.h; sourceTree = "<group>"; };
@@ -197,7 +195,6 @@
 				347E3B1E1C1E1CB500A11FD3 /* libz.1.2.5.tbd */,
 				347E3A771C1DFFB500A11FD3 /* Zip.h */,
 				347E3A791C1DFFB500A11FD3 /* Info.plist */,
-				3430F5D51C45B7FB007473A6 /* ZipHelpers.swift */,
 				347E3AD71C1E04C900A11FD3 /* Zip.swift */,
 			);
 			path = Zip;
@@ -351,7 +348,6 @@
 				3430F6351C45C851007473A6 /* zip.c in Sources */,
 				3430F6311C45C851007473A6 /* mztools.c in Sources */,
 				3430F6511C45C8AD007473A6 /* aescrypt.c in Sources */,
-				3430F5D61C45B7FB007473A6 /* ZipHelpers.swift in Sources */,
 				3430F6601C45C8AD007473A6 /* pwd2key.c in Sources */,
 				3430F65A1C45C8AD007473A6 /* fileenc.c in Sources */,
 			);
