@@ -13,18 +13,22 @@ import minizip
 public enum ZipError: ErrorType {
     case FileNotFound // File not found
     case UnzipError // Unzip error
+    case ZipError // Unzip error
 
     /// Description variable
     public var description: String {
         switch self {
         case .FileNotFound: return NSLocalizedString("File not found.", comment: "")
         case .UnzipError: return NSLocalizedString("Failed to unzip zip file.", comment: "")
+        case .ZipError: return NSLocalizedString("Failed to zip file.", comment: "")
         }
     }
 }
 
 
 public class Zip {
+    
+    // MARK: Lifecycle
     
     /**
      Init
@@ -33,6 +37,8 @@ public class Zip {
      */
     public init () {
     }
+    
+    // MARK: Unzip
     
     /**
      Quick unzip file. Unzips to the app's documents folder.
@@ -113,12 +119,14 @@ public class Zip {
             }
             let creationDate = NSDate()
             let directoryAttributes = [NSFileCreationDate: creationDate, NSFileModificationDate: creationDate]
-            if isDirectory {
-                try fileManager.createDirectoryAtPath(fullPath, withIntermediateDirectories: true, attributes: directoryAttributes)
-            }
-            else {
-                try fileManager.createDirectoryAtPath(destination.path!, withIntermediateDirectories: true, attributes: directoryAttributes)
-            }
+            do {
+                if isDirectory {
+                    try fileManager.createDirectoryAtPath(fullPath, withIntermediateDirectories: true, attributes: directoryAttributes)
+                }
+                else {
+                    try fileManager.createDirectoryAtPath(destination.path!, withIntermediateDirectories: true, attributes: directoryAttributes)
+                }
+            } catch {}
             if fileManager.fileExistsAtPath(fullPath) && !isDirectory && !overwrite {
                 unzCloseCurrentFile(zip)
                 ret = unzGoToNextFile(zip)
@@ -142,5 +150,66 @@ public class Zip {
             ret = unzGoToNextFile(zip)
         } while (ret == UNZ_OK && ret != UNZ_END_OF_LIST_OF_FILE)
     }
+    
+    // MARK: Zip
+    
+    /**
+    Quick zip files.
+    
+    - parameter paths: Array of NSURL filepaths.
+    
+    - throws: rror if zipping fails.
+    */
+    public func zipFiles(paths: [NSURL]) throws {
+        let documentsUrl = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as NSURL
+        try self.zipFiles(paths, destination: documentsUrl, password: nil)
+    }
+
+    /**
+    Zip files.
+    
+    - parameter paths:       Array of NSURL filepaths.
+    - parameter destination: Destination NSURL.
+    - parameter password:    Password string. Optional.
+    
+    - throws: Error if zipping fails.
+    */
+    public func zipFiles(paths: [NSURL], destination: NSURL, password: String?) throws {
+        let chunkSize: Int = 16384
+        let zip = zipOpen(destination.path!, APPEND_STATUS_CREATE)
+        for path in paths {
+            let input = fopen(path.path!, "r")
+            if input == nil {
+                throw ZipError.ZipError
+            }
+            let fileName = path.lastPathComponent
+            var zipInfo: zip_fileinfo = zip_fileinfo(tmz_date: tm_zip(tm_sec: 0, tm_min: 0, tm_hour: 0, tm_mday: 0, tm_mon: 0, tm_year: 0), dosDate: 0, internal_fa: 0, external_fa: 0)
+            do {
+                let attributes = try NSFileManager.defaultManager().attributesOfItemAtPath(path.path!)
+                if let fileDate = attributes[NSFileModificationDate] as? NSDate {
+                    let components = NSCalendar.currentCalendar().components([.Year, .Month, .Day, .Hour, .Minute, .Second], fromDate: fileDate)
+                    zipInfo.tmz_date.tm_sec = UInt32(components.second)
+                    zipInfo.tmz_date.tm_min = UInt32(components.minute)
+                    zipInfo.tmz_date.tm_hour = UInt32(components.hour)
+                    zipInfo.tmz_date.tm_mday = UInt32(components.day)
+                    zipInfo.tmz_date.tm_mon = UInt32(components.month) - 1
+                    zipInfo.tmz_date.tm_year = UInt32(components.year)
+                }
+            }
+            catch {}
+            let buffer = malloc(chunkSize)
+            zipOpenNewFileInZip3(zip, fileName!, &zipInfo, nil, 0, nil, 0, nil,Z_DEFLATED, Z_DEFAULT_COMPRESSION, 0, -MAX_WBITS, DEF_MEM_LEVEL, Z_DEFAULT_STRATEGY, password!, 0)
+            var len: Int = 0
+            while (feof(input) == 0) {
+                len = fread(buffer, 1, chunkSize, input)
+                zipWriteInFileInZip(zip, buffer, UInt32(len))
+            }
+            zipCloseFileInZip(zip)
+            free(buffer)
+            fclose(input)
+        }
+        zipClose(zip, nil);
+    }
+    
 
 }
