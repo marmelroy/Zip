@@ -74,7 +74,7 @@
 		3430BB231C484A65001143B5 /* pwd2key.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pwd2key.h; sourceTree = "<group>"; };
 		3430BB241C484A65001143B5 /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha1.c; sourceTree = "<group>"; };
 		3430BB251C484A65001143B5 /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha1.h; sourceTree = "<group>"; };
-		3430BB3D1C484CC4001143B5 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		3430BB3E1C484D39001143B5 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = Zip/module.modulemap; sourceTree = SOURCE_ROOT; };
 		3430F61F1C45C805007473A6 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		3430F6221C45C851007473A6 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
 		3430F6241C45C851007473A6 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
@@ -147,8 +147,8 @@
 				3430F6221C45C851007473A6 /* crypt.h */,
 				3430F6241C45C851007473A6 /* ioapi.c */,
 				3430F6251C45C851007473A6 /* ioapi.h */,
-				3430BB3D1C484CC4001143B5 /* module.modulemap */,
 				3430F6291C45C851007473A6 /* unzip.c */,
+				3430BB3E1C484D39001143B5 /* module.modulemap */,
 				3430F62A1C45C851007473A6 /* unzip.h */,
 				3430F62B1C45C851007473A6 /* zip.c */,
 				3430F62C1C45C851007473A6 /* zip.h */,
