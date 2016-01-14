@@ -118,7 +118,7 @@ static voidpf file_build_ioposix(FILE *file, const char *filename)
         return NULL;
     ioposix = (FILE_IOPOSIX*)malloc(sizeof(FILE_IOPOSIX));
     ioposix->file = file;
-    ioposix->filenameLength = (int)strlen(filename) + 1;
+    ioposix->filenameLength = strlen(filename) + 1;
     ioposix->filename = (char*)malloc(ioposix->filenameLength * sizeof(char));
     strncpy(ioposix->filename, filename, ioposix->filenameLength);
     return (voidpf)ioposix;
@@ -176,7 +176,7 @@ static voidpf ZCALLBACK fopendisk64_file_func (voidpf opaque, voidpf stream, int
     strncpy(diskFilename, ioposix->filename, ioposix->filenameLength);
     for (i = ioposix->filenameLength - 1; i >= 0; i -= 1)
     {
-        if (diskFilename[i] != '.') 
+        if (diskFilename[i] != '.')
             continue;
         snprintf(&diskFilename[i], ioposix->filenameLength - i, ".z%02d", number_disk + 1);
         break;
@@ -201,7 +201,7 @@ static voidpf ZCALLBACK fopendisk_file_func (voidpf opaque, voidpf stream, int n
     strncpy(diskFilename, ioposix->filename, ioposix->filenameLength);
     for (i = ioposix->filenameLength - 1; i >= 0; i -= 1)
     {
-        if (diskFilename[i] != '.') 
+        if (diskFilename[i] != '.')
             continue;
         snprintf(&diskFilename[i], ioposix->filenameLength - i, ".z%02d", number_disk + 1);
         break;

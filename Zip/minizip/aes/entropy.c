@@ -42,7 +42,7 @@ int entropy_fun(unsigned char buf[], unsigned int len)
     int rlen = 0;
     if (frand != -1)
     {
-        rlen = (int)read(frand, buf, len);
+        rlen = read(frand, buf, len);
         close(frand);
     }
     return rlen;

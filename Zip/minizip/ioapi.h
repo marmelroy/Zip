@@ -59,7 +59,7 @@
 #ifdef HAVE_64BIT_INT_CUSTOM
 typedef 64BIT_INT_CUSTOM_TYPE ZPOS64_T;
 #else
-#  ifdef HAS_STDINT_H
+#  ifdef HAVE_STDINT_H
 #    include "stdint.h"
      typedef uint64_t ZPOS64_T;
 #  else
