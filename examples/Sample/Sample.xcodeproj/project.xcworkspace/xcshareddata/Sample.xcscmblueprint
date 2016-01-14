@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "3DD768C8AB2D6A2647C9EF99992D3CC5820E77C4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "8DA5B175D3FDB92A3B3CCBD4109A734F1316A3DD" : 0,
+    "3DD768C8AB2D6A2647C9EF99992D3CC5820E77C4" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "D9F60A06-A36C-464E-8749-2F7A099F0BEC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "8DA5B175D3FDB92A3B3CCBD4109A734F1316A3DD" : "Zip\/Zip\/minizip\/",
+    "3DD768C8AB2D6A2647C9EF99992D3CC5820E77C4" : "Zip\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Sample",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "examples\/Sample\/Sample.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/marmelroy\/Zip.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3DD768C8AB2D6A2647C9EF99992D3CC5820E77C4"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/nmoinvaz\/minizip.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8DA5B175D3FDB92A3B3CCBD4109A734F1316A3DD"
+    }
+  ]
+}
