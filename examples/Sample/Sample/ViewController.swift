@@ -19,6 +19,8 @@ class ViewController: UIViewController {
             let fileAbsoluteURL = NSURL(string: fileAbsolutePath!)!
             print(destinationPath)
             try Zip().unzipFile(fileAbsoluteURL)
+            try Zip().zipFiles([fileAbsoluteURL], fileName: "zipTest")
+
         }
         catch {
             print("oops")

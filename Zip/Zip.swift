@@ -157,11 +157,13 @@ public class Zip {
     Quick zip files.
     
     - parameter paths: Array of NSURL filepaths.
-    
+    - parameter fileName: File name for the resulting zip file.
+
     - throws: rror if zipping fails.
     */
-    public func zipFiles(paths: [NSURL]) throws {
-        let documentsUrl = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as NSURL
+    public func zipFiles(paths: [NSURL], fileName: String) throws {
+        var documentsUrl = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as NSURL
+        documentsUrl = documentsUrl.URLByAppendingPathComponent("\(fileName).zip")
         try self.zipFiles(paths, destination: documentsUrl, password: nil)
     }
 
@@ -198,7 +200,15 @@ public class Zip {
             }
             catch {}
             let buffer = malloc(chunkSize)
-            zipOpenNewFileInZip3(zip, fileName!, &zipInfo, nil, 0, nil, 0, nil,Z_DEFLATED, Z_DEFAULT_COMPRESSION, 0, -MAX_WBITS, DEF_MEM_LEVEL, Z_DEFAULT_STRATEGY, password!, 0)
+            if let password = password, let fileName = fileName {
+                zipOpenNewFileInZip3(zip, fileName, &zipInfo, nil, 0, nil, 0, nil,Z_DEFLATED, Z_DEFAULT_COMPRESSION, 0, -MAX_WBITS, DEF_MEM_LEVEL, Z_DEFAULT_STRATEGY, password, 0)
+            }
+            else if let fileName = fileName {
+                zipOpenNewFileInZip3(zip, fileName, &zipInfo, nil, 0, nil, 0, nil,Z_DEFLATED, Z_DEFAULT_COMPRESSION, 0, -MAX_WBITS, DEF_MEM_LEVEL, Z_DEFAULT_STRATEGY, nil, 0)
+            }
+            else {
+                throw ZipError.ZipError
+            }
             var len: Int = 0
             while (feof(input) == 0) {
                 len = fread(buffer, 1, chunkSize, input)
