@@ -171,7 +171,7 @@ public class Zip {
     Zip files.
     
     - parameter paths:       Array of NSURL filepaths.
-    - parameter destination: Destination NSURL.
+    - parameter destination: Destination NSURL, should lead to a .zip filepath.
     - parameter password:    Password string. Optional.
     
     - throws: Error if zipping fails.
