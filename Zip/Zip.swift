@@ -57,7 +57,7 @@ public class Zip {
     public func unzipFile(path: NSURL, destination: NSURL, overwrite: Bool, password: String?, progress: ((progress: Double) -> ())?) throws {
         // Check whether a zip file exists at path.
         let fileManager = NSFileManager.defaultManager()
-        if fileManager.fileExistsAtPath(path.absoluteString) == false || path.pathExtension != ".zip" {
+        if fileManager.fileExistsAtPath(path.path!) == false || path.pathExtension != "zip" {
             throw ZipError.FileNotFound
         }
         // Unzip set up
@@ -66,9 +66,9 @@ public class Zip {
         let bufferSize: UInt32 = 4096
         var buffer = Array<CUnsignedChar>(count: Int(bufferSize), repeatedValue: 0)
         // Begin unzipping
-        let zip = unzOpen64(path.absoluteString)
+        let zip = unzOpen64(path.path!)
         
-        let fileAttributes = try fileManager.attributesOfItemAtPath(path.absoluteString)
+        let fileAttributes = try fileManager.attributesOfItemAtPath(path.path!)
         let totalSize = fileAttributes[NSFileSize] as? Double
         var currentPosition: Double = 0.0
         if unzGoToFirstFile(zip) != UNZ_OK {

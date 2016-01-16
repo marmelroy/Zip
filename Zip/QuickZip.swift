@@ -39,7 +39,7 @@ extension Zip {
         guard let fileExtension = path.pathExtension, let fileName = path.lastPathComponent else {
             throw ZipError.UnzipFail
         }
-        let directoryName = fileName.stringByReplacingOccurrencesOfString(fileExtension, withString: "")
+        let directoryName = fileName.stringByReplacingOccurrencesOfString(".\(fileExtension)", withString: "")
         let destinationUrl = documentsUrl.URLByAppendingPathComponent(directoryName, isDirectory: true)
         try self.unzipFile(path, destination: destinationUrl, overwrite: true, password: nil, progress: progress)
         return destinationUrl
