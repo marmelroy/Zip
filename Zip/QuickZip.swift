@@ -53,7 +53,7 @@ extension Zip {
     - parameter paths: Array of NSURL filepaths.
     - parameter fileName: File name for the resulting zip file.
     
-    - throws: rror if zipping fails.
+    - throws: Error if zipping fails.
     
     - returns: NSURL of the destination folder.
     */
@@ -68,7 +68,7 @@ extension Zip {
     - parameter fileName: File name for the resulting zip file.
     - parameter progress: A progress closure called after unzipping each file in the archive. Double value betweem 0 and 1.
 
-    - throws: rror if zipping fails.
+    - throws: Error if zipping fails.
     
     - returns: NSURL of the destination folder.
     */
