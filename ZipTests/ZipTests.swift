@@ -29,8 +29,45 @@ class ZipTests: XCTestCase {
         catch {
             XCTFail()
         }
-
     }
     
+    func testQuickUnzipNonExistingPath() {
+        do {
+            let filePathURL = NSBundle(forClass: ZipTests.self).resourcePath
+            let fileAbsoluteURL = NSURL(string:"\(filePathURL!)/bb9.zip")
+            let destinationURL = try Zip().quickUnzipFile(fileAbsoluteURL!)
+            let fileManager = NSFileManager.defaultManager()
+            XCTAssertFalse(fileManager.fileExistsAtPath(destinationURL.path!))
+        }
+        catch {
+            XCTAssert(true)
+        }
+    }
+
+    func testQuickUnzipNonZipPath() {
+        do {
+            let fileAbsoluteURL = NSBundle(forClass: ZipTests.self).URLForResource("3crBXeO", withExtension: "gif")!
+            let destinationURL = try Zip().quickUnzipFile(fileAbsoluteURL)
+            let fileManager = NSFileManager.defaultManager()
+            XCTAssertFalse(fileManager.fileExistsAtPath(destinationURL.path!))
+        }
+        catch {
+            XCTAssert(true)
+        }
+    }
+    
+    func testQuickUnzipProgress() {
+        do {
+            let fileAbsoluteURL = NSBundle(forClass: ZipTests.self).URLForResource("bb8", withExtension: "zip")!
+            try Zip().quickUnzipFile(fileAbsoluteURL, progress: { (progress) -> () in
+                XCTAssert(true)
+            })
+        }
+        catch {
+            XCTFail()
+        }
+    }
+
+
     
 }
