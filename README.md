@@ -4,7 +4,7 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 # Zip
-A Swift 2 framework for zipping and unzipping files. Simple and quick to use.
+A Swift framework for zipping and unzipping files. Simple and quick to use.
 
 ## Usage
 
@@ -13,6 +13,20 @@ Import Zip at the top of the Swift file.
 ```swift
 import Zip
 ```
+
+## Quick functions
+
+```swift
+do {
+    let bb8FilePath = NSBundle.mainBundle().URLForResource("bb8", withExtension: "zip")!
+    try Zip().quickUnzipFile(bb8FilePath) // Unzip
+    try Zip().quickZipFiles([bb8FilePath], fileName: "archive") // Zip
+}
+catch ErrorType {
+  print("Something went wrong")
+}
+```
+
 
 ### Setting up with Carthage
 
