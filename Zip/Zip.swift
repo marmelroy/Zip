@@ -174,7 +174,7 @@ public class Zip {
         var totalSize: Double = 0.0
         // Check if paths exist and get totalSize for progress handler
         for path in paths {
-            if fileManager.fileExistsAtPath(path.absoluteString) == false {
+            if fileManager.fileExistsAtPath(path.path!) == false {
                 throw ZipError.FileNotFound
             }
             do {

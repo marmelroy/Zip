@@ -67,7 +67,18 @@ class ZipTests: XCTestCase {
             XCTFail()
         }
     }
-
-
     
+    func testQuickZip() {
+        do {
+            let imageURL1 = NSBundle(forClass: ZipTests.self).URLForResource("3crBXeO", withExtension: "gif")!
+            let imageURL2 = NSBundle(forClass: ZipTests.self).URLForResource("kYkLkPf", withExtension: "gif")!
+            let destinationURL = try Zip().quickZipFiles([imageURL1, imageURL2], fileName: "archive")
+            let fileManager = NSFileManager.defaultManager()
+            XCTAssertTrue(fileManager.fileExistsAtPath(destinationURL.path!))
+        }
+        catch {
+            XCTFail()
+        }
+    }
+
 }
