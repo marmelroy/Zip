@@ -16,6 +16,7 @@ import Zip
 
 ## Quick functions
 
+Zip includes two quick functions for zipping and unzipping files and they work as you would expect. Both functions take local file path urls. 
 ```swift
 do {
     let bb8FilePath = NSBundle.mainBundle().URLForResource("bb8", withExtension: "zip")!
