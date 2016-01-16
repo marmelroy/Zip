@@ -37,7 +37,7 @@ extension Zip {
      */
     public func quickUnzipFile(path: NSURL, progress: ((progress: Double) -> ())?) throws -> NSURL {
         guard let fileExtension = path.pathExtension, let fileName = path.lastPathComponent else {
-            throw ZipError.UnzipError
+            throw ZipError.UnzipFail
         }
         let directoryName = fileName.stringByReplacingOccurrencesOfString(fileExtension, withString: "")
         let destinationUrl = documentsUrl.URLByAppendingPathComponent(directoryName, isDirectory: true)
