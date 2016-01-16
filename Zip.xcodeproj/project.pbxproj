@@ -36,6 +36,7 @@
 		3430F6341C45C851007473A6 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = 3430F62A1C45C851007473A6 /* unzip.h */; };
 		3430F6351C45C851007473A6 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 3430F62B1C45C851007473A6 /* zip.c */; };
 		3430F6361C45C851007473A6 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 3430F62C1C45C851007473A6 /* zip.h */; };
+		3443A3F61C4AB8A3004AD173 /* QuickZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3443A3F51C4AB8A3004AD173 /* QuickZip.swift */; };
 		347E3A781C1DFFB500A11FD3 /* Zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 347E3A771C1DFFB500A11FD3 /* Zip.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		347E3A7F1C1DFFB500A11FD3 /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 347E3A741C1DFFB500A11FD3 /* Zip.framework */; };
 		347E3A841C1DFFB500A11FD3 /* ZipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347E3A831C1DFFB500A11FD3 /* ZipTests.swift */; };
@@ -83,6 +84,7 @@
 		3430F62B1C45C851007473A6 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
 		3430F62C1C45C851007473A6 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
 		3433BFCD1C48D3EC006DF000 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		3443A3F51C4AB8A3004AD173 /* QuickZip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickZip.swift; sourceTree = "<group>"; };
 		347E3A741C1DFFB500A11FD3 /* Zip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Zip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		347E3A771C1DFFB500A11FD3 /* Zip.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Zip.h; sourceTree = "<group>"; };
 		347E3A791C1DFFB500A11FD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				347E3A771C1DFFB500A11FD3 /* Zip.h */,
 				347E3A791C1DFFB500A11FD3 /* Info.plist */,
 				347E3AD71C1E04C900A11FD3 /* Zip.swift */,
+				3443A3F51C4AB8A3004AD173 /* QuickZip.swift */,
 			);
 			path = Zip;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				3430BB2F1C484A65001143B5 /* entropy.c in Sources */,
 				3430F6351C45C851007473A6 /* zip.c in Sources */,
 				3430BB281C484A65001143B5 /* aescrypt.c in Sources */,
+				3443A3F61C4AB8A3004AD173 /* QuickZip.swift in Sources */,
 				3430BB311C484A65001143B5 /* fileenc.c in Sources */,
 				3430BB381C484A65001143B5 /* pwd2key.c in Sources */,
 			);

@@ -14,6 +14,7 @@ public enum ZipError: ErrorType {
     case FileNotFound // File not found
     case UnzipError // Unzip error
     case ZipError // Unzip error
+    case NotAZipFileError // Unzip error
 
     /// Description variable
     public var description: String {
@@ -21,12 +22,16 @@ public enum ZipError: ErrorType {
         case .FileNotFound: return NSLocalizedString("File not found.", comment: "")
         case .UnzipError: return NSLocalizedString("Failed to unzip zip file.", comment: "")
         case .ZipError: return NSLocalizedString("Failed to zip file.", comment: "")
+        case .NotAZipFileError: return NSLocalizedString("The file path does not contain a zip file.", comment: "")
         }
     }
 }
 
 
 public class Zip {
+    
+    // Documents folder
+    let documentsUrl = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as NSURL
     
     // MARK: Lifecycle
     
@@ -39,20 +44,7 @@ public class Zip {
     }
     
     // MARK: Unzip
-    
-    /**
-     Quick unzip file. Unzips to the app's documents folder.
-     
-     - parameter path: Path of zipped file. NSURL.
-     
-     - throws: Error if unzipping fails or if fail is not found. Can be printed with a description variable.
-     */
-    public func unzipFile(path: NSURL) throws {
-        let documentsUrl = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as NSURL
-        try self.unzipFile(path, destination: documentsUrl, overwrite: true, password: nil, progress:nil)
-
-    }
-    
+        
     /**
      Unzip file
      
@@ -60,7 +52,8 @@ public class Zip {
      - parameter destination: Path to unzip to. NSURL.
      - parameter overwrite:   Overwrite bool.
      - parameter password:    Optional password if file is protected.
-     
+     - parameter progress: A progress closure called after unzipping each file in the archive. Double value betweem 0 and 1.
+
      - throws: Error if unzipping fails or if fail is not found. Can be printed with a description variable.
      */
     public func unzipFile(path: NSURL, destination: NSURL, overwrite: Bool, password: String?, progress: ((progress: Double) -> ())?) throws {
@@ -167,26 +160,13 @@ public class Zip {
     // MARK: Zip
     
     /**
-    Quick zip files.
-    
-    - parameter paths: Array of NSURL filepaths.
-    - parameter fileName: File name for the resulting zip file.
-
-    - throws: rror if zipping fails.
-    */
-    public func zipFiles(paths: [NSURL], fileName: String) throws {
-        var documentsUrl = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as NSURL
-        documentsUrl = documentsUrl.URLByAppendingPathComponent("\(fileName).zip")
-        try self.zipFiles(paths, destination: documentsUrl, password: nil, progress: nil)
-    }
-
-    /**
     Zip files.
     
     - parameter paths:       Array of NSURL filepaths.
     - parameter destination: Destination NSURL, should lead to a .zip filepath.
     - parameter password:    Password string. Optional.
-    
+    - parameter progress: A progress closure called after unzipping each file in the archive. Double value betweem 0 and 1.
+
     - throws: Error if zipping fails.
     */
     public func zipFiles(paths: [NSURL], destination: NSURL, password: String?, progress: ((progress: Double) -> ())?) throws {
