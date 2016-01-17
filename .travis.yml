@@ -11,7 +11,7 @@ before_install:
   - xcrun simctl list
 install: echo "<3"
 env:
-  - MODE=build
+  - MODE=framework
   - MODE=examples
 script: ./build.sh $MODE
 

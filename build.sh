@@ -17,14 +17,14 @@ trap trap_handler INT TERM EXIT
 
 MODE="$1"
 
-if [ "$MODE" = "build" ]; then
-    echo "Building Zip."
+if [ "$MODE" = "framework" ]; then
+    echo "Building and testing Zip."
     xctool \
         -project Zip.xcodeproj \
         -scheme Zip \
         -sdk "$SDK" \
         -destination "$PLATFORM" \
-        build
+        build test
     trap - EXIT
     exit 0
 fi
