@@ -31,9 +31,6 @@ public class Zip {
     // File manager
     let fileManager = NSFileManager.defaultManager()
     
-    // Documents folder
-    let documentsUrl = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as NSURL
-    
     // MARK: Lifecycle
     
     /**
