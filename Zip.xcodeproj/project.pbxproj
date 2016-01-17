@@ -167,7 +167,6 @@
 		347E3A6A1C1DFFB500A11FD3 = {
 			isa = PBXGroup;
 			children = (
-				3430F61F1C45C805007473A6 /* libz.tbd */,
 				347E3A761C1DFFB500A11FD3 /* Zip */,
 				347E3A821C1DFFB500A11FD3 /* ZipTests */,
 				347E3A751C1DFFB500A11FD3 /* Products */,
@@ -191,6 +190,7 @@
 				347E3A791C1DFFB500A11FD3 /* Info.plist */,
 				347E3AD71C1E04C900A11FD3 /* Zip.swift */,
 				3443A3F51C4AB8A3004AD173 /* QuickZip.swift */,
+				3430F61F1C45C805007473A6 /* libz.tbd */,
 			);
 			path = Zip;
 			sourceTree = "<group>";
