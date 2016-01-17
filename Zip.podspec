@@ -30,9 +30,16 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  s.source_files = 'Zip','Zip/minizip/crypt.h','Zip/minizip/ioapi.h','Zip/minizip/ioapi.c','Zip/minizip/module.modulemap','Zip/minizip/unzip.h','Zip/minizip/unzip.c','Zip/minizip/zip.h','Zip/minizip/zip.c','Zip/minizip/ioapi.h','Zip/minizip/aes/'
-  s.pod_target_xcconfig = { 'ENABLE_BITCODE' => 'NO'}
+  s.source_files = 'Zip'
+  s.xcconfig = {'LIBRARY_SEARCH_PATHS' => '"$(PODS_ROOT)/minzip/"', 'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES'}
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  s.libraries = 'libz'
+  s.libraries = 'libz.tbd'
+
+  s.subspec 'minizip' do |ss|
+  ss.source_files = 'Zip/minizip/aes/sha1.h','Zip/minizip/aes/sha1.c','Zip/minizip/aes/prng.h','Zip/minizip/aes/prng.c','Zip/minizip/aes/aeskey.h','Zip/minizip/aes/aeskey.c','Zip/minizip/aes/aestab.h','Zip/minizip/aes/aestab.c','Zip/minizip/aes/hmac.h','Zip/minizip/aes/hmac.c','Zip/minizip/aes/entropy.h','Zip/minizip/aes/entropy.c','Zip/minizip/aes/aescrypt.h','Zip/minizip/aes/aescrypt.c','Zip/minizip/aes/fileenc.h','Zip/minizip/aes/fileenc.c','Zip/minizip/aes/pwd2key.h','Zip/minizip/aes/pwd2key.c','Zip/minizip/crypt.h','Zip/minizip/ioapi.h','Zip/minizip/ioapi.c','Zip/minizip/unzip.h','Zip/minizip/unzip.c','Zip/minizip/zip.h','Zip/minizip/zip.c'
+  ss.private_header_files = 'Zip/minizip/aes/sha1.h','Zip/minizip/aes/sha1.c','Zip/minizip/aes/prng.h','Zip/minizip/aes/prng.c','Zip/minizip/aes/aeskey.h','Zip/minizip/aes/aeskey.c','Zip/minizip/aes/aestab.h','Zip/minizip/aes/aestab.c','Zip/minizip/aes/hmac.h','Zip/minizip/aes/hmac.c','Zip/minizip/aes/entropy.h','Zip/minizip/aes/entropy.c','Zip/minizip/aes/aescrypt.h','Zip/minizip/aes/aescrypt.c','Zip/minizip/aes/fileenc.h','Zip/minizip/aes/fileenc.c','Zip/minizip/aes/pwd2key.h','Zip/minizip/aes/pwd2key.c','Zip/minizip/crypt.h','Zip/minizip/ioapi.h','Zip/minizip/ioapi.c','Zip/minizip/unzip.h','Zip/minizip/unzip.c','Zip/minizip/zip.h','Zip/minizip/zip.c'
+  ss.frameworks = 'Security'
+  end
+
   # s.dependency 'AFNetworking', '~> 2.3'
 end
