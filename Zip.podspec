@@ -30,13 +30,17 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  s.source_files = 'Zip/*', 'Zip/minizip/*', 'Zip/minizip/aes/*'
+  s.source_files = 'Zip/*',
   s.public_header_files = 'Zip/*.h'
 
   s.xcconfig = {'LIBRARY_SEARCH_PATHS' => '"$(SRCROOT)/Zip/minizip/module.modulemap"', 'SWIFT_INCLUDE_PATHS' => '"$(SRCROOT)/Zip/minizip/module.modulemap"', 'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES'}
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.libraries = 'z'
   s.preserve_paths  = 'Zip/minizip/module.modulemap'
+
+  s.subspec 'minizip' do |ss|
+    ss.source_files = 'Zip/minizip/*', 'Zip/minizip/aes/*'
+  end
 
   # s.dependency 'AFNetworking', '~> 2.3'
 end
