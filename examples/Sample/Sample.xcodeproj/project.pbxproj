@@ -12,8 +12,6 @@
 		3430F6781C45C930007473A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3430F6771C45C930007473A6 /* Assets.xcassets */; };
 		3430F67B1C45C930007473A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3430F6791C45C930007473A6 /* LaunchScreen.storyboard */; };
 		3430F6861C45C930007473A6 /* SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3430F6851C45C930007473A6 /* SampleTests.swift */; };
-		3430F6991C45C949007473A6 /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3430F6961C45C93F007473A6 /* Zip.framework */; };
-		3430F69A1C45C949007473A6 /* Zip.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3430F6961C45C93F007473A6 /* Zip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3467DAED1C4BADB700BA3DB8 /* FileBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3467DAEC1C4BADB700BA3DB8 /* FileBrowser.swift */; };
 		3467DAF31C4BF17900BA3DB8 /* Image1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3467DAEF1C4BF17900BA3DB8 /* Image1.jpg */; };
 		3467DAF41C4BF17900BA3DB8 /* Image2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3467DAF01C4BF17900BA3DB8 /* Image2.jpg */; };
@@ -29,27 +27,6 @@
 			remoteGlobalIDString = 3430F66C1C45C930007473A6;
 			remoteInfo = Sample;
 		};
-		3430F6951C45C93F007473A6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3430F6901C45C93F007473A6 /* Zip.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 347E3A741C1DFFB500A11FD3;
-			remoteInfo = Zip;
-		};
-		3430F6971C45C93F007473A6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3430F6901C45C93F007473A6 /* Zip.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 347E3A7E1C1DFFB500A11FD3;
-			remoteInfo = ZipTests;
-		};
-		3430F69B1C45C949007473A6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3430F6901C45C93F007473A6 /* Zip.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 347E3A731C1DFFB500A11FD3;
-			remoteInfo = Zip;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -59,7 +36,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3430F69A1C45C949007473A6 /* Zip.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,7 +52,6 @@
 		3430F6811C45C930007473A6 /* SampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3430F6851C45C930007473A6 /* SampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTests.swift; sourceTree = "<group>"; };
 		3430F6871C45C930007473A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3430F6901C45C93F007473A6 /* Zip.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Zip.xcodeproj; path = ../../Zip.xcodeproj; sourceTree = "<group>"; };
 		3467DAEC1C4BADB700BA3DB8 /* FileBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileBrowser.swift; sourceTree = "<group>"; };
 		3467DAEF1C4BF17900BA3DB8 /* Image1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Image1.jpg; sourceTree = "<group>"; };
 		3467DAF01C4BF17900BA3DB8 /* Image2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Image2.jpg; sourceTree = "<group>"; };
@@ -89,7 +64,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3430F6991C45C949007473A6 /* Zip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,7 +80,6 @@
 		3430F6641C45C930007473A6 = {
 			isa = PBXGroup;
 			children = (
-				3430F6901C45C93F007473A6 /* Zip.xcodeproj */,
 				3430F66F1C45C930007473A6 /* Sample */,
 				3430F6841C45C930007473A6 /* SampleTests */,
 				3430F66E1C45C930007473A6 /* Products */,
@@ -148,15 +121,6 @@
 			path = SampleTests;
 			sourceTree = "<group>";
 		};
-		3430F6911C45C93F007473A6 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				3430F6961C45C93F007473A6 /* Zip.framework */,
-				3430F6981C45C93F007473A6 /* ZipTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -172,7 +136,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				3430F69C1C45C949007473A6 /* PBXTargetDependency */,
 			);
 			name = Sample;
 			productName = Sample;
@@ -227,12 +190,6 @@
 			mainGroup = 3430F6641C45C930007473A6;
 			productRefGroup = 3430F66E1C45C930007473A6 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 3430F6911C45C93F007473A6 /* Products */;
-					ProjectRef = 3430F6901C45C93F007473A6 /* Zip.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				3430F66C1C45C930007473A6 /* Sample */,
@@ -240,23 +197,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		3430F6961C45C93F007473A6 /* Zip.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Zip.framework;
-			remoteRef = 3430F6951C45C93F007473A6 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3430F6981C45C93F007473A6 /* ZipTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ZipTests.xctest;
-			remoteRef = 3430F6971C45C93F007473A6 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3430F66B1C45C930007473A6 /* Resources */ = {
@@ -307,11 +247,6 @@
 			isa = PBXTargetDependency;
 			target = 3430F66C1C45C930007473A6 /* Sample */;
 			targetProxy = 3430F6821C45C930007473A6 /* PBXContainerItemProxy */;
-		};
-		3430F69C1C45C949007473A6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Zip;
-			targetProxy = 3430F69B1C45C949007473A6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
