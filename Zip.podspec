@@ -30,12 +30,9 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  s.source_files = 'Zip'
-  s.resource_bundles = {
-    'Zip' => ['Zip/minizip']
-  }
-
+  s.source_files = 'Zip','Zip/minizip/crypt.h','Zip/minizip/ioapi.h','Zip/minizip/ioapi.c','Zip/minizip/module.modulemap','Zip/minizip/unzip.h','Zip/minizip/unzip.c','Zip/minizip/zip.h','Zip/minizip/zip.c','Zip/minizip/ioapi.h','Zip/minizip/aes/'
+  s.pod_target_xcconfig = { 'ENABLE_BITCODE' => 'NO'}
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
+  s.libraries = 'libz'
   # s.dependency 'AFNetworking', '~> 2.3'
 end
