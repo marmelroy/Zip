@@ -15,6 +15,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        if NSUserDefaults.standardUserDefaults().boolForKey("firstLaunch") == false {
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "firstLaunch")
+            NSUserDefaults.standardUserDefaults().synchronize()
+            let fileManager = NSFileManager.defaultManager()
+            let fileNames = ["Image1.jpg", "Image2.jpg", "Image3.jpg", "Images.zip"]
+            let documentsUrl = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as NSURL
+            let bundleUrl = NSBundle.mainBundle().resourceURL
+            for file in fileNames {
+                if let srcPath = bundleUrl?.URLByAppendingPathComponent(file).path, let toPath = documentsUrl.URLByAppendingPathComponent(file).path{
+                    do {
+                        try fileManager.copyItemAtPath(srcPath, toPath: toPath)
+                    } catch {}
+                }
+            }
+        }
         // Override point for customization after application launch.
         return true
     }
