@@ -42,9 +42,21 @@
                                     <barButtonItem title="0 Selected" style="plain" id="dci-jS-Xlf">
                                         <color key="tintColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="331-sz-9FL"/>
+                                    <barButtonItem title="Zip" id="1qo-CZ-Gah">
+                                        <connections>
+                                            <action selector="zipSelection:" destination="dpw-R4-j8a" id="ujU-jh-wca"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="Sp9-gV-7ef"/>
+                                    <barButtonItem title="Unzip" id="AXE-aZ-PBA">
+                                        <connections>
+                                            <action selector="unzipSelection:" destination="dpw-R4-j8a" id="vuT-QM-DUX"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vkM-Ih-ncL">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vkM-Ih-ncL">
                                 <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -68,6 +80,8 @@
                     <connections>
                         <outlet property="selectionCounter" destination="dci-jS-Xlf" id="uVp-Mf-mdx"/>
                         <outlet property="tableView" destination="vkM-Ih-ncL" id="Pw4-pv-J01"/>
+                        <outlet property="unzipButton" destination="AXE-aZ-PBA" id="fqk-D1-e4c"/>
+                        <outlet property="zipButton" destination="1qo-CZ-Gah" id="OSm-ha-Ig5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pqG-S7-8Xl" userLabel="First Responder" sceneMemberID="firstResponder"/>
