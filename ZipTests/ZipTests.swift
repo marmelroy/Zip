@@ -68,6 +68,19 @@ class ZipTests: XCTestCase {
         }
     }
     
+    func testUnzipOnlineURL() {
+        do {
+            let fileAbsoluteURL = NSURL(string: "http://www.google.com/google.zip")!
+            let destinationURL = try Zip().quickUnzipFile(fileAbsoluteURL)
+            let fileManager = NSFileManager.defaultManager()
+            XCTAssertFalse(fileManager.fileExistsAtPath(destinationURL.path!))
+        }
+        catch {
+            XCTAssert(true)
+        }
+    }
+
+    
     func testQuickZip() {
         do {
             let imageURL1 = NSBundle(forClass: ZipTests.self).URLForResource("3crBXeO", withExtension: "gif")!

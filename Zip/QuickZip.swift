@@ -74,7 +74,7 @@ extension Zip {
     */
     public func quickZipFiles(paths: [NSURL], fileName: String, progress: ((progress: Double) -> ())?) throws -> NSURL {
         let destinationUrl = documentsUrl.URLByAppendingPathComponent("\(fileName).zip")
-        try self.zipFiles(paths, destination: destinationUrl, password: nil, progress: progress)
+        try self.zipFiles(paths, zipFilePath: destinationUrl, password: nil, progress: progress)
         return destinationUrl
     }
     
