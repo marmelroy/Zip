@@ -1,25 +1,78 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Azc-ni-1lY">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Navigation Controller-->
+        <scene sceneID="qOO-wm-hTa">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="Azc-ni-1lY" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="He1-CR-cOP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="dpw-R4-j8a" kind="relationship" relationship="rootViewController" id="X2C-fJ-xJK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vih-dz-uz2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="234" y="152"/>
+        </scene>
+        <!--File Browser-->
+        <scene sceneID="mz0-lp-3R4">
+            <objects>
+                <viewController id="dpw-R4-j8a" customClass="FileBrowser" customModule="Sample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="edF-bh-llm"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gww-Pp-M3Q"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="oeM-RL-OAb">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Y2-An-tBb">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="rw6-VI-8wB"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="0 Selected" style="plain" id="dci-jS-Xlf">
+                                        <color key="tintColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vkM-Ih-ncL">
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="dpw-R4-j8a" id="EPE-vb-LNN"/>
+                                    <outlet property="delegate" destination="dpw-R4-j8a" id="kz0-pL-EP9"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3Y2-An-tBb" firstAttribute="leading" secondItem="oeM-RL-OAb" secondAttribute="leading" id="2Ww-MM-Oc7"/>
+                            <constraint firstAttribute="trailing" secondItem="vkM-Ih-ncL" secondAttribute="trailing" id="7gU-LQ-v0u"/>
+                            <constraint firstItem="Gww-Pp-M3Q" firstAttribute="top" secondItem="3Y2-An-tBb" secondAttribute="bottom" id="9jg-8T-znb"/>
+                            <constraint firstAttribute="trailing" secondItem="3Y2-An-tBb" secondAttribute="trailing" id="A9y-EZ-xWy"/>
+                            <constraint firstItem="3Y2-An-tBb" firstAttribute="top" secondItem="vkM-Ih-ncL" secondAttribute="bottom" id="Fjn-9z-Bu6"/>
+                            <constraint firstItem="vkM-Ih-ncL" firstAttribute="leading" secondItem="oeM-RL-OAb" secondAttribute="leading" id="ORH-IL-ORa"/>
+                            <constraint firstItem="vkM-Ih-ncL" firstAttribute="top" secondItem="edF-bh-llm" secondAttribute="bottom" id="xmW-Hi-wfh"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="GLl-37-stv"/>
+                    <connections>
+                        <outlet property="selectionCounter" destination="dci-jS-Xlf" id="uVp-Mf-mdx"/>
+                        <outlet property="tableView" destination="vkM-Ih-ncL" id="Pw4-pv-J01"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pqG-S7-8Xl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="894" y="159"/>
         </scene>
     </scenes>
 </document>
