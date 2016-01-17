@@ -32,8 +32,7 @@ Pod::Spec.new do |s|
 
   s.source_files = 'Zip/*', 'Zip/minizip/*', 'Zip/minizip/aes/*'
   s.public_header_files = 'Zip/*.h'
-
-  s.xcconfig = {'LIBRARY_SEARCH_PATHS' => '"$(SRCROOT)/Zip/Zip/minizip/"', 'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES'}
+  s.xcconfig = {'SWIFT_INCLUDE_PATHS' => '"$(SRCROOT)/Zip/Zip/minizip/**"','LIBRARY_SEARCH_PATHS' => '"$(SRCROOT)/Zip/Zip/"', 'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES'}
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.libraries = 'z'
   s.preserve_paths  = 'Zip/minizip/module.modulemap'
