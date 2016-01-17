@@ -4,7 +4,7 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 # Zip
-A Swift framework for zipping and unzipping files. Simple and quick to use.
+A Swift framework for zipping and unzipping files. Simple and quick to use. Built on top of [nmoinvaz/minizip](https://github.com/nmoinvaz/minizip).
 
 ## Usage
 
@@ -16,14 +16,37 @@ import Zip
 
 ## Quick functions
 
-Zip includes two quick functions for zipping and unzipping files and they work as you would expect. Both functions take local file path urls. 
+The easiest way to use Zip is through quick functions. Both take local file paths as NSURLs, throw if an error is encountered and return an NSURL to the destination if successful.
 ```swift
 do {
-    let bb8FilePath = NSBundle.mainBundle().URLForResource("bb8", withExtension: "zip")!
-    try Zip().quickUnzipFile(bb8FilePath) // Unzip
-    try Zip().quickZipFiles([bb8FilePath], fileName: "archive") // Zip
+    let filePath = NSBundle.mainBundle().URLForResource("file", withExtension: "zip")!
+    let unzipDirectory = try Zip().quickUnzipFile(filePath) // Unzip
+    let zipFilePath = try Zip().quickZipFiles([filePath], fileName: "archive") // Zip
 }
-catch ErrorType {
+catch {
+  print("Something went wrong")
+}
+```
+
+## Advanced Zip
+
+For more advanced usage, Zip has functions that let you set custom  destination paths, work with password protected zips and use a progress handling closure. These function throw if there is an error but don't return.
+```swift
+do {
+    let filePath = NSBundle.mainBundle().URLForResource("file", withExtension: "zip")!
+    let documentsDirectory = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as NSURL
+
+    try Zip().unzipFile(filePath, destination: documentsDirectory, overwrite: true, password: "password", progress: { (progress) -> () in
+        print(progress)
+    }) // Unzip
+
+    let zipFilePath = documentsFolder.URLByAppendingPathComponent("archive.zip")
+    try Zip().zipFiles([filePath], zipFilePath: zipFilePath, password: "password", progress: { (progress) -> () in
+        print(progress)
+    }) //Zip
+
+}
+catch {
   print("Something went wrong")
 }
 ```
