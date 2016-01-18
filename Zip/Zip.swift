@@ -11,21 +11,24 @@ import minizip
 
 /// Zip error type
 public enum ZipError: ErrorType {
-    case FileNotFound // File not found
-    case UnzipFail // Unzip error
-    case ZipFail // Zip error
+    /// File not found
+    case FileNotFound
+    /// Unzip fail
+    case UnzipFail
+    /// Zip fail
+    case ZipFail
 
-    /// Description variable
+    /// User readable description
     public var description: String {
         switch self {
         case .FileNotFound: return NSLocalizedString("File not found.", comment: "")
-        case .UnzipFail: return NSLocalizedString("Failed to unzip zip file.", comment: "")
+        case .UnzipFail: return NSLocalizedString("Failed to unzip file.", comment: "")
         case .ZipFail: return NSLocalizedString("Failed to zip file.", comment: "")
         }
     }
 }
 
-
+/// Zip class
 public class Zip {
     
     // File manager
