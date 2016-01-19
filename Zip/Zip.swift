@@ -31,9 +31,6 @@ public enum ZipError: ErrorType {
 /// Zip class
 public class Zip {
     
-    // File manager
-    let fileManager = NSFileManager.defaultManager()
-    
     // MARK: Lifecycle
     
     /**
@@ -58,8 +55,11 @@ public class Zip {
      - throws: Error if unzipping fails or if fail is not found. Can be printed with a description variable.
      */
 
-    public func unzipFile(zipFilePath: NSURL, destination: NSURL, overwrite: Bool, password: String?, progress: ((progress: Double) -> ())?) throws {
+    public class func unzipFile(zipFilePath: NSURL, destination: NSURL, overwrite: Bool, password: String?, progress: ((progress: Double) -> ())?) throws {
         
+        // File manager
+        let fileManager = NSFileManager.defaultManager()
+
         // Check whether a zip file exists at path.
         guard let path = zipFilePath.path, let destinationPath = destination.path else {
             throw ZipError.FileNotFound
@@ -185,7 +185,10 @@ public class Zip {
 
     - throws: Error if zipping fails.
     */
-    public func zipFiles(paths: [NSURL], zipFilePath: NSURL, password: String?, progress: ((progress: Double) -> ())?) throws {
+    public class func zipFiles(paths: [NSURL], zipFilePath: NSURL, password: String?, progress: ((progress: Double) -> ())?) throws {
+        
+        // File manager
+        let fileManager = NSFileManager.defaultManager()
         
         // Check whether a zip file exists at path.
         guard let destinationPath = zipFilePath.path else {
