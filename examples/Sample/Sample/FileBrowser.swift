@@ -139,7 +139,7 @@ class FileBrowser: UIViewController, UITableViewDataSource, UITableViewDelegate 
         let filePath = selectedFiles.first
         let pathURL = path!.URLByAppendingPathComponent(filePath!)
         do {
-            try Zip().quickUnzipFile(pathURL)
+            try Zip.quickUnzipFile(pathURL)
             self.selectedFiles.removeAll()
             updateSelection()
             updateFiles()
@@ -154,7 +154,7 @@ class FileBrowser: UIViewController, UITableViewDataSource, UITableViewDelegate 
             urlPaths.append(path!.URLByAppendingPathComponent(filePath))
         }
         do {
-            try Zip().quickZipFiles(urlPaths, fileName: "Archive")
+            try Zip.quickZipFiles(urlPaths, fileName: "Archive")
             self.selectedFiles.removeAll()
             updateSelection()
             updateFiles()
