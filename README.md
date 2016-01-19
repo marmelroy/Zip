@@ -20,8 +20,8 @@ The easiest way to use Zip is through quick functions. Both take local file path
 ```swift
 do {
     let filePath = NSBundle.mainBundle().URLForResource("file", withExtension: "zip")!
-    let unzipDirectory = try Zip().quickUnzipFile(filePath) // Unzip
-    let zipFilePath = try Zip().quickZipFiles([filePath], fileName: "archive") // Zip
+    let unzipDirectory = try Zip.quickUnzipFile(filePath) // Unzip
+    let zipFilePath = try Zip.quickZipFiles([filePath], fileName: "archive") // Zip
 }
 catch {
   print("Something went wrong")
@@ -36,12 +36,12 @@ do {
     let filePath = NSBundle.mainBundle().URLForResource("file", withExtension: "zip")!
     let documentsDirectory = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as NSURL
 
-    try Zip().unzipFile(filePath, destination: documentsDirectory, overwrite: true, password: "password", progress: { (progress) -> () in
+    try Zip.unzipFile(filePath, destination: documentsDirectory, overwrite: true, password: "password", progress: { (progress) -> () in
         print(progress)
     }) // Unzip
 
     let zipFilePath = documentsFolder.URLByAppendingPathComponent("archive.zip")
-    try Zip().zipFiles([filePath], zipFilePath: zipFilePath, password: "password", progress: { (progress) -> () in
+    try Zip.zipFiles([filePath], zipFilePath: zipFilePath, password: "password", progress: { (progress) -> () in
         print(progress)
     }) //Zip
 
