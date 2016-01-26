@@ -195,6 +195,9 @@ public class Zip {
             throw ZipError.FileNotFound
         }
         
+        // Process zip paths
+        let processedPaths = ZipUtilities().processZipPaths(paths)
+        
         // Zip set up
         let chunkSize: Int = 16384
         
@@ -202,9 +205,9 @@ public class Zip {
         var currentPosition: Double = 0.0
         var totalSize: Double = 0.0
         // Get totalSize for progress handler
-        for path in paths {
+        for path in processedPaths {
             do {
-                if let filePath = path.path {
+                if let filePath = path.filePathURL.path {
                     let fileAttributes = try fileManager.attributesOfItemAtPath(filePath)
                     let fileSize = fileAttributes[NSFileSize] as? Double
                     if let fileSize = fileSize {
@@ -217,8 +220,8 @@ public class Zip {
         
         // Begin Zipping
         let zip = zipOpen(destinationPath, APPEND_STATUS_CREATE)
-        for path in paths {
-            guard let filePath = path.path else {
+        for path in processedPaths {
+            guard let filePath = path.filePathURL.path else {
                 throw ZipError.ZipFail
             }
             var isDirectory: ObjCBool = false
@@ -228,7 +231,7 @@ public class Zip {
                 if input == nil {
                     throw ZipError.ZipFail
                 }
-                let fileName = path.lastPathComponent
+                let fileName = path.fileName
                 var zipInfo: zip_fileinfo = zip_fileinfo(tmz_date: tm_zip(tm_sec: 0, tm_min: 0, tm_hour: 0, tm_mday: 0, tm_mon: 0, tm_year: 0), dosDate: 0, internal_fa: 0, external_fa: 0)
                 do {
                     let fileAttributes = try fileManager.attributesOfItemAtPath(filePath)
@@ -278,8 +281,8 @@ public class Zip {
         if let progressHandler = progress{
             progressHandler(progress: 1.0)
         }
-        
     }
+    
     
 
 }
