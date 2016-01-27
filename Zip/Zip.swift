@@ -207,12 +207,11 @@ public class Zip {
         // Get totalSize for progress handler
         for path in processedPaths {
             do {
-                if let filePath = path.filePathURL.path {
-                    let fileAttributes = try fileManager.attributesOfItemAtPath(filePath)
-                    let fileSize = fileAttributes[NSFileSize] as? Double
-                    if let fileSize = fileSize {
-                        totalSize += fileSize
-                    }
+                let filePath = path.filePath()
+                let fileAttributes = try fileManager.attributesOfItemAtPath(filePath)
+                let fileSize = fileAttributes[NSFileSize] as? Double
+                if let fileSize = fileSize {
+                    totalSize += fileSize
                 }
             }
             catch {}
@@ -221,9 +220,7 @@ public class Zip {
         // Begin Zipping
         let zip = zipOpen(destinationPath, APPEND_STATUS_CREATE)
         for path in processedPaths {
-            guard let filePath = path.filePathURL.path else {
-                throw ZipError.ZipFail
-            }
+            let filePath = path.filePath()
             var isDirectory: ObjCBool = false
             fileManager.fileExistsAtPath(filePath, isDirectory: &isDirectory)
             if !isDirectory {

@@ -19,6 +19,15 @@ internal class ZipUtilities {
     internal struct ProcessedFilePath {
         let filePathURL: NSURL
         let fileName: String?
+        
+        func filePath() -> String {
+            if let filePath = filePathURL.path {
+                return filePath
+            }
+            else {
+                return String()
+            }
+        }
     }
     
     //MARK: Path processing
