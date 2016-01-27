@@ -108,6 +108,29 @@ class ZipTests: XCTestCase {
         }
     }
     
+    func testQuickZipFolder() {
+        do {
+            let fileManager = NSFileManager.defaultManager()
+            let imageURL1 = NSBundle(forClass: ZipTests.self).URLForResource("3crBXeO", withExtension: "gif")!
+            let imageURL2 = NSBundle(forClass: ZipTests.self).URLForResource("kYkLkPf", withExtension: "gif")!
+            let folderURL = NSBundle(forClass: ZipTests.self).bundleURL.URLByAppendingPathComponent("Directory")
+            let targetImageURL1 = folderURL.URLByAppendingPathComponent("3crBXeO.gif")
+            let targetImageURL2 = folderURL.URLByAppendingPathComponent("kYkLkPf.gif")
+            if fileManager.fileExistsAtPath(folderURL.path!) {
+                try fileManager.removeItemAtURL(folderURL)
+            }
+            try fileManager.createDirectoryAtURL(folderURL, withIntermediateDirectories: false, attributes: nil)
+            try fileManager.copyItemAtURL(imageURL1, toURL: targetImageURL1)
+            try fileManager.copyItemAtURL(imageURL2, toURL: targetImageURL2)
+            let destinationURL = try Zip.quickZipFiles([folderURL], fileName: "directory")
+            XCTAssertTrue(fileManager.fileExistsAtPath(destinationURL.path!))
+        }
+        catch {
+            XCTFail()
+        }
+    }
+
+    
     func testZip() {
         do {
             let imageURL1 = NSBundle(forClass: ZipTests.self).URLForResource("3crBXeO", withExtension: "gif")!
