@@ -1,5 +1,26 @@
 # Change Log
 
+## [0.2.0](https://github.com/marmelroy/Zip/tree/0.2.0) (2016-01-27)
+[Full Changelog](https://github.com/marmelroy/Zip/compare/0.1.5...0.2.0)
+
+**Closed issues:**
+
+- iOS SDK Requirement [\#4](https://github.com/marmelroy/Zip/issues/4)
+- Zipping a folder [\#3](https://github.com/marmelroy/Zip/issues/3)
+
+## [0.1.5](https://github.com/marmelroy/Zip/tree/0.1.5) (2016-01-25)
+[Full Changelog](https://github.com/marmelroy/Zip/compare/0.1.4...0.1.5)
+
+**Closed issues:**
+
+- how to adding some new file to current ziped file? [\#2](https://github.com/marmelroy/Zip/issues/2)
+
+## [0.1.4](https://github.com/marmelroy/Zip/tree/0.1.4) (2016-01-19)
+[Full Changelog](https://github.com/marmelroy/Zip/compare/0.1.3...0.1.4)
+
+## [0.1.3](https://github.com/marmelroy/Zip/tree/0.1.3) (2016-01-18)
+[Full Changelog](https://github.com/marmelroy/Zip/compare/0.1.2...0.1.3)
+
 ## [0.1.2](https://github.com/marmelroy/Zip/tree/0.1.2) (2016-01-17)
 [Full Changelog](https://github.com/marmelroy/Zip/compare/0.1.0...0.1.2)
 
