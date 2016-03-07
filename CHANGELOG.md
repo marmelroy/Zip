@@ -1,5 +1,12 @@
 # Change Log
 
+## [0.3.0](https://github.com/marmelroy/Zip/tree/0.3.0) (2016-03-07)
+[Full Changelog](https://github.com/marmelroy/Zip/compare/0.2.0...0.3.0)
+
+**Closed issues:**
+
+- No Mac platform support [\#6](https://github.com/marmelroy/Zip/issues/6)
+
 ## [0.2.0](https://github.com/marmelroy/Zip/tree/0.2.0) (2016-01-27)
 [Full Changelog](https://github.com/marmelroy/Zip/compare/0.1.5...0.2.0)
 
