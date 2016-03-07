@@ -37,6 +37,40 @@
 		342FC10A1C5044DC0023A3C3 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0EE1C5044DC0023A3C3 /* zip.h */; };
 		3430F6201C45C805007473A6 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3430F61F1C45C805007473A6 /* libz.tbd */; };
 		343625BB1C5827DC0023C4C6 /* ZipUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343625BA1C5827DC0023C4C6 /* ZipUtilities.swift */; };
+		343F51091C8DAEEC0028C434 /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 343F50FF1C8DAEEC0028C434 /* Zip.framework */; };
+		343F51161C8DAF3F0028C434 /* ZipUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343625BA1C5827DC0023C4C6 /* ZipUtilities.swift */; };
+		343F51171C8DAF410028C434 /* QuickZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3443A3F51C4AB8A3004AD173 /* QuickZip.swift */; };
+		343F51181C8DAF450028C434 /* Zip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347E3AD71C1E04C900A11FD3 /* Zip.swift */; };
+		343F51191C8DAFD50028C434 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0E71C5044DC0023A3C3 /* crypt.h */; };
+		343F511A1C8DAFD90028C434 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0E81C5044DC0023A3C3 /* ioapi.c */; };
+		343F511B1C8DAFDB0028C434 /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0E91C5044DC0023A3C3 /* ioapi.h */; };
+		343F511C1C8DAFE00028C434 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0EB1C5044DC0023A3C3 /* unzip.c */; };
+		343F511D1C8DAFE30028C434 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0EC1C5044DC0023A3C3 /* unzip.h */; };
+		343F511E1C8DAFE50028C434 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0ED1C5044DC0023A3C3 /* zip.c */; };
+		343F511F1C8DAFE80028C434 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0EE1C5044DC0023A3C3 /* zip.h */; };
+		343F51201C8DAFEC0028C434 /* aes.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0D21C5044DC0023A3C3 /* aes.h */; };
+		343F51211C8DAFEF0028C434 /* aes_via_ace.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0D31C5044DC0023A3C3 /* aes_via_ace.h */; };
+		343F51221C8DAFF70028C434 /* aescrypt.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0D41C5044DC0023A3C3 /* aescrypt.c */; };
+		343F51231C8DAFFA0028C434 /* aeskey.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0D51C5044DC0023A3C3 /* aeskey.c */; };
+		343F51241C8DAFFE0028C434 /* aesopt.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0D61C5044DC0023A3C3 /* aesopt.h */; };
+		343F51251C8DB0030028C434 /* aestab.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0D71C5044DC0023A3C3 /* aestab.c */; };
+		343F51261C8DB0060028C434 /* aestab.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0D81C5044DC0023A3C3 /* aestab.h */; };
+		343F51271C8DB00F0028C434 /* brg_endian.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0D91C5044DC0023A3C3 /* brg_endian.h */; };
+		343F51281C8DB0230028C434 /* brg_types.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0DA1C5044DC0023A3C3 /* brg_types.h */; };
+		343F51291C8DB0260028C434 /* entropy.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0DB1C5044DC0023A3C3 /* entropy.c */; };
+		343F512A1C8DB02A0028C434 /* entropy.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0DC1C5044DC0023A3C3 /* entropy.h */; };
+		343F512B1C8DB02C0028C434 /* fileenc.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0DD1C5044DC0023A3C3 /* fileenc.c */; };
+		343F512C1C8DB02F0028C434 /* fileenc.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0DE1C5044DC0023A3C3 /* fileenc.h */; };
+		343F512D1C8DB0310028C434 /* hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0DF1C5044DC0023A3C3 /* hmac.c */; };
+		343F512E1C8DB0330028C434 /* hmac.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0E01C5044DC0023A3C3 /* hmac.h */; };
+		343F512F1C8DB0360028C434 /* prng.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0E11C5044DC0023A3C3 /* prng.c */; };
+		343F51301C8DB0390028C434 /* prng.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0E21C5044DC0023A3C3 /* prng.h */; };
+		343F51311C8DB03C0028C434 /* pwd2key.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0E31C5044DC0023A3C3 /* pwd2key.c */; };
+		343F51321C8DB03E0028C434 /* pwd2key.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0E41C5044DC0023A3C3 /* pwd2key.h */; };
+		343F51331C8DB0410028C434 /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0E51C5044DC0023A3C3 /* sha1.c */; };
+		343F51341C8DB0430028C434 /* sha1.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0E61C5044DC0023A3C3 /* sha1.h */; };
+		343F51351C8DB0480028C434 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3430F61F1C45C805007473A6 /* libz.tbd */; };
+		343F51361C8DB0720028C434 /* Zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 347E3A771C1DFFB500A11FD3 /* Zip.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3443A3F61C4AB8A3004AD173 /* QuickZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3443A3F51C4AB8A3004AD173 /* QuickZip.swift */; };
 		3443A3FD1C4AD199004AD173 /* bb8.zip in Resources */ = {isa = PBXBuildFile; fileRef = 3443A3FC1C4AD199004AD173 /* bb8.zip */; };
 		347E3A781C1DFFB500A11FD3 /* Zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 347E3A771C1DFFB500A11FD3 /* Zip.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -48,6 +82,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		343F510A1C8DAEEC0028C434 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 347E3A6B1C1DFFB500A11FD3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 343F50FE1C8DAEEC0028C434;
+			remoteInfo = "Zip OSX";
+		};
 		347E3A801C1DFFB500A11FD3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 347E3A6B1C1DFFB500A11FD3 /* Project object */;
@@ -89,6 +130,10 @@
 		342FC0EE1C5044DC0023A3C3 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
 		3430F61F1C45C805007473A6 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		343625BA1C5827DC0023C4C6 /* ZipUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipUtilities.swift; sourceTree = "<group>"; };
+		343F50FF1C8DAEEC0028C434 /* Zip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Zip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		343F51011C8DAEEC0028C434 /* Zip OSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Zip OSX.h"; sourceTree = "<group>"; };
+		343F51031C8DAEEC0028C434 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		343F51081C8DAEEC0028C434 /* Zip OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Zip OSXTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3443A3F51C4AB8A3004AD173 /* QuickZip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickZip.swift; sourceTree = "<group>"; };
 		3443A3FC1C4AD199004AD173 /* bb8.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = bb8.zip; sourceTree = "<group>"; };
 		347E3A741C1DFFB500A11FD3 /* Zip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Zip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +148,22 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		343F50FB1C8DAEEC0028C434 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				343F51351C8DB0480028C434 /* libz.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		343F51051C8DAEEC0028C434 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				343F51091C8DAEEC0028C434 /* Zip.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		347E3A701C1DFFB500A11FD3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -166,11 +227,21 @@
 			path = aes;
 			sourceTree = "<group>";
 		};
+		343F51001C8DAEEC0028C434 /* Zip OSX */ = {
+			isa = PBXGroup;
+			children = (
+				343F51011C8DAEEC0028C434 /* Zip OSX.h */,
+				343F51031C8DAEEC0028C434 /* Info.plist */,
+			);
+			path = "Zip OSX";
+			sourceTree = "<group>";
+		};
 		347E3A6A1C1DFFB500A11FD3 = {
 			isa = PBXGroup;
 			children = (
 				347E3A761C1DFFB500A11FD3 /* Zip */,
 				347E3A821C1DFFB500A11FD3 /* ZipTests */,
+				343F51001C8DAEEC0028C434 /* Zip OSX */,
 				347E3A751C1DFFB500A11FD3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -180,6 +251,8 @@
 			children = (
 				347E3A741C1DFFB500A11FD3 /* Zip.framework */,
 				347E3A7E1C1DFFB500A11FD3 /* ZipTests.xctest */,
+				343F50FF1C8DAEEC0028C434 /* Zip.framework */,
+				343F51081C8DAEEC0028C434 /* Zip OSXTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -213,6 +286,30 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		343F50FC1C8DAEEC0028C434 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				343F51211C8DAFEF0028C434 /* aes_via_ace.h in Headers */,
+				343F51201C8DAFEC0028C434 /* aes.h in Headers */,
+				343F51261C8DB0060028C434 /* aestab.h in Headers */,
+				343F51361C8DB0720028C434 /* Zip.h in Headers */,
+				343F51241C8DAFFE0028C434 /* aesopt.h in Headers */,
+				343F511B1C8DAFDB0028C434 /* ioapi.h in Headers */,
+				343F51341C8DB0430028C434 /* sha1.h in Headers */,
+				343F51321C8DB03E0028C434 /* pwd2key.h in Headers */,
+				343F51281C8DB0230028C434 /* brg_types.h in Headers */,
+				343F51191C8DAFD50028C434 /* crypt.h in Headers */,
+				343F512A1C8DB02A0028C434 /* entropy.h in Headers */,
+				343F51271C8DB00F0028C434 /* brg_endian.h in Headers */,
+				343F51301C8DB0390028C434 /* prng.h in Headers */,
+				343F512C1C8DB02F0028C434 /* fileenc.h in Headers */,
+				343F512E1C8DB0330028C434 /* hmac.h in Headers */,
+				343F511F1C8DAFE80028C434 /* zip.h in Headers */,
+				343F511D1C8DAFE30028C434 /* unzip.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		347E3A711C1DFFB500A11FD3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -240,6 +337,42 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		343F50FE1C8DAEEC0028C434 /* Zip OSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 343F51141C8DAEEC0028C434 /* Build configuration list for PBXNativeTarget "Zip OSX" */;
+			buildPhases = (
+				343F50FA1C8DAEEC0028C434 /* Sources */,
+				343F50FB1C8DAEEC0028C434 /* Frameworks */,
+				343F50FC1C8DAEEC0028C434 /* Headers */,
+				343F50FD1C8DAEEC0028C434 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Zip OSX";
+			productName = "Zip OSX";
+			productReference = 343F50FF1C8DAEEC0028C434 /* Zip.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		343F51071C8DAEEC0028C434 /* Zip OSXTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 343F51151C8DAEEC0028C434 /* Build configuration list for PBXNativeTarget "Zip OSXTests" */;
+			buildPhases = (
+				343F51041C8DAEEC0028C434 /* Sources */,
+				343F51051C8DAEEC0028C434 /* Frameworks */,
+				343F51061C8DAEEC0028C434 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				343F510B1C8DAEEC0028C434 /* PBXTargetDependency */,
+			);
+			name = "Zip OSXTests";
+			productName = "Zip OSXTests";
+			productReference = 343F51081C8DAEEC0028C434 /* Zip OSXTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		347E3A731C1DFFB500A11FD3 /* Zip */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 347E3A881C1DFFB500A11FD3 /* Build configuration list for PBXNativeTarget "Zip" */;
@@ -286,6 +419,12 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Roy Marmelstein";
 				TargetAttributes = {
+					343F50FE1C8DAEEC0028C434 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					343F51071C8DAEEC0028C434 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
 					347E3A731C1DFFB500A11FD3 = {
 						CreatedOnToolsVersion = 7.2;
 					};
@@ -308,11 +447,27 @@
 			targets = (
 				347E3A731C1DFFB500A11FD3 /* Zip */,
 				347E3A7D1C1DFFB500A11FD3 /* ZipTests */,
+				343F50FE1C8DAEEC0028C434 /* Zip OSX */,
+				343F51071C8DAEEC0028C434 /* Zip OSXTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		343F50FD1C8DAEEC0028C434 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		343F51061C8DAEEC0028C434 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		347E3A721C1DFFB500A11FD3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -333,6 +488,35 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		343F50FA1C8DAEEC0028C434 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				343F51331C8DB0410028C434 /* sha1.c in Sources */,
+				343F512F1C8DB0360028C434 /* prng.c in Sources */,
+				343F512D1C8DB0310028C434 /* hmac.c in Sources */,
+				343F51161C8DAF3F0028C434 /* ZipUtilities.swift in Sources */,
+				343F511C1C8DAFE00028C434 /* unzip.c in Sources */,
+				343F51171C8DAF410028C434 /* QuickZip.swift in Sources */,
+				343F51291C8DB0260028C434 /* entropy.c in Sources */,
+				343F51231C8DAFFA0028C434 /* aeskey.c in Sources */,
+				343F51251C8DB0030028C434 /* aestab.c in Sources */,
+				343F511E1C8DAFE50028C434 /* zip.c in Sources */,
+				343F511A1C8DAFD90028C434 /* ioapi.c in Sources */,
+				343F51221C8DAFF70028C434 /* aescrypt.c in Sources */,
+				343F51181C8DAF450028C434 /* Zip.swift in Sources */,
+				343F51311C8DB03C0028C434 /* pwd2key.c in Sources */,
+				343F512B1C8DB02C0028C434 /* fileenc.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		343F51041C8DAEEC0028C434 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		347E3A6F1C1DFFB500A11FD3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -366,6 +550,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		343F510B1C8DAEEC0028C434 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 343F50FE1C8DAEEC0028C434 /* Zip OSX */;
+			targetProxy = 343F510A1C8DAEEC0028C434 /* PBXContainerItemProxy */;
+		};
 		347E3A811C1DFFB500A11FD3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 347E3A731C1DFFB500A11FD3 /* Zip */;
@@ -374,6 +563,80 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		343F51101C8DAEEC0028C434 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Zip OSX/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = com.roymarmelstein.Zip;
+				PRODUCT_NAME = Zip;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/Zip/minizip/**";
+			};
+			name = Debug;
+		};
+		343F51111C8DAEEC0028C434 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Zip OSX/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = com.roymarmelstein.Zip;
+				PRODUCT_NAME = Zip;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/Zip/minizip/**";
+			};
+			name = Release;
+		};
+		343F51121C8DAEEC0028C434 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Zip OSXTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.roymarmelstein.Zip-OSXTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		343F51131C8DAEEC0028C434 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Zip OSXTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.roymarmelstein.Zip-OSXTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		347E3A861C1DFFB500A11FD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -529,6 +792,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		343F51141C8DAEEC0028C434 /* Build configuration list for PBXNativeTarget "Zip OSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				343F51101C8DAEEC0028C434 /* Debug */,
+				343F51111C8DAEEC0028C434 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		343F51151C8DAEEC0028C434 /* Build configuration list for PBXNativeTarget "Zip OSXTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				343F51121C8DAEEC0028C434 /* Debug */,
+				343F51131C8DAEEC0028C434 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		347E3A6E1C1DFFB500A11FD3 /* Build configuration list for PBXProject "Zip" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
