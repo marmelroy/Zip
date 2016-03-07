@@ -39,6 +39,7 @@ Pod::Spec.new do |s|
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.libraries = 'z'
   s.preserve_paths  = 'Zip/minizip/module.modulemap'
+  s.exclude_files = '**/Info.plist'
 
   # s.dependency 'AFNetworking', '~> 2.3'
 end
