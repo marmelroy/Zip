@@ -131,8 +131,6 @@
 		3430F61F1C45C805007473A6 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		343625BA1C5827DC0023C4C6 /* ZipUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipUtilities.swift; sourceTree = "<group>"; };
 		343F50FF1C8DAEEC0028C434 /* Zip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Zip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		343F51011C8DAEEC0028C434 /* Zip OSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Zip OSX.h"; sourceTree = "<group>"; };
-		343F51031C8DAEEC0028C434 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		343F51081C8DAEEC0028C434 /* Zip OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Zip OSXTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3443A3F51C4AB8A3004AD173 /* QuickZip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickZip.swift; sourceTree = "<group>"; };
 		3443A3FC1C4AD199004AD173 /* bb8.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = bb8.zip; sourceTree = "<group>"; };
@@ -227,21 +225,11 @@
 			path = aes;
 			sourceTree = "<group>";
 		};
-		343F51001C8DAEEC0028C434 /* Zip OSX */ = {
-			isa = PBXGroup;
-			children = (
-				343F51011C8DAEEC0028C434 /* Zip OSX.h */,
-				343F51031C8DAEEC0028C434 /* Info.plist */,
-			);
-			path = "Zip OSX";
-			sourceTree = "<group>";
-		};
 		347E3A6A1C1DFFB500A11FD3 = {
 			isa = PBXGroup;
 			children = (
 				347E3A761C1DFFB500A11FD3 /* Zip */,
 				347E3A821C1DFFB500A11FD3 /* ZipTests */,
-				343F51001C8DAEEC0028C434 /* Zip OSX */,
 				347E3A751C1DFFB500A11FD3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -574,7 +562,7 @@
 				DYLIB_CURRENT_VERSION = 2;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "Zip OSX/Info.plist";
+				INFOPLIST_FILE = Zip/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
@@ -597,7 +585,7 @@
 				DYLIB_CURRENT_VERSION = 2;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "Zip OSX/Info.plist";
+				INFOPLIST_FILE = Zip/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
@@ -799,6 +787,7 @@
 				343F51111C8DAEEC0028C434 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		343F51151C8DAEEC0028C434 /* Build configuration list for PBXNativeTarget "Zip OSXTests" */ = {
 			isa = XCConfigurationList;
@@ -807,6 +796,7 @@
 				343F51131C8DAEEC0028C434 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		347E3A6E1C1DFFB500A11FD3 /* Build configuration list for PBXProject "Zip" */ = {
 			isa = XCConfigurationList;
