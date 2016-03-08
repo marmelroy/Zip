@@ -33,7 +33,7 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.9'
   s.requires_arc = true
 
-  s.source_files = 'Zip/*', 'Zip/minizip/*.{c,h}', 'Zip/minizip/aes/*.{c,h}'
+  s.source_files = 'Zip/*.{swift,h}', 'Zip/minizip/*.{c,h}', 'Zip/minizip/aes/*.{c,h}'
   s.public_header_files = 'Zip/*.h'
   s.pod_target_xcconfig = {'SWIFT_INCLUDE_PATHS' => '$(SRCROOT)/Zip/Zip/minizip/**','LIBRARY_SEARCH_PATHS' => '$(SRCROOT)/Zip/Zip/'}
   # s.public_header_files = 'Pod/Classes/**/*.h'
