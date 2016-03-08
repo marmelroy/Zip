@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
   s.tvos.deployment_target = '9.0'
   s.watchos.deployment_target = '2.0'
-  s.osx.deployment_target = '10.10'
+  s.osx.deployment_target = '10.9'
   s.requires_arc = true
 
   s.source_files = 'Zip/*', 'Zip/minizip/*.{c,h}', 'Zip/minizip/aes/*.{c,h}'
@@ -39,7 +39,6 @@ Pod::Spec.new do |s|
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.libraries = 'z'
   s.preserve_paths  = 'Zip/minizip/module.modulemap'
-  s.exclude_files = '**/Info.plist'
 
   # s.dependency 'AFNetworking', '~> 2.3'
 end
