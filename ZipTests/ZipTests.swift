@@ -147,6 +147,23 @@ class ZipTests: XCTestCase {
             XCTFail()
         }
     }
+    
+    func testQuickUnzipSubDir() {
+        do {
+            let bookURL = NSBundle(forClass: ZipTests.self).URLForResource("bb8", withExtension: "zip")!
+            let unzipDestination = try Zip.quickUnzipFile(bookURL)
+            let fileManager = NSFileManager.defaultManager()
+            
+            let subDir = unzipDestination.URLByAppendingPathComponent("subDir")
+            let imageURL = subDir.URLByAppendingPathComponent("r2W9yu9").URLByAppendingPathExtension("gif")
+            
+            XCTAssertTrue(fileManager.fileExistsAtPath(unzipDestination.path!))
+            XCTAssertTrue(fileManager.fileExistsAtPath(subDir.path!))
+            XCTAssertTrue(fileManager.fileExistsAtPath(imageURL.path!))
+        } catch {
+            XCTFail()
+        }
+    }
 
 
 }

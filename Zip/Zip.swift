@@ -134,7 +134,8 @@ public class Zip {
                     try fileManager.createDirectoryAtPath(fullPath, withIntermediateDirectories: true, attributes: directoryAttributes)
                 }
                 else {
-                    try fileManager.createDirectoryAtPath(destinationPath, withIntermediateDirectories: true, attributes: directoryAttributes)
+                    let parentDirectory = (fullPath as NSString).stringByDeletingLastPathComponent
+                    try fileManager.createDirectoryAtPath(parentDirectory, withIntermediateDirectories: true, attributes: directoryAttributes)
                 }
             } catch {}
             if fileManager.fileExistsAtPath(fullPath) && !isDirectory && !overwrite {
