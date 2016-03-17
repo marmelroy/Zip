@@ -61,7 +61,7 @@ public class Zip {
         let fileManager = NSFileManager.defaultManager()
 
         // Check whether a zip file exists at path.
-        guard let path = zipFilePath.path, let destinationPath = destination.path else {
+        guard let path = zipFilePath.path where destination.path != nil else {
             throw ZipError.FileNotFound
         }
         if fileManager.fileExistsAtPath(path) == false || zipFilePath.pathExtension != "zip" {
@@ -134,7 +134,8 @@ public class Zip {
                     try fileManager.createDirectoryAtPath(fullPath, withIntermediateDirectories: true, attributes: directoryAttributes)
                 }
                 else {
-                    try fileManager.createDirectoryAtPath(destinationPath, withIntermediateDirectories: true, attributes: directoryAttributes)
+                    let parentDirectory = (fullPath as NSString).stringByDeletingLastPathComponent
+                    try fileManager.createDirectoryAtPath(parentDirectory, withIntermediateDirectories: true, attributes: directoryAttributes)
                 }
             } catch {}
             if fileManager.fileExistsAtPath(fullPath) && !isDirectory && !overwrite {
