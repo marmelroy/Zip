@@ -61,7 +61,7 @@ public class Zip {
         let fileManager = NSFileManager.defaultManager()
 
         // Check whether a zip file exists at path.
-        guard let path = zipFilePath.path, let destinationPath = destination.path else {
+        guard let path = zipFilePath.path where destination.path != nil else {
             throw ZipError.FileNotFound
         }
         if fileManager.fileExistsAtPath(path) == false || zipFilePath.pathExtension != "zip" {
