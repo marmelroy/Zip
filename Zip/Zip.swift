@@ -64,7 +64,7 @@ public class Zip {
         guard let path = zipFilePath.path where destination.path != nil else {
             throw ZipError.FileNotFound
         }
-        if fileManager.fileExistsAtPath(path) == false || zipFilePath.pathExtension != "zip" {
+        if fileManager.fileExistsAtPath(path) == false || fileExtensionIsInvalid(zipFilePath.pathExtension) {
             throw ZipError.FileNotFound
         }
         
@@ -281,6 +281,17 @@ public class Zip {
         }
     }
     
-    
-
+    /**
+     Check if file extension is invalid.
+     
+     - parameter fileExtension: A file extension.
+     
+     - returns: false if the extension is "zip" or "cbz", otherwise true.
+     */
+    internal class func fileExtensionIsInvalid(fileExtension: String?) -> Bool {
+        
+        guard let fileExtension = fileExtension else { return true }
+        
+        return ["zip", "cbz"].contains(fileExtension)
+    }
 }

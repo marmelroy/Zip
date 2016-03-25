@@ -165,5 +165,15 @@ class ZipTests: XCTestCase {
         }
     }
 
-
+    func testFileExtensionIsInvalidForValidUrl() {
+        let fileUrl = NSBundle(forClass: ZipTests.self).URLForResource("bb8", withExtension: "cbz")
+        let result = Zip.fileExtensionIsInvalid(fileUrl?.pathExtension)
+        XCTAssertTrue(result)
+    }
+    
+    func testFileExtensionIsInvalidForInvalidUrl() {
+        let fileUrl = NSBundle(forClass: ZipTests.self).URLForResource("bb8", withExtension: "xyz")
+        let result = Zip.fileExtensionIsInvalid(fileUrl?.pathExtension)
+        XCTAssertFalse(result)
+    }
 }
