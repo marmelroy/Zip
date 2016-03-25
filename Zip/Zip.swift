@@ -292,6 +292,6 @@ public class Zip {
         
         guard let fileExtension = fileExtension else { return true }
         
-        return ["zip", "cbz"].contains(fileExtension)
+        return !["zip", "cbz"].contains(fileExtension)
     }
 }
