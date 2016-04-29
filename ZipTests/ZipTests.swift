@@ -208,6 +208,16 @@ class ZipTests: XCTestCase {
             XCTFail()
         }
     }
+
+    func testFileExtensionIsInvalidForValidUrl() {
+        let fileUrl = NSURL(string: "file.cbz")
+        let result = Zip.fileExtensionIsInvalid(fileUrl?.pathExtension)
+        XCTAssertFalse(result)
+    }
     
-    
+    func testFileExtensionIsInvalidForInvalidUrl() {
+        let fileUrl = NSURL(string: "file.xyz")
+        let result = Zip.fileExtensionIsInvalid(fileUrl?.pathExtension)
+        XCTAssertTrue(result)
+    }
 }
