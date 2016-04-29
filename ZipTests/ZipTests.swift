@@ -43,7 +43,7 @@ class ZipTests: XCTestCase {
             XCTAssert(true)
         }
     }
-
+    
     func testQuickUnzipNonZipPath() {
         do {
             let filePath = NSBundle(forClass: ZipTests.self).URLForResource("3crBXeO", withExtension: "gif")!
@@ -84,9 +84,11 @@ class ZipTests: XCTestCase {
         do {
             let filePath = NSBundle(forClass: ZipTests.self).URLForResource("bb8", withExtension: "zip")!
             let documentsFolder = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as NSURL
+            
             try Zip.unzipFile(filePath, destination: documentsFolder, overwrite: true, password: "password", progress: { (progress) -> () in
                 print(progress)
             })
+            
             let fileManager = NSFileManager.defaultManager()
             XCTAssertTrue(fileManager.fileExistsAtPath(documentsFolder.path!))
         }
@@ -94,6 +96,48 @@ class ZipTests: XCTestCase {
             XCTFail()
         }
     }
+    
+    func testImplicitProgressUnzip() {
+        do {
+            let progress = NSProgress()
+            progress.totalUnitCount = 1
+            
+            let filePath = NSBundle(forClass: ZipTests.self).URLForResource("bb8", withExtension: "zip")!
+            let documentsFolder = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as NSURL
+            
+            progress.becomeCurrentWithPendingUnitCount(1)
+            try Zip.unzipFile(filePath, destination: documentsFolder, overwrite: true, password: "password", progress: nil)
+            progress.resignCurrent()
+            
+            XCTAssertTrue(progress.totalUnitCount == progress.completedUnitCount)
+        }
+        catch {
+            XCTFail()
+        }
+        
+    }
+    
+    func testImplicitProgressZip() {
+        do {
+            let progress = NSProgress()
+            progress.totalUnitCount = 1
+            
+            let imageURL1 = NSBundle(forClass: ZipTests.self).URLForResource("3crBXeO", withExtension: "gif")!
+            let imageURL2 = NSBundle(forClass: ZipTests.self).URLForResource("kYkLkPf", withExtension: "gif")!
+            let documentsFolder = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as NSURL
+            let zipFilePath = documentsFolder.URLByAppendingPathComponent("archive.zip")
+            
+            progress.becomeCurrentWithPendingUnitCount(1)
+            try Zip.zipFiles([imageURL1, imageURL2], zipFilePath: zipFilePath, password: nil, progress: nil)
+            progress.resignCurrent()
+            
+            XCTAssertTrue(progress.totalUnitCount == progress.completedUnitCount)
+        }
+        catch {
+            XCTFail()
+        }
+    }
+    
     
     func testQuickZip() {
         do {
@@ -129,7 +173,7 @@ class ZipTests: XCTestCase {
             XCTFail()
         }
     }
-
+    
     
     func testZip() {
         do {

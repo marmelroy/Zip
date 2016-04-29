@@ -17,7 +17,7 @@ public enum ZipError: ErrorType {
     case UnzipFail
     /// Zip fail
     case ZipFail
-
+    
     /// User readable description
     public var description: String {
         switch self {
@@ -42,7 +42,7 @@ public class Zip {
     }
     
     // MARK: Unzip
-        
+    
     /**
      Unzip file
      
@@ -51,15 +51,17 @@ public class Zip {
      - parameter overwrite:   Overwrite bool.
      - parameter password:    Optional password if file is protected.
      - parameter progress: A progress closure called after unzipping each file in the archive. Double value betweem 0 and 1.
-
+     
      - throws: Error if unzipping fails or if fail is not found. Can be printed with a description variable.
+     
+     - notes: Supports implicit progress composition
      */
-
+    
     public class func unzipFile(zipFilePath: NSURL, destination: NSURL, overwrite: Bool, password: String?, progress: ((progress: Double) -> ())?) throws {
         
         // File manager
         let fileManager = NSFileManager.defaultManager()
-
+        
         // Check whether a zip file exists at path.
         guard let path = zipFilePath.path where destination.path != nil else {
             throw ZipError.FileNotFound
@@ -81,7 +83,12 @@ public class Zip {
         if let attributeFileSize = fileAttributes[NSFileSize] as? Double {
             totalSize += attributeFileSize
         }
-
+        
+        let progressTracker = NSProgress(totalUnitCount: Int64(totalSize))
+        progressTracker.cancellable = false
+        progressTracker.pausable = false
+        progressTracker.kind = NSProgressKindFile
+        
         // Begin unzipping
         let zip = unzOpen64(path)
         if unzGoToFirstFile(zip) != UNZ_OK {
@@ -165,27 +172,33 @@ public class Zip {
                 progressHandler(progress: (currentPosition/totalSize))
             }
             
+            progressTracker.completedUnitCount = Int64(currentPosition)
+            
         } while (ret == UNZ_OK && ret != UNZ_END_OF_LIST_OF_FILE)
         
         // Completed. Update progress handler.
         if let progressHandler = progress{
             progressHandler(progress: 1.0)
         }
-
+        
+        progressTracker.completedUnitCount = Int64(totalSize)
+        
     }
     
     // MARK: Zip
     
     /**
-    Zip files.
-    
-    - parameter paths:       Array of NSURL filepaths.
-    - parameter zipFilePath: Destination NSURL, should lead to a .zip filepath.
-    - parameter password:    Password string. Optional.
-    - parameter progress: A progress closure called after unzipping each file in the archive. Double value betweem 0 and 1.
-
-    - throws: Error if zipping fails.
-    */
+     Zip files.
+     
+     - parameter paths:       Array of NSURL filepaths.
+     - parameter zipFilePath: Destination NSURL, should lead to a .zip filepath.
+     - parameter password:    Password string. Optional.
+     - parameter progress: A progress closure called after unzipping each file in the archive. Double value betweem 0 and 1.
+     
+     - throws: Error if zipping fails.
+     
+     - notes: Supports implicit progress composition
+     */
     public class func zipFiles(paths: [NSURL], zipFilePath: NSURL, password: String?, progress: ((progress: Double) -> ())?) throws {
         
         // File manager
@@ -217,6 +230,11 @@ public class Zip {
             }
             catch {}
         }
+        
+        let progressTracker = NSProgress(totalUnitCount: Int64(totalSize))
+        progressTracker.cancellable = false
+        progressTracker.pausable = false
+        progressTracker.kind = NSProgressKindFile
         
         // Begin Zipping
         let zip = zipOpen(destinationPath, APPEND_STATUS_CREATE)
@@ -268,6 +286,8 @@ public class Zip {
                     progressHandler(progress: (currentPosition/totalSize))
                 }
                 
+                progressTracker.completedUnitCount = Int64(currentPosition)
+                
                 zipCloseFileInZip(zip)
                 free(buffer)
                 fclose(input)
@@ -279,6 +299,8 @@ public class Zip {
         if let progressHandler = progress{
             progressHandler(progress: 1.0)
         }
+        
+        progressTracker.completedUnitCount = Int64(totalSize)
     }
     
     /**
@@ -294,4 +316,5 @@ public class Zip {
         
         return !["zip", "cbz"].contains(fileExtension)
     }
+    
 }
