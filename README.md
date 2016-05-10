@@ -72,5 +72,5 @@ github "marmelroy/Zip"
 ### Setting up with [CocoaPods](http://cocoapods.org/?q=Zip)
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
-pod 'Zip', '~> 0.3'
+pod 'Zip', '~> 0.4'
 ```
