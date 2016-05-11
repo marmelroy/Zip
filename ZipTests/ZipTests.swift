@@ -209,7 +209,7 @@ class ZipTests: XCTestCase {
         }
     }
 
-    func testFileExtensionIsInvalidForValidUrl() {
+    func testFileExtensionIsNotInvalidForValidUrl() {
         let fileUrl = NSURL(string: "file.cbz")
         let result = Zip.fileExtensionIsInvalid(fileUrl?.pathExtension)
         XCTAssertFalse(result)
@@ -220,4 +220,33 @@ class ZipTests: XCTestCase {
         let result = Zip.fileExtensionIsInvalid(fileUrl?.pathExtension)
         XCTAssertTrue(result)
     }
+    
+    func testAddedCustomFileExtensionIsValid() {
+        let fileExtension = "cstm"
+        Zip.addCustomFileExtension(fileExtension)
+        let result = Zip.isValidFileExtension(fileExtension)
+        XCTAssertTrue(result)
+        Zip.removeCustomFileExtension(fileExtension)
+    }
+    
+    func testRemovedCustomFileExtensionIsInvalid() {
+        let fileExtension = "cstm"
+        Zip.addCustomFileExtension(fileExtension)
+        Zip.removeCustomFileExtension(fileExtension)
+        let result = Zip.isValidFileExtension(fileExtension)
+        XCTAssertFalse(result)
+    }
+    
+    func testDefaultFileExtensionsIsValid() {
+        XCTAssertTrue(Zip.isValidFileExtension("zip"))
+        XCTAssertTrue(Zip.isValidFileExtension("cbz"))
+    }
+    
+    func testDefaultFileExtensionsIsNotRemoved() {
+        Zip.removeCustomFileExtension("zip")
+        Zip.removeCustomFileExtension("cbz")
+        XCTAssertTrue(Zip.isValidFileExtension("zip"))
+        XCTAssertTrue(Zip.isValidFileExtension("cbz"))
+    }
+    
 }
