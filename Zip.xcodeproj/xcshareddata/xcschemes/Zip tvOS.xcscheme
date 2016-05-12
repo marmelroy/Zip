@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "344050AF1CE28F59001AFF0F"
+               BlueprintIdentifier = "3425458C1CE525B200336074"
                BuildableName = "Zip.framework"
                BlueprintName = "Zip tvOS"
                ReferencedContainer = "container:Zip.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "344050AF1CE28F59001AFF0F"
+            BlueprintIdentifier = "3425458C1CE525B200336074"
             BuildableName = "Zip.framework"
             BlueprintName = "Zip tvOS"
             ReferencedContainer = "container:Zip.xcodeproj">
@@ -63,7 +63,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "344050AF1CE28F59001AFF0F"
+            BlueprintIdentifier = "3425458C1CE525B200336074"
             BuildableName = "Zip.framework"
             BlueprintName = "Zip tvOS"
             ReferencedContainer = "container:Zip.xcodeproj">
