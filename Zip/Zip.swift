@@ -96,6 +96,9 @@ public class Zip {
         
         // Begin unzipping
         let zip = unzOpen64(path)
+        defer {
+            unzClose(zip)
+        }
         if unzGoToFirstFile(zip) != UNZ_OK {
             throw ZipError.UnzipFail
         }
