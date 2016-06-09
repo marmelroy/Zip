@@ -315,4 +315,69 @@ class ZipTests: XCTestCase {
         XCTAssertTrue(Zip.isValidFileExtension("cbz"))
     }
     
+    func testCancelDuringZipCancels() {
+        var currentProgress: Double = 0
+        
+        let expect = expectation(description: "Zip operation should throw .OperationCancelled")
+        
+        do {
+            let progress = Progress()
+            progress.totalUnitCount = 1
+            
+            let imageURL1 = Bundle(for: ZipTests.self).url(forResource: "3crBXeO", withExtension: "gif")!
+            let imageURL2 = Bundle(for: ZipTests.self).url(forResource: "kYkLkPf", withExtension: "gif")!
+            let documentsFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as NSURL
+            let zipFilePath = documentsFolder.appendingPathComponent("archive.zip")!
+            
+            try Zip.zipFiles(paths: [imageURL1, imageURL2], zipFilePath: zipFilePath, password: nil) { progress in
+                currentProgress = progress
+                
+                if progress > 0 {
+                    Zip.cancelCurrentOperation()
+                }
+            }
+            
+        }
+        catch {
+            XCTAssertEqual(error as? ZipError, .operationCancelled)
+            XCTAssertLessThan(currentProgress, 1, "Progress should be less than 1 when cancelling the current operation")
+            expect.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5) { error in
+            XCTAssertNil(error)
+        }
+    }
+    
+    func testCancelDuringUnzipCancels() {
+        var currentProgress: Double = 0
+        let expect = expectation(description: "Unzip operation should throw .OperationCancelled")
+        
+        do {
+            let progress = Progress()
+            progress.totalUnitCount = 1
+            
+            let bookURL = Bundle(for: ZipTests.self).url(forResource: "bb8", withExtension: "zip")!
+            let documentsFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as NSURL
+            let zipFilePath = documentsFolder.appendingPathComponent("contents")!
+            
+            try Zip.unzipFile(bookURL, destination: zipFilePath, overwrite: true, password: nil, progress: { progress in
+                currentProgress = progress
+                
+                if progress > 0 {
+                    Zip.cancelCurrentOperation()
+                }
+            }) { _ in }
+        }
+        catch {
+            XCTAssertEqual(error as? ZipError, .operationCancelled)
+            XCTAssertLessThan(currentProgress, 1, "Progress should be less than 1 when cancelling the current operation")
+            expect.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5) { error in
+            XCTAssertNil(error)
+        }
+    }
+    
 }
