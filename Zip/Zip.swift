@@ -17,7 +17,7 @@ public enum ZipError: ErrorType {
     case UnzipFail
     /// Zip fail
     case ZipFail
-
+    
     /// User readable description
     public var description: String {
         switch self {
@@ -31,6 +31,11 @@ public enum ZipError: ErrorType {
 /// Zip class
 public class Zip {
     
+    /**
+     Set of vaild file extensions
+     */
+    internal static var customFileExtensions: Set<String> = []
+    
     // MARK: Lifecycle
     
     /**
@@ -42,7 +47,7 @@ public class Zip {
     }
     
     // MARK: Unzip
-        
+    
     /**
      Unzip file
      
@@ -51,20 +56,22 @@ public class Zip {
      - parameter overwrite:   Overwrite bool.
      - parameter password:    Optional password if file is protected.
      - parameter progress: A progress closure called after unzipping each file in the archive. Double value betweem 0 and 1.
-
+     
      - throws: Error if unzipping fails or if fail is not found. Can be printed with a description variable.
+     
+     - notes: Supports implicit progress composition
      */
-
+    
     public class func unzipFile(zipFilePath: NSURL, destination: NSURL, overwrite: Bool, password: String?, progress: ((progress: Double) -> ())?) throws {
         
         // File manager
         let fileManager = NSFileManager.defaultManager()
-
+        
         // Check whether a zip file exists at path.
         guard let path = zipFilePath.path where destination.path != nil else {
             throw ZipError.FileNotFound
         }
-        if fileManager.fileExistsAtPath(path) == false || zipFilePath.pathExtension != "zip" {
+        if fileManager.fileExistsAtPath(path) == false || fileExtensionIsInvalid(zipFilePath.pathExtension) {
             throw ZipError.FileNotFound
         }
         
@@ -81,9 +88,17 @@ public class Zip {
         if let attributeFileSize = fileAttributes[NSFileSize] as? Double {
             totalSize += attributeFileSize
         }
-
+        
+        let progressTracker = NSProgress(totalUnitCount: Int64(totalSize))
+        progressTracker.cancellable = false
+        progressTracker.pausable = false
+        progressTracker.kind = NSProgressKindFile
+        
         // Begin unzipping
         let zip = unzOpen64(path)
+        defer {
+            unzClose(zip)
+        }
         if unzGoToFirstFile(zip) != UNZ_OK {
             throw ZipError.UnzipFail
         }
@@ -165,27 +180,33 @@ public class Zip {
                 progressHandler(progress: (currentPosition/totalSize))
             }
             
+            progressTracker.completedUnitCount = Int64(currentPosition)
+            
         } while (ret == UNZ_OK && ret != UNZ_END_OF_LIST_OF_FILE)
         
         // Completed. Update progress handler.
         if let progressHandler = progress{
             progressHandler(progress: 1.0)
         }
-
+        
+        progressTracker.completedUnitCount = Int64(totalSize)
+        
     }
     
     // MARK: Zip
     
     /**
-    Zip files.
-    
-    - parameter paths:       Array of NSURL filepaths.
-    - parameter zipFilePath: Destination NSURL, should lead to a .zip filepath.
-    - parameter password:    Password string. Optional.
-    - parameter progress: A progress closure called after unzipping each file in the archive. Double value betweem 0 and 1.
-
-    - throws: Error if zipping fails.
-    */
+     Zip files.
+     
+     - parameter paths:       Array of NSURL filepaths.
+     - parameter zipFilePath: Destination NSURL, should lead to a .zip filepath.
+     - parameter password:    Password string. Optional.
+     - parameter progress: A progress closure called after unzipping each file in the archive. Double value betweem 0 and 1.
+     
+     - throws: Error if zipping fails.
+     
+     - notes: Supports implicit progress composition
+     */
     public class func zipFiles(paths: [NSURL], zipFilePath: NSURL, password: String?, progress: ((progress: Double) -> ())?) throws {
         
         // File manager
@@ -217,6 +238,11 @@ public class Zip {
             }
             catch {}
         }
+        
+        let progressTracker = NSProgress(totalUnitCount: Int64(totalSize))
+        progressTracker.cancellable = false
+        progressTracker.pausable = false
+        progressTracker.kind = NSProgressKindFile
         
         // Begin Zipping
         let zip = zipOpen(destinationPath, APPEND_STATUS_CREATE)
@@ -268,6 +294,8 @@ public class Zip {
                     progressHandler(progress: (currentPosition/totalSize))
                 }
                 
+                progressTracker.completedUnitCount = Int64(currentPosition)
+                
                 zipCloseFileInZip(zip)
                 free(buffer)
                 fclose(input)
@@ -279,8 +307,54 @@ public class Zip {
         if let progressHandler = progress{
             progressHandler(progress: 1.0)
         }
+        
+        progressTracker.completedUnitCount = Int64(totalSize)
     }
     
+    /**
+     Check if file extension is invalid.
+     
+     - parameter fileExtension: A file extension.
+     
+     - returns: false if the extension is a valid file extension, otherwise true.
+     */
+    internal class func fileExtensionIsInvalid(fileExtension: String?) -> Bool {
+        
+        guard let fileExtension = fileExtension else { return true }
+        
+        return !isValidFileExtension(fileExtension)
+    }
     
-
+    /**
+     Add a file extension to the set of custom file extensions
+     
+     - parameter fileExtension: A file extension.
+     */
+    public class func addCustomFileExtension(fileExtension: String) {
+        customFileExtensions.insert(fileExtension)
+    }
+    
+    /**
+     Remove a file extension from the set of custom file extensions
+     
+     - parameter fileExtension: A file extension.
+     */
+    public class func removeCustomFileExtension(fileExtension: String) {
+        customFileExtensions.remove(fileExtension)
+    }
+    
+    /**
+     Check if a specific file extension is valid
+     
+     - parameter fileExtension: A file extension.
+     
+     - returns: true if the extension valid, otherwise false.
+     */
+    public class func isValidFileExtension(fileExtension: String) -> Bool {
+        
+        let validFileExtensions: Set<String> = customFileExtensions.union(["zip", "cbz"])
+        
+        return validFileExtensions.contains(fileExtension)
+    }
+    
 }

@@ -2,4 +2,6 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, "9.0"
 use_frameworks!
 
+target ‘Sample’ do 
 pod 'Zip', :git => 'https://github.com/marmelroy/Zip.git', :submodules => true
+end
