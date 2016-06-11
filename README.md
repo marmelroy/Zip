@@ -51,6 +51,13 @@ catch {
 }
 ```
 
+## Custom File Extensions
+
+Before unzipping files, the source path is checked to make sure the file type is valid (e.g. the file is a .zip). If the file is not valid then we throw an error, however we understand that there might be some file types you wish to accept, even though it might not exist by default in the supported extensions list. As a result you can add custom file extensions to the list of accepted extensions.
+```
+Zip.addCustomFileExtension("file-extension-here")
+```
+
 
 ### Setting up with Carthage
 
