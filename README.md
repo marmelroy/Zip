@@ -30,7 +30,7 @@ catch {
 
 ## Advanced Zip
 
-For more advanced usage, Zip has functions that let you set custom  destination paths, work with password protected zips and use a progress handling closure. These function throw if there is an error but don't return.
+For more advanced usage, Zip has functions that let you set custom  destination paths, work with password protected zips and use a progress handling closure. These functions throw if there is an error but don't return.
 ```swift
 do {
     let filePath = NSBundle.mainBundle().URLForResource("file", withExtension: "zip")!
@@ -49,6 +49,13 @@ do {
 catch {
   print("Something went wrong")
 }
+```
+
+## Custom File Extensions
+
+Before unzipping files, the source path is checked to make sure the file type is valid (e.g. the file is a .zip). If the file is not valid then we throw an error, however we understand that there might be some file types you wish to accept, even though it might not exist by default in the supported extensions list. As a result you can add custom file extensions to the list of accepted extensions.
+```
+Zip.addCustomFileExtension("file-extension-here")
 ```
 
 
@@ -72,5 +79,5 @@ github "marmelroy/Zip"
 ### Setting up with [CocoaPods](http://cocoapods.org/?q=Zip)
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
-pod 'Zip', '~> 0.4'
+pod 'Zip', '~> 0.4.2'
 ```
