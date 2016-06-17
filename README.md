@@ -53,7 +53,7 @@ catch {
 
 ## Custom File Extensions
 
-Before unzipping files, the source path is checked to make sure the file type is valid (e.g. the file is a .zip). If the file is not valid then we throw an error, however we understand that there might be some file types you wish to accept, even though it might not exist by default in the supported extensions list. As a result you can add custom file extensions to the list of accepted extensions.
+Zip supports '.zip' and '.cbz' files our of the box. To support additional zip-derivative file extensions:
 ```
 Zip.addCustomFileExtension("file-extension-here")
 ```
@@ -79,5 +79,5 @@ github "marmelroy/Zip"
 ### Setting up with [CocoaPods](http://cocoapods.org/?q=Zip)
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
-pod 'Zip', '~> 0.4.2'
+pod 'Zip', '~> 0.4'
 ```
