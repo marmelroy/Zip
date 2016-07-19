@@ -17,6 +17,23 @@ class ZipTests: XCTestCase {
     
     override func tearDown() {
         super.tearDown()
+        
+        do {
+            let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
+            
+            guard NSFileManager.defaultManager().fileExistsAtPath(dirPath) else {
+                return
+            }
+            
+            let directoryContents = try NSFileManager.defaultManager().contentsOfDirectoryAtPath(dirPath)
+            
+            for path in directoryContents {
+                let fullPath = (dirPath as NSString).stringByAppendingPathComponent(path)
+                try NSFileManager.defaultManager().removeItemAtPath(fullPath)
+            }
+        } catch {
+            fatalError("Failed to perform cleanup operations \(error)")
+        }
     }
     
     func testQuickUnzip() {
