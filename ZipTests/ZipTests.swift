@@ -216,6 +216,31 @@ class ZipTests: XCTestCase {
             XCTFail()
         }
     }
+    
+    func testZipUnzipIncorrectPassword() {
+        do {
+            let imageURL1 = NSBundle(forClass: ZipTests.self).URLForResource("3crBXeO", withExtension: "gif")!
+            let imageURL2 = NSBundle(forClass: ZipTests.self).URLForResource("kYkLkPf", withExtension: "gif")!
+            let documentsFolder = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as NSURL
+            let zipFilePath = documentsFolder.URLByAppendingPathComponent("archive.zip")
+            try Zip.zipFiles([imageURL1, imageURL2], zipFilePath: zipFilePath, password: "password", progress: { (progress) -> () in
+                print(progress)
+            })
+            let fileManager = NSFileManager.defaultManager()
+            XCTAssertTrue(fileManager.fileExistsAtPath(zipFilePath.path!))
+            guard let fileExtension = zipFilePath.pathExtension, let fileName = zipFilePath.lastPathComponent else {
+                throw ZipError.UnzipFail
+            }
+            let directoryName = fileName.stringByReplacingOccurrencesOfString(".\(fileExtension)", withString: "")
+            let documentsUrl = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as NSURL
+            let destinationUrl = documentsUrl.URLByAppendingPathComponent(directoryName, isDirectory: true)
+            try Zip.unzipFile(zipFilePath, destination: destinationUrl, overwrite: true, password: "wrong-password", progress: nil)
+            XCTAssertFalse(fileManager.fileExistsAtPath(destinationUrl.path!))
+        }
+        catch {
+            XCTFail()
+        }
+    }
 
     
     func testQuickUnzipSubDir() {
