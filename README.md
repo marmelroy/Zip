@@ -30,7 +30,7 @@ catch {
 
 ## Advanced Zip
 
-For more advanced usage, Zip has functions that let you set custom  destination paths, work with password protected zips and use a progress handling closure. These function throw if there is an error but don't return.
+For more advanced usage, Zip has functions that let you set custom  destination paths, work with password protected zips and use a progress handling closure. These functions throw if there is an error but don't return.
 ```swift
 do {
     let filePath = NSBundle.mainBundle().URLForResource("file", withExtension: "zip")!
@@ -49,6 +49,13 @@ do {
 catch {
   print("Something went wrong")
 }
+```
+
+## Custom File Extensions
+
+Zip supports '.zip' and '.cbz' files our of the box. To support additional zip-derivative file extensions:
+```
+Zip.addCustomFileExtension("file-extension-here")
 ```
 
 

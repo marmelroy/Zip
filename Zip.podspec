@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "Zip"
-  s.version          = "0.4.1"
+  s.version          = "0.4.3"
   s.summary          = "Zip and unzip files in Swift."
 
 # This description is used to generate tags and improve search results.
