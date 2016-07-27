@@ -72,18 +72,18 @@ internal class ZipUtilities {
         if let directoryPath = directory.path, let enumerator = fileManager.enumeratorAtPath(directoryPath) {
             while let filePathComponent = enumerator.nextObject() as? String {
                 let path = directory.URLByAppendingPathComponent(filePathComponent)
-                guard let filePath = path.path, let directoryName = directory.lastPathComponent else {
+                guard let filePath = path!.path, let directoryName = directory.lastPathComponent else {
                     continue
                 }
                 var isDirectory: ObjCBool = false
                 fileManager.fileExistsAtPath(filePath, isDirectory: &isDirectory)
                 if !isDirectory {
                     let fileName = (directoryName as NSString).stringByAppendingPathComponent(filePathComponent)
-                    let processedPath = ProcessedFilePath(filePathURL: path, fileName: fileName)
+                    let processedPath = ProcessedFilePath(filePathURL: path!, fileName: fileName)
                     processedFilePaths.append(processedPath)
                 }
                 else {
-                    let directoryContents = expandDirectoryFilePath(path)
+                    let directoryContents = expandDirectoryFilePath(path!)
                     processedFilePaths.appendContentsOf(directoryContents)
                 }
             }

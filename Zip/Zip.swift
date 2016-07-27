@@ -139,7 +139,7 @@ public class Zip {
             if pathString.rangeOfCharacterFromSet(NSCharacterSet(charactersInString: "/\\")) != nil {
                 pathString = pathString.stringByReplacingOccurrencesOfString("\\", withString: "/")
             }
-            guard let fullPath = destination.URLByAppendingPathComponent(pathString).path else {
+            guard let fullPath = destination.URLByAppendingPathComponent(pathString)!.path else {
                 throw ZipError.UnzipFail
             }
             let creationDate = NSDate()
