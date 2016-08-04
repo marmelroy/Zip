@@ -53,7 +53,7 @@ catch {
 
 ## Custom File Extensions
 
-Zip supports '.zip' and '.cbz' files our of the box. To support additional zip-derivative file extensions:
+Zip supports '.zip' and '.cbz' files out of the box. To support additional zip-derivative file extensions:
 ```
 Zip.addCustomFileExtension("file-extension-here")
 ```
