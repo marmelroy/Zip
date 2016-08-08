@@ -10,7 +10,7 @@ import Foundation
 import minizip
 
 /// Zip error type
-public enum ZipError: ErrorProtocol {
+public enum ZipError: Error {
     /// File not found
     case fileNotFound
     /// Unzip fail
@@ -68,9 +68,8 @@ public class Zip {
         let fileManager = FileManager.default
         
         // Check whether a zip file exists at path.
-        guard let path = zipFilePath.path, destination.path != nil else {
-            throw ZipError.fileNotFound
-        }
+        let path = zipFilePath.path
+        
         if fileManager.fileExists(atPath: path) == false || fileExtensionIsInvalid(zipFilePath.pathExtension) {
             throw ZipError.fileNotFound
         }
@@ -121,7 +120,8 @@ public class Zip {
             }
             currentPosition += Double(fileInfo.compressed_size)
             let fileNameSize = Int(fileInfo.size_filename) + 1
-            let fileName = UnsafeMutablePointer<CChar>(allocatingCapacity: fileNameSize)
+            //let fileName = UnsafeMutablePointer<CChar>(allocatingCapacity: fileNameSize)
+            let fileName = UnsafeMutablePointer<CChar>.allocate(capacity: fileNameSize)
 
             unzGetCurrentFileInfo64(zip, &fileInfo, fileName, UInt(fileNameSize), nil, 0, nil, 0)
             fileName[Int(fileInfo.size_filename)] = 0
@@ -140,9 +140,9 @@ public class Zip {
             if pathString.rangeOfCharacter(from: CharacterSet(charactersIn: "/\\")) != nil {
                 pathString = pathString.replacingOccurrences(of: "\\", with: "/")
             }
-            guard let fullPath = try! destination.appendingPathComponent(pathString).path else {
-                throw ZipError.unzipFail
-            }
+
+            let fullPath = destination.appendingPathComponent(pathString).path
+
             let creationDate = Date()
             let directoryAttributes = [FileAttributeKey.creationDate.rawValue : creationDate,
                                        FileAttributeKey.modificationDate.rawValue : creationDate]
@@ -215,9 +215,7 @@ public class Zip {
         let fileManager = FileManager.default
         
         // Check whether a zip file exists at path.
-        guard let destinationPath = zipFilePath.path else {
-            throw ZipError.fileNotFound
-        }
+        let destinationPath = zipFilePath.path
         
         // Process zip paths
         let processedPaths = ZipUtilities().processZipPaths(paths)
@@ -252,7 +250,7 @@ public class Zip {
             let filePath = path.filePath()
             var isDirectory: ObjCBool = false
             fileManager.fileExists(atPath: filePath, isDirectory: &isDirectory)
-            if !isDirectory {
+            if !isDirectory.boolValue {
                 let input = fopen(filePath, "r")
                 if input == nil {
                     throw ZipError.zipFail
@@ -262,7 +260,7 @@ public class Zip {
                 do {
                     let fileAttributes = try fileManager.attributesOfItem(atPath: filePath)
                     if let fileDate = fileAttributes[FileAttributeKey.modificationDate] as? Date {
-                        let components = Calendar.current.components([.year, .month, .day, .hour, .minute, .second], from: fileDate)
+                        let components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: fileDate)
                         zipInfo.tmz_date.tm_sec = UInt32(components.second!)
                         zipInfo.tmz_date.tm_min = UInt32(components.minute!)
                         zipInfo.tmz_date.tm_hour = UInt32(components.hour!)
