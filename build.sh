@@ -19,12 +19,12 @@ MODE="$1"
 
 if [ "$MODE" = "framework" ]; then
     echo "Building and testing Zip."
-    xctool \
+    xcodebuild \
         -project Zip.xcodeproj \
         -scheme Zip \
         -sdk "$SDK" \
         -destination "$PLATFORM" \
-        build test
+        test
     trap - EXIT
     exit 0
 fi
@@ -35,12 +35,11 @@ if [ "$MODE" = "examples" ]; then
     for example in examples/*/; do
         echo "Building $example."
         pod install --project-directory=$example
-        xctool \
+        xcodebuild \
             -workspace "${example}Sample.xcworkspace" \
             -scheme Sample \
             -sdk "$SDK" \
-            -destination "$PLATFORM" \
-            build
+            -destination "$PLATFORM"
     done
     trap - EXIT
     exit 0
