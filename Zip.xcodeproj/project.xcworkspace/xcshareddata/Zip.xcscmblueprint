@@ -10,7 +10,7 @@
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "F3707899-72AE-49DA-9BDD-5CB0B64CF03A",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "8DA5B175D3FDB92A3B3CCBD4109A734F1316A3DD" : "Zip\/Zip\/minizip\/",
-    "3DD768C8AB2D6A2647C9EF99992D3CC5820E77C4" : "Zip-swift3\/"
+    "3DD768C8AB2D6A2647C9EF99992D3CC5820E77C4" : "Zip\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "Zip",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
