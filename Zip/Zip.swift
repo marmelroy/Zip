@@ -28,6 +28,26 @@ public enum ZipError: ErrorType {
     }
 }
 
+public enum ZipCompression: Int {
+    case NoCompression
+    case BestSpeed
+    case DefaultCompression
+    case BestCompression
+
+    internal var minizipCompression: Int32 {
+        switch self {
+        case .NoCompression:
+            return Z_NO_COMPRESSION
+        case .BestSpeed:
+            return Z_BEST_SPEED
+        case .DefaultCompression:
+            return Z_DEFAULT_COMPRESSION
+        case .BestCompression:
+            return Z_BEST_COMPRESSION
+        }
+    }
+}
+
 /// Zip class
 public class Zip {
     
@@ -194,7 +214,7 @@ public class Zip {
     }
     
     // MARK: Zip
-    
+
     /**
      Zip files.
      
@@ -205,9 +225,27 @@ public class Zip {
      
      - throws: Error if zipping fails.
      
-     - notes: Supports implicit progress composition
+     - notes: Supports implicit progress composition. Compression strategy defaults to ZipCompression.DefaultCompression.
      */
     public class func zipFiles(paths: [NSURL], zipFilePath: NSURL, password: String?, progress: ((progress: Double) -> ())?) throws {
+        try Zip.zipFiles(paths, zipFilePath: zipFilePath, password: password, compression: .DefaultCompression, progress: progress);
+    }
+    
+    
+    /**
+     Zip files.
+     
+     - parameter paths:       Array of NSURL filepaths.
+     - parameter zipFilePath: Destination NSURL, should lead to a .zip filepath.
+     - parameter password:    Password string. Optional.
+     - parameter compression: Compression strategy
+     - parameter progress: A progress closure called after unzipping each file in the archive. Double value betweem 0 and 1.
+     
+     - throws: Error if zipping fails.
+     
+     - notes: Supports implicit progress composition
+     */
+    public class func zipFiles(paths: [NSURL], zipFilePath: NSURL, password: String?, compression: ZipCompression, progress: ((progress: Double) -> ())?) throws {
         
         // File manager
         let fileManager = NSFileManager.defaultManager()
@@ -275,10 +313,10 @@ public class Zip {
                 catch {}
                 let buffer = malloc(chunkSize)
                 if let password = password, let fileName = fileName {
-                    zipOpenNewFileInZip3(zip, fileName, &zipInfo, nil, 0, nil, 0, nil,Z_DEFLATED, Z_DEFAULT_COMPRESSION, 0, -MAX_WBITS, DEF_MEM_LEVEL, Z_DEFAULT_STRATEGY, password, 0)
+                    zipOpenNewFileInZip3(zip, fileName, &zipInfo, nil, 0, nil, 0, nil,Z_DEFLATED, compression.minizipCompression, 0, -MAX_WBITS, DEF_MEM_LEVEL, Z_DEFAULT_STRATEGY, password, 0)
                 }
                 else if let fileName = fileName {
-                    zipOpenNewFileInZip3(zip, fileName, &zipInfo, nil, 0, nil, 0, nil,Z_DEFLATED, Z_DEFAULT_COMPRESSION, 0, -MAX_WBITS, DEF_MEM_LEVEL, Z_DEFAULT_STRATEGY, nil, 0)
+                    zipOpenNewFileInZip3(zip, fileName, &zipInfo, nil, 0, nil, 0, nil,Z_DEFLATED, compression.minizipCompression, 0, -MAX_WBITS, DEF_MEM_LEVEL, Z_DEFAULT_STRATEGY, nil, 0)
                 }
                 else {
                     throw ZipError.ZipFail
