@@ -45,8 +45,8 @@ extension Zip {
         let directoryName = fileName.stringByReplacingOccurrencesOfString(".\(fileExtension)", withString: "")
         let documentsUrl = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as NSURL
         let destinationUrl = documentsUrl.URLByAppendingPathComponent(directoryName, isDirectory: true)
-        try self.unzipFile(path, destination: destinationUrl, overwrite: true, password: nil, progress: progress)
-        return destinationUrl
+        try self.unzipFile(path, destination: destinationUrl!, overwrite: true, password: nil, progress: progress)
+        return destinationUrl!
     }
     
     //MARK: Quick Zip
@@ -84,8 +84,8 @@ extension Zip {
         let fileManager = NSFileManager.defaultManager()
         let documentsUrl = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as NSURL
         let destinationUrl = documentsUrl.URLByAppendingPathComponent("\(fileName).zip")
-        try self.zipFiles(paths, zipFilePath: destinationUrl, password: nil, progress: progress)
-        return destinationUrl
+        try self.zipFiles(paths, zipFilePath: destinationUrl!, password: nil, progress: progress)
+        return destinationUrl!
     }
     
     
