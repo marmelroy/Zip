@@ -6,7 +6,7 @@ env:
   - LANG=en_US.UTF-8
 before_install:
   - brew update || brew update
-  - gem install cocoapods
+  - gem install cocoapods --pre
 install: echo "<3"
 env:
   - MODE=framework
