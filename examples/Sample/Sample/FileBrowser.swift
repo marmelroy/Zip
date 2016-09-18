@@ -49,16 +49,16 @@ class FileBrowser: UIViewController, UITableViewDataSource, UITableViewDelegate 
                 self.title = filePath.lastPathComponent
                 tempFiles = try self.fileManager.contentsOfDirectory(atPath: filePath.path)
             } catch {
-                if path == "/System" {
+                if filePath.path == "/System" {
                     tempFiles = ["Library"]
                 }
-                if path == "/Library" {
+                if filePath.path == "/Library" {
                     tempFiles = ["Preferences"]
                 }
-                if path == "/var" {
+                if filePath == "/var" {
                     tempFiles = ["mobile"]
                 }
-                if path == "/usr" {
+                if filePath == "/usr" {
                     tempFiles = ["lib", "libexec", "bin"]
                 }
             }

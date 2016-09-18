@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: Any]?) -> Bool {
+    private func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: Any]?) -> Bool {
         if UserDefaults.standard.bool(forKey: "firstLaunch") == false {
             UserDefaults.standard.set(true, forKey: "firstLaunch")
             UserDefaults.standard.synchronize()
@@ -23,7 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let documentsUrl = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0] as URL
             let bundleUrl = Bundle.main.resourceURL
             for file in fileNames {
-                if let srcPath = bundleUrl?.appendingPathComponent(file).path, let toPath = documentsUrl.appendingPathComponent(file).path{
+                if let srcPath = bundleUrl?.appendingPathComponent(file).path{
+                    let toPath = documentsUrl.appendingPathComponent(file).path
                     do {
                         try fileManager.copyItem(atPath: srcPath, toPath: toPath)
                     } catch {}
