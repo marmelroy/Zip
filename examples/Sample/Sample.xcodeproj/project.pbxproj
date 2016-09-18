@@ -12,8 +12,6 @@
 		3430F6781C45C930007473A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3430F6771C45C930007473A6 /* Assets.xcassets */; };
 		3430F67B1C45C930007473A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3430F6791C45C930007473A6 /* LaunchScreen.storyboard */; };
 		3430F6861C45C930007473A6 /* SampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3430F6851C45C930007473A6 /* SampleTests.swift */; };
-		343EE1B31D71DE1400244997 /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 343EE1AA1D71DE0D00244997 /* Zip.framework */; };
-		343EE1B41D71DE1400244997 /* Zip.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 343EE1AA1D71DE0D00244997 /* Zip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3467DAED1C4BADB700BA3DB8 /* FileBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3467DAEC1C4BADB700BA3DB8 /* FileBrowser.swift */; };
 		3467DAF31C4BF17900BA3DB8 /* Image1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3467DAEF1C4BF17900BA3DB8 /* Image1.jpg */; };
 		3467DAF41C4BF17900BA3DB8 /* Image2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3467DAF01C4BF17900BA3DB8 /* Image2.jpg */; };
@@ -29,48 +27,6 @@
 			remoteGlobalIDString = 3430F66C1C45C930007473A6;
 			remoteInfo = Sample;
 		};
-		343EE1A91D71DE0D00244997 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 343EE1A11D71DE0D00244997 /* Zip.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 347E3A741C1DFFB500A11FD3;
-			remoteInfo = Zip;
-		};
-		343EE1AB1D71DE0D00244997 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 343EE1A11D71DE0D00244997 /* Zip.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 347E3A7E1C1DFFB500A11FD3;
-			remoteInfo = ZipTests;
-		};
-		343EE1AD1D71DE0D00244997 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 343EE1A11D71DE0D00244997 /* Zip.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 343F50FF1C8DAEEC0028C434;
-			remoteInfo = "Zip OSX";
-		};
-		343EE1AF1D71DE0D00244997 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 343EE1A11D71DE0D00244997 /* Zip.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 343F51081C8DAEEC0028C434;
-			remoteInfo = "Zip OSXTests";
-		};
-		343EE1B11D71DE0D00244997 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 343EE1A11D71DE0D00244997 /* Zip.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 342545B51CE525B200336074;
-			remoteInfo = "Zip tvOS";
-		};
-		343EE1B51D71DE1400244997 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 343EE1A11D71DE0D00244997 /* Zip.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 347E3A731C1DFFB500A11FD3;
-			remoteInfo = Zip;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -80,7 +36,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				343EE1B41D71DE1400244997 /* Zip.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -97,7 +52,6 @@
 		3430F6811C45C930007473A6 /* SampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3430F6851C45C930007473A6 /* SampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTests.swift; sourceTree = "<group>"; };
 		3430F6871C45C930007473A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		343EE1A11D71DE0D00244997 /* Zip.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Zip.xcodeproj; path = ../../Zip.xcodeproj; sourceTree = "<group>"; };
 		3467DAEC1C4BADB700BA3DB8 /* FileBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileBrowser.swift; sourceTree = "<group>"; };
 		3467DAEF1C4BF17900BA3DB8 /* Image1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Image1.jpg; sourceTree = "<group>"; };
 		3467DAF01C4BF17900BA3DB8 /* Image2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Image2.jpg; sourceTree = "<group>"; };
@@ -110,7 +64,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				343EE1B31D71DE1400244997 /* Zip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,7 +80,6 @@
 		3430F6641C45C930007473A6 = {
 			isa = PBXGroup;
 			children = (
-				343EE1A11D71DE0D00244997 /* Zip.xcodeproj */,
 				3430F66F1C45C930007473A6 /* Sample */,
 				3430F6841C45C930007473A6 /* SampleTests */,
 				3430F66E1C45C930007473A6 /* Products */,
@@ -169,18 +121,6 @@
 			path = SampleTests;
 			sourceTree = "<group>";
 		};
-		343EE1A21D71DE0D00244997 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				343EE1AA1D71DE0D00244997 /* Zip.framework */,
-				343EE1AC1D71DE0D00244997 /* ZipTests.xctest */,
-				343EE1AE1D71DE0D00244997 /* Zip.framework */,
-				343EE1B01D71DE0D00244997 /* Zip OSXTests.xctest */,
-				343EE1B21D71DE0D00244997 /* Zip.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -196,7 +136,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				343EE1B61D71DE1400244997 /* PBXTargetDependency */,
 			);
 			name = Sample;
 			productName = Sample;
@@ -253,12 +192,6 @@
 			mainGroup = 3430F6641C45C930007473A6;
 			productRefGroup = 3430F66E1C45C930007473A6 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 343EE1A21D71DE0D00244997 /* Products */;
-					ProjectRef = 343EE1A11D71DE0D00244997 /* Zip.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				3430F66C1C45C930007473A6 /* Sample */,
@@ -266,44 +199,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		343EE1AA1D71DE0D00244997 /* Zip.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Zip.framework;
-			remoteRef = 343EE1A91D71DE0D00244997 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		343EE1AC1D71DE0D00244997 /* ZipTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ZipTests.xctest;
-			remoteRef = 343EE1AB1D71DE0D00244997 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		343EE1AE1D71DE0D00244997 /* Zip.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Zip.framework;
-			remoteRef = 343EE1AD1D71DE0D00244997 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		343EE1B01D71DE0D00244997 /* Zip OSXTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "Zip OSXTests.xctest";
-			remoteRef = 343EE1AF1D71DE0D00244997 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		343EE1B21D71DE0D00244997 /* Zip.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Zip.framework;
-			remoteRef = 343EE1B11D71DE0D00244997 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3430F66B1C45C930007473A6 /* Resources */ = {
@@ -354,11 +249,6 @@
 			isa = PBXTargetDependency;
 			target = 3430F66C1C45C930007473A6 /* Sample */;
 			targetProxy = 3430F6821C45C930007473A6 /* PBXContainerItemProxy */;
-		};
-		343EE1B61D71DE1400244997 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Zip;
-			targetProxy = 343EE1B51D71DE1400244997 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -425,6 +315,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -464,6 +355,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -477,7 +369,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.roymarmelstein.Sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -490,7 +381,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.roymarmelstein.Sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -502,7 +392,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.roymarmelstein.SampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sample.app/Sample";
 			};
 			name = Debug;
@@ -515,7 +404,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.roymarmelstein.SampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sample.app/Sample";
 			};
 			name = Release;

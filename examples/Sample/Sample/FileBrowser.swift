@@ -55,10 +55,10 @@ class FileBrowser: UIViewController, UITableViewDataSource, UITableViewDelegate 
                 if filePath.path == "/Library" {
                     tempFiles = ["Preferences"]
                 }
-                if filePath == "/var" {
+                if filePath.path == "/var" {
                     tempFiles = ["mobile"]
                 }
-                if filePath == "/usr" {
+                if filePath.path == "/usr" {
                     tempFiles = ["lib", "libexec", "bin"]
                 }
             }
@@ -92,7 +92,7 @@ class FileBrowser: UIViewController, UITableViewDataSource, UITableViewDelegate 
         var isDirectory: ObjCBool = false
         fileManager.fileExists(atPath: newPath, isDirectory: &isDirectory)
         cell.textLabel?.text = files[(indexPath as NSIndexPath).row]
-        if isDirectory {
+        if isDirectory.boolValue {
             cell.imageView?.image = UIImage(named: "Folder")
         }
         else {
@@ -139,7 +139,7 @@ class FileBrowser: UIViewController, UITableViewDataSource, UITableViewDelegate 
         let filePath = selectedFiles.first
         let pathURL = path!.appendingPathComponent(filePath!)
         do {
-            try Zip.quickUnzipFile(pathURL)
+            let _ = try Zip.quickUnzipFile(pathURL)
             self.selectedFiles.removeAll()
             updateSelection()
             updateFiles()
@@ -154,7 +154,7 @@ class FileBrowser: UIViewController, UITableViewDataSource, UITableViewDelegate 
             urlPaths.append(path!.appendingPathComponent(filePath))
         }
         do {
-            try Zip.quickZipFiles(urlPaths, fileName: "Archive")
+            let _ = try Zip.quickZipFiles(urlPaths, fileName: "Archive")
             self.selectedFiles.removeAll()
             updateSelection()
             updateFiles()

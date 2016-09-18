@@ -13,8 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
-    private func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: Any]?) -> Bool {
+    
+    func applicationDidFinishLaunching(_ application: UIApplication) {
         if UserDefaults.standard.bool(forKey: "firstLaunch") == false {
             UserDefaults.standard.set(true, forKey: "firstLaunch")
             UserDefaults.standard.synchronize()
@@ -31,8 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         }
-        // Override point for customization after application launch.
-        return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
