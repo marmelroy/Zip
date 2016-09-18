@@ -1,0 +1,3 @@
+[submodule "Zip/minizip"]
+	path = Zip/minizip
+	url = https://github.com/marmelroy/minizip.git
