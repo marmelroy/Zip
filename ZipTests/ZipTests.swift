@@ -128,7 +128,7 @@ class ZipTests: XCTestCase {
             let zipFilePath = documentsFolder.appendingPathComponent("archive.zip")
             
             progress.becomeCurrent(withPendingUnitCount: 1)
-            try Zip.zipFiles([imageURL1, imageURL2], zipFilePath: zipFilePath!, password: nil, progress: nil)
+            try Zip.zipFiles(paths: [imageURL1, imageURL2], zipFilePath: zipFilePath!, password: nil, progress: nil)
             progress.resignCurrent()
             
             XCTAssertTrue(progress.totalUnitCount == progress.completedUnitCount)
@@ -181,7 +181,7 @@ class ZipTests: XCTestCase {
             let imageURL2 = Bundle(for: ZipTests.self).url(forResource: "kYkLkPf", withExtension: "gif")!
             let documentsFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as NSURL
             let zipFilePath = documentsFolder.appendingPathComponent("archive.zip")
-            try Zip.zipFiles([imageURL1, imageURL2], zipFilePath: zipFilePath!, password: nil, progress: { (progress) -> () in
+            try Zip.zipFiles(paths: [imageURL1, imageURL2], zipFilePath: zipFilePath!, password: nil, progress: { (progress) -> () in
                 print(progress)
             })
             let fileManager = FileManager.default
@@ -198,7 +198,7 @@ class ZipTests: XCTestCase {
             let imageURL2 = Bundle(for: ZipTests.self).url(forResource: "kYkLkPf", withExtension: "gif")!
             let documentsFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as NSURL
             let zipFilePath = documentsFolder.appendingPathComponent("archive.zip")
-            try Zip.zipFiles([imageURL1, imageURL2], zipFilePath: zipFilePath!, password: "password", progress: { (progress) -> () in
+            try Zip.zipFiles(paths: [imageURL1, imageURL2], zipFilePath: zipFilePath!, password: "password", progress: { (progress) -> () in
                 print(progress)
             })
             let fileManager = FileManager.default
