@@ -1,14 +1,11 @@
-osx_image: xcode7.2
+osx_image: xcode8
 language: objective-c
 env:
   global:
   - LC_CTYPE=en_US.UTF-8
   - LANG=en_US.UTF-8
 before_install:
-  - brew update || brew update
-  - brew outdated xctool || brew upgrade xctool
-  - gem install cocoapods
-  - xcrun simctl list
+  - gem install cocoapods --pre
 install: echo "<3"
 env:
   - MODE=framework

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # **** Update me when new Xcode versions are released! ****
-PLATFORM="platform=iOS Simulator,OS=9.2,name=iPhone 6"
-SDK="iphonesimulator9.2"
+PLATFORM="platform=iOS Simulator,OS=10.0,name=iPhone 7"
+SDK="iphonesimulator10.0"
 
 
 # It is pitch black.
@@ -19,12 +19,12 @@ MODE="$1"
 
 if [ "$MODE" = "framework" ]; then
     echo "Building and testing Zip."
-    xctool \
+    xcodebuild \
         -project Zip.xcodeproj \
         -scheme Zip \
         -sdk "$SDK" \
         -destination "$PLATFORM" \
-        build test
+        test
     trap - EXIT
     exit 0
 fi
@@ -35,12 +35,11 @@ if [ "$MODE" = "examples" ]; then
     for example in examples/*/; do
         echo "Building $example."
         pod install --project-directory=$example
-        xctool \
+        xcodebuild \
             -workspace "${example}Sample.xcworkspace" \
             -scheme Sample \
             -sdk "$SDK" \
-            -destination "$PLATFORM" \
-            build
+            -destination "$PLATFORM"
     done
     trap - EXIT
     exit 0

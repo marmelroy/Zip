@@ -11,22 +11,17 @@ import Foundation
 internal class ZipUtilities {
     
     // File manager
-    let fileManager = NSFileManager.defaultManager()
+    let fileManager = FileManager.default
 
     /**
      *  ProcessedFilePath struct
      */
     internal struct ProcessedFilePath {
-        let filePathURL: NSURL
+        let filePathURL: URL
         let fileName: String?
         
         func filePath() -> String {
-            if let filePath = filePathURL.path {
-                return filePath
-            }
-            else {
-                return String()
-            }
+            return filePathURL.path
         }
     }
     
@@ -39,21 +34,19 @@ internal class ZipUtilities {
     
     - returns: Array of ProcessedFilePath structs.
     */
-    internal func processZipPaths(paths: [NSURL]) -> [ProcessedFilePath]{
+    internal func processZipPaths(_ paths: [URL]) -> [ProcessedFilePath]{
         var processedFilePaths = [ProcessedFilePath]()
         for path in paths {
-            guard let filePath = path.path else {
-                continue
-            }
+            let filePath = path.path
             var isDirectory: ObjCBool = false
-            fileManager.fileExistsAtPath(filePath, isDirectory: &isDirectory)
-            if !isDirectory {
+            fileManager.fileExists(atPath: filePath, isDirectory: &isDirectory)
+            if !isDirectory.boolValue {
                 let processedPath = ProcessedFilePath(filePathURL: path, fileName: path.lastPathComponent)
                 processedFilePaths.append(processedPath)
             }
             else {
                 let directoryContents = expandDirectoryFilePath(path)
-                processedFilePaths.appendContentsOf(directoryContents)
+                processedFilePaths.append(contentsOf: directoryContents)
             }
         }
         return processedFilePaths
@@ -67,24 +60,21 @@ internal class ZipUtilities {
      
      - returns: Array of ProcessedFilePath structs.
      */
-    internal func expandDirectoryFilePath(directory: NSURL) -> [ProcessedFilePath] {
+    internal func expandDirectoryFilePath(_ directory: URL) -> [ProcessedFilePath] {
         var processedFilePaths = [ProcessedFilePath]()
-        if let directoryPath = directory.path, let enumerator = fileManager.enumeratorAtPath(directoryPath) {
+        let directoryPath = directory.path
+        if let enumerator = fileManager.enumerator(atPath: directoryPath) {
             while let filePathComponent = enumerator.nextObject() as? String {
-                let path = directory.URLByAppendingPathComponent(filePathComponent)
-                guard let filePath = path.path, let directoryName = directory.lastPathComponent else {
-                    continue
-                }
+                let path = directory.appendingPathComponent(filePathComponent)
+                let filePath = path.path
+                let directoryName = directory.lastPathComponent
+
                 var isDirectory: ObjCBool = false
-                fileManager.fileExistsAtPath(filePath, isDirectory: &isDirectory)
-                if !isDirectory {
-                    let fileName = (directoryName as NSString).stringByAppendingPathComponent(filePathComponent)
+                fileManager.fileExists(atPath: filePath, isDirectory: &isDirectory)
+                if !isDirectory.boolValue {
+                    let fileName = (directoryName as NSString).appendingPathComponent(filePathComponent)
                     let processedPath = ProcessedFilePath(filePathURL: path, fileName: fileName)
                     processedFilePaths.append(processedPath)
-                }
-                else {
-                    let directoryContents = expandDirectoryFilePath(path)
-                    processedFilePaths.appendContentsOf(directoryContents)
                 }
             }
         }
