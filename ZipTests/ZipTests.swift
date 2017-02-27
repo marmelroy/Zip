@@ -217,6 +217,24 @@ class ZipTests: XCTestCase {
         }
     }
 
+    func testUnzipWithUnsupportedPermissions() {
+        do {
+            let permissionsURL = Bundle(for: ZipTests.self).url(forResource: "unsupported_permissions", withExtension: "zip")!
+            let unzipDestination = try Zip.quickUnzipFile(permissionsURL)
+            print(unzipDestination)
+            let fileManager = FileManager.default
+            let permission644 = unzipDestination.appendingPathComponent("unsupported_permission").appendingPathExtension("txt")
+            do {
+                let attributes644 = try fileManager.attributesOfItem(atPath: permission644.path)
+                XCTAssertEqual(attributes644[.posixPermissions] as? Int, 0o644)
+            } catch {
+                XCTFail("Failed to get file attributes \(error)")
+            }
+        } catch {
+            XCTFail("Failed extract unsupported_permissions.zip")
+        }
+    }
+
     func testUnzipPermissions() {
         do {
             let permissionsURL = Bundle(for: ZipTests.self).url(forResource: "permissions", withExtension: "zip")!

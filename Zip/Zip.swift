@@ -199,11 +199,16 @@ public class Zip {
             }
 
             //Set file permissions from current fileInfo
-            let permissions = (fileInfo.external_fa >> 16) & 0x1FF
-            do {
-                try fileManager.setAttributes([.posixPermissions : permissions], ofItemAtPath: fullPath)
-            } catch let error {
-                print("Failed to set permissions to file \(fullPath)")
+            if fileInfo.external_fa != 0 {
+                let permissions = (fileInfo.external_fa >> 16) & 0x1FF
+                //We will devifne a valid permission range between Owner read only to full access
+                if permissions >= 0o400 && permissions <= 0o777 {
+                    do {
+                        try fileManager.setAttributes([.posixPermissions : permissions], ofItemAtPath: fullPath)
+                    } catch {
+                        print("Failed to set permissions to file \(fullPath), error: \(error)")
+                    }
+                }
             }
 
             ret = unzGoToNextFile(zip)
