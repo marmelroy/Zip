@@ -152,6 +152,22 @@ class ZipTests: XCTestCase {
         }
     }
     
+    func testQuickZipDestinationURL() {
+        let imageURL1 = Bundle(for: ZipTests.self).url(forResource: "3crBXeO", withExtension: "gif")!
+        let imageURL2 = Bundle(for: ZipTests.self).url(forResource: "kYkLkPf", withExtension: "gif")!
+        let fileManager = FileManager.default
+        let cacheFolder = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0] as NSURL
+        let zipFilePath = cacheFolder.appendingPathComponent("archive.zip")
+        do {
+            try Zip.quickZipFiles([imageURL1, imageURL2], destinationFileURL: zipFilePath!)
+            XCTAssertTrue(fileManager.fileExists(atPath: zipFilePath!.path))
+        }
+        catch {
+            XCTFail()
+        }
+    }
+    
+    
     func testQuickZipFolder() {
         do {
             let fileManager = FileManager.default

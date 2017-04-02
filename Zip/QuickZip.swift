@@ -92,6 +92,19 @@ extension Zip {
         try self.zipFiles(paths: paths, zipFilePath: destinationUrl, password: nil, progress: progress)
         return destinationUrl
     }
-    
+
+    /**
+     Quick zip files.
+     
+     - parameter paths: Array of NSURL filepaths.
+     - parameter destinationFileURL: Resulting zip-file URL.
+     
+     - throws: Error if zipping fails.
+     
+     - notes: Supports implicit progress composition
+    */
+    public class func quickZipFiles(_ paths: [URL], destinationFileURL: URL) throws {
+        try self.zipFiles(paths: paths, zipFilePath: destinationFileURL, password: nil, progress: nil)
+    }
     
 }
