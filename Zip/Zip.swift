@@ -82,7 +82,7 @@ public class Zip {
      - notes: Supports implicit progress composition
      */
     
-    public class func unzipFile(_ zipFilePath: URL, destination: URL, overwrite: Bool, password: String?, progress: ((_ progress: Double) -> ())?) throws {
+    public class func unzipFile(_ zipFilePath: URL, destination: URL, overwrite: Bool, password: String?, progress: ((_ progress: Double) -> ())? = nil) throws {
         
         // File manager
         let fileManager = FileManager.default
