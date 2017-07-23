@@ -82,7 +82,7 @@ public class Zip {
      - notes: Supports implicit progress composition
      */
     
-    public class func unzipFile(_ zipFilePath: URL, destination: URL, overwrite: Bool, password: String?, progress: ((_ progress: Double) -> ())?) throws {
+    public class func unzipFile(_ zipFilePath: URL, destination: URL, overwrite: Bool, password: String?, progress: ((_ progress: Double) -> ())? = nil, fileOutputHandler: ((_ unzippedFile: URL) -> Void)? = nil) throws {
         
         // File manager
         let fileManager = FileManager.default
@@ -216,6 +216,11 @@ public class Zip {
             // Update progress handler
             if let progressHandler = progress{
                 progressHandler((currentPosition/totalSize))
+            }
+            
+            if let fileHandler = fileOutputHandler,
+                let fileUrl = URL(string: fullPath) {
+                fileHandler(fileUrl)
             }
             
             progressTracker.completedUnitCount = Int64(currentPosition)
