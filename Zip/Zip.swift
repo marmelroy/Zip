@@ -168,7 +168,7 @@ public class Zip {
           
             #if swift(>=4.0)
                 let directoryAttributes = [FileAttributeKey.creationDate : creationDate,
-                FileAttributeKey.modificationDate : creationDate]
+                                           FileAttributeKey.modificationDate : creationDate]
             #else
                 let directoryAttributes = [FileAttributeKey.creationDate.rawValue : creationDate,
                                            FileAttributeKey.modificationDate.rawValue : creationDate]
