@@ -165,15 +165,10 @@ public class Zip {
             let fullPath = destination.appendingPathComponent(pathString).path
 
             let creationDate = Date()
-          
-            #if swift(>=4.0)
-                let directoryAttributes = [FileAttributeKey.creationDate : creationDate,
-                                           FileAttributeKey.modificationDate : creationDate]
-            #else
-                let directoryAttributes = [FileAttributeKey.creationDate.rawValue : creationDate,
-                                           FileAttributeKey.modificationDate.rawValue : creationDate]
-            #endif
-            
+
+            let directoryAttributes = [FileAttributeKey.creationDate : creationDate,
+                                       FileAttributeKey.modificationDate : creationDate]
+
             do {
                 if isDirectory {
                     try fileManager.createDirectory(atPath: fullPath, withIntermediateDirectories: true, attributes: directoryAttributes)
