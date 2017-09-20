@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "Zip"
-  s.version          = "0.8.0"
+  s.version          = "1.0.0"
   s.summary          = "Zip and unzip files in Swift."
 
 # This description is used to generate tags and improve search results.
@@ -32,6 +32,8 @@ Pod::Spec.new do |s|
   s.watchos.deployment_target = '2.0'
   s.osx.deployment_target = '10.9'
   s.requires_arc = true
+
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.0' }
 
   s.source_files = 'Zip/*.{swift,h}', 'Zip/minizip/*.{c,h}', 'Zip/minizip/aes/*.{c,h}'
   s.public_header_files = 'Zip/*.h'

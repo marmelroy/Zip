@@ -4,7 +4,7 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 # Zip
-A Swift 3.0 framework for zipping and unzipping files. Simple and quick to use. Built on top of [minizip](https://github.com/nmoinvaz/minizip).
+A Swift 4.0 framework for zipping and unzipping files. Simple and quick to use. Built on top of [minizip](https://github.com/nmoinvaz/minizip).
 
 ## Usage
 
@@ -60,7 +60,7 @@ Zip.addCustomFileExtension("file-extension-here")
 ### Setting up with [CocoaPods](http://cocoapods.org/?q=Zip)
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
-pod 'Zip', '~> 0.8'
+pod 'Zip', '~> 1.0'
 ```
 
 ### Setting up with Carthage
