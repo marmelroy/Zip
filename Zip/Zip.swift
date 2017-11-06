@@ -82,7 +82,7 @@ public class Zip {
      - notes: Supports implicit progress composition
      */
     
-    public class func unzipFile(_ zipFilePath: URL, destination: URL, overwrite: Bool, password: String?, progress: ((_ progress: Double) -> ())? = nil, fileOutputHandler: ((_ unzippedFile: URL) -> Void)? = nil) throws {
+    public class func unzipFile(_ zipFilePath: URL, destination: URL, overwrite: Bool, password: String?, progress: ((_ progress: Double) -> ())? = nil, fileProgress: ((_ progress: Double) -> ())? = nil, fileOutputHandler: ((_ unzippedFile: URL) -> Void)? = nil) throws {
         
         // File manager
         let fileManager = FileManager.default
@@ -148,7 +148,7 @@ public class Zip {
 
             var pathString = String(cString: fileName)
             
-            guard pathString.characters.count > 0 else {
+            guard pathString.count > 0 else {
                 throw ZipError.unzipFail
             }
 
@@ -196,6 +196,11 @@ public class Zip {
                 }
                 else {
                     break
+                }
+                
+                // Update file progress handler
+                if let fileProgressHandler = fileProgress {
+                    fileProgressHandler(Double(writeBytes) / Double(totalSize))
                 }
             }
 
