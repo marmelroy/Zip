@@ -60,7 +60,7 @@ Zip.addCustomFileExtension("file-extension-here")
 ### Setting up with [CocoaPods](http://cocoapods.org/?q=Zip)
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
-pod 'Zip', '~> 1.0'
+pod 'Zip', '~> 1.1'
 ```
 
 ### Setting up with Carthage
