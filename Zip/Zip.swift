@@ -166,8 +166,8 @@ public class Zip {
 
             let creationDate = Date()
 
-            let directoryAttributes = [FileAttributeKey.creationDate : creationDate,
-                                       FileAttributeKey.modificationDate : creationDate]
+            let directoryAttributes = [FileAttributeKey.creationDate.rawValue : creationDate,
+                                       FileAttributeKey.modificationDate.rawValue : creationDate]
 
             do {
                 if isDirectory {
