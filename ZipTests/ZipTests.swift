@@ -217,6 +217,47 @@ class ZipTests: XCTestCase {
         }
     }
 
+    func testUnzipWithUnsupportedPermissions() {
+        do {
+            let permissionsURL = Bundle(for: ZipTests.self).url(forResource: "unsupported_permissions", withExtension: "zip")!
+            let unzipDestination = try Zip.quickUnzipFile(permissionsURL)
+            print(unzipDestination)
+            let fileManager = FileManager.default
+            let permission644 = unzipDestination.appendingPathComponent("unsupported_permission").appendingPathExtension("txt")
+            do {
+                let attributes644 = try fileManager.attributesOfItem(atPath: permission644.path)
+                XCTAssertEqual(attributes644[.posixPermissions] as? Int, 0o644)
+            } catch {
+                XCTFail("Failed to get file attributes \(error)")
+            }
+        } catch {
+            XCTFail("Failed extract unsupported_permissions.zip")
+        }
+    }
+
+    func testUnzipPermissions() {
+        do {
+            let permissionsURL = Bundle(for: ZipTests.self).url(forResource: "permissions", withExtension: "zip")!
+            let unzipDestination = try Zip.quickUnzipFile(permissionsURL)
+            let fileManager = FileManager.default
+            let permission777 = unzipDestination.appendingPathComponent("permission_777").appendingPathExtension("txt")
+            let permission600 = unzipDestination.appendingPathComponent("permission_600").appendingPathExtension("txt")
+            let permission604 = unzipDestination.appendingPathComponent("permission_604").appendingPathExtension("txt")
+            
+            do {
+                let attributes777 = try fileManager.attributesOfItem(atPath: permission777.path)
+                let attributes600 = try fileManager.attributesOfItem(atPath: permission600.path)
+                let attributes604 = try fileManager.attributesOfItem(atPath: permission604.path)
+                XCTAssertEqual(attributes777[.posixPermissions] as? Int, 0o777)
+                XCTAssertEqual(attributes600[.posixPermissions] as? Int, 0o600)
+                XCTAssertEqual(attributes604[.posixPermissions] as? Int, 0o604)
+            } catch {
+                XCTFail("Failed to get file attributes \(error)")
+            }
+        } catch {
+            XCTFail("Failed extract permissions.zip")
+        }
+    }
     
     func testQuickUnzipSubDir() {
         do {

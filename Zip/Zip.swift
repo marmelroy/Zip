@@ -82,7 +82,7 @@ public class Zip {
      - notes: Supports implicit progress composition
      */
     
-    public class func unzipFile(_ zipFilePath: URL, destination: URL, overwrite: Bool, password: String?, progress: ((_ progress: Double) -> ())?) throws {
+    public class func unzipFile(_ zipFilePath: URL, destination: URL, overwrite: Bool, password: String?, progress: ((_ progress: Double) -> ())? = nil, fileOutputHandler: ((_ unzippedFile: URL) -> Void)? = nil) throws {
         
         // File manager
         let fileManager = FileManager.default
@@ -145,9 +145,10 @@ public class Zip {
 
             unzGetCurrentFileInfo64(zip, &fileInfo, fileName, UInt(fileNameSize), nil, 0, nil, 0)
             fileName[Int(fileInfo.size_filename)] = 0
+
             var pathString = String(cString: fileName)
             
-            guard pathString.characters.count > 0 else {
+            guard pathString.count > 0 else {
                 throw ZipError.unzipFail
             }
 
@@ -164,8 +165,10 @@ public class Zip {
             let fullPath = destination.appendingPathComponent(pathString).path
 
             let creationDate = Date()
-            let directoryAttributes = [FileAttributeKey.creationDate.rawValue : creationDate,
-                                       FileAttributeKey.modificationDate.rawValue : creationDate]
+
+            let directoryAttributes = [FileAttributeKey.creationDate : creationDate,
+                                       FileAttributeKey.modificationDate : creationDate]
+
             do {
                 if isDirectory {
                     try fileManager.createDirectory(atPath: fullPath, withIntermediateDirectories: true, attributes: directoryAttributes)
@@ -179,27 +182,55 @@ public class Zip {
                 unzCloseCurrentFile(zip)
                 ret = unzGoToNextFile(zip)
             }
+
+            var writeBytes: UInt64 = 0
             var filePointer: UnsafeMutablePointer<FILE>?
             filePointer = fopen(fullPath, "wb")
             while filePointer != nil {
                 let readBytes = unzReadCurrentFile(zip, &buffer, bufferSize)
                 if readBytes > 0 {
-                    fwrite(buffer, Int(readBytes), 1, filePointer)
+                    guard fwrite(buffer, Int(readBytes), 1, filePointer) == 1 else {
+                        throw ZipError.unzipFail
+                    }
+                    writeBytes += UInt64(readBytes)
                 }
                 else {
                     break
                 }
             }
+
             fclose(filePointer)
             crc_ret = unzCloseCurrentFile(zip)
             if crc_ret == UNZ_CRCERROR {
                 throw ZipError.unzipFail
             }
+            guard writeBytes == fileInfo.uncompressed_size else {
+                throw ZipError.unzipFail
+            }
+
+            //Set file permissions from current fileInfo
+            if fileInfo.external_fa != 0 {
+                let permissions = (fileInfo.external_fa >> 16) & 0x1FF
+                //We will devifne a valid permission range between Owner read only to full access
+                if permissions >= 0o400 && permissions <= 0o777 {
+                    do {
+                        try fileManager.setAttributes([.posixPermissions : permissions], ofItemAtPath: fullPath)
+                    } catch {
+                        print("Failed to set permissions to file \(fullPath), error: \(error)")
+                    }
+                }
+            }
+
             ret = unzGoToNextFile(zip)
             
             // Update progress handler
             if let progressHandler = progress{
                 progressHandler((currentPosition/totalSize))
+            }
+            
+            if let fileHandler = fileOutputHandler,
+                let fileUrl = URL(string: fullPath) {
+                fileHandler(fileUrl)
             }
             
             progressTracker.completedUnitCount = Int64(currentPosition)
