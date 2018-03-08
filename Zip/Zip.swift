@@ -28,7 +28,7 @@ public enum ZipError: Error {
     }
 }
 
-public enum ZipCompression: Int {
+@objc public enum ZipCompression: Int {
     case NoCompression
     case BestSpeed
     case DefaultCompression
@@ -49,7 +49,7 @@ public enum ZipCompression: Int {
 }
 
 /// Zip class
-public class Zip {
+@objc public class Zip: NSObject {
     
     /**
      Set of vaild file extensions
@@ -63,7 +63,7 @@ public class Zip {
      
      - returns: Zip object
      */
-    public init () {
+    public override init () {
     }
     
     // MARK: Unzip
@@ -82,7 +82,7 @@ public class Zip {
      - notes: Supports implicit progress composition
      */
     
-    public class func unzipFile(_ zipFilePath: URL, destination: URL, overwrite: Bool, password: String?, progress: ((_ progress: Double) -> ())? = nil, fileOutputHandler: ((_ unzippedFile: URL) -> Void)? = nil) throws {
+    @objc public class func unzipFile(_ zipFilePath: URL, destination: URL, overwrite: Bool, password: String?, progress: ((_ progress: Double) -> ())? = nil, fileOutputHandler: ((_ unzippedFile: URL) -> Void)? = nil) throws {
         
         // File manager
         let fileManager = FileManager.default
@@ -262,7 +262,7 @@ public class Zip {
      
      - notes: Supports implicit progress composition
      */
-    public class func zipFiles(paths: [URL], zipFilePath: URL, password: String?, compression: ZipCompression = .DefaultCompression, progress: ((_ progress: Double) -> ())?) throws {
+    @objc public class func zipFiles(paths: [URL], zipFilePath: URL, password: String?, compression: ZipCompression = .DefaultCompression, progress: ((_ progress: Double) -> ())?) throws {
         
         // File manager
         let fileManager = FileManager.default
@@ -383,7 +383,7 @@ public class Zip {
      
      - parameter fileExtension: A file extension.
      */
-    public class func addCustomFileExtension(_ fileExtension: String) {
+    @objc public class func addCustomFileExtension(_ fileExtension: String) {
         customFileExtensions.insert(fileExtension)
     }
     
@@ -392,7 +392,7 @@ public class Zip {
      
      - parameter fileExtension: A file extension.
      */
-    public class func removeCustomFileExtension(_ fileExtension: String) {
+    @objc public class func removeCustomFileExtension(_ fileExtension: String) {
         customFileExtensions.remove(fileExtension)
     }
     
@@ -403,7 +403,7 @@ public class Zip {
      
      - returns: true if the extension valid, otherwise false.
      */
-    public class func isValidFileExtension(_ fileExtension: String) -> Bool {
+    @objc public class func isValidFileExtension(_ fileExtension: String) -> Bool {
         
         let validFileExtensions: Set<String> = customFileExtensions.union(["zip", "cbz"])
         
