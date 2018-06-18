@@ -48,6 +48,23 @@ public enum ZipCompression: Int {
     }
 }
 
+public enum AppendStatus {
+    case create
+    case createAfter
+    case addinZip
+    
+    internal var minizipStatus: Int32 {
+        switch self {
+        case .create:
+            return APPEND_STATUS_CREATE
+        case .createAfter:
+            return APPEND_STATUS_CREATEAFTER
+        case .addinZip:
+            return APPEND_STATUS_ADDINZIP
+        }
+    }
+}
+
 /// Zip class
 public class Zip {
     
@@ -263,7 +280,7 @@ public class Zip {
      
      - notes: Supports implicit progress composition
      */
-    public class func zipFiles(paths: [URL], zipFilePath: URL, password: String?, compression: ZipCompression = .DefaultCompression, progress: ((_ progress: Double) -> ())?) throws {
+    public class func zipFiles(paths: [URL], zipFilePath: URL, password: String?, compression: ZipCompression = .DefaultCompression, appendStatus: AppendStatus = .create, progress: ((_ progress: Double) -> ())?) throws {
         
         // File manager
         let fileManager = FileManager.default
@@ -299,7 +316,7 @@ public class Zip {
         progressTracker.kind = ProgressKind.file
         
         // Begin Zipping
-        let zip = zipOpen(destinationPath, APPEND_STATUS_CREATE)
+        let zip = zipOpen(destinationPath, appendStatus.minizipStatus)
         for path in processedPaths {
             let filePath = path.filePath()
             var isDirectory: ObjCBool = false
