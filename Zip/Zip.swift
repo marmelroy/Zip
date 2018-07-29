@@ -244,7 +244,8 @@ public class Zip {
             }
             
             if let fileHandler = fileOutputHandler,
-                let fileUrl = URL(string: fullPath) {
+                let encodedString = fullPath.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+                let fileUrl = URL(string: encodedString) {
                 fileHandler(fileUrl)
             }
             
