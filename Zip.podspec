@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.name             = "Zip"
   s.version          = "1.1.0"
   s.summary          = "Zip and unzip files in Swift."
-  s.swift_version    = "4.1"
+  s.swift_version    = "4.2"
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -33,8 +33,6 @@ Pod::Spec.new do |s|
   s.watchos.deployment_target = '2.0'
   s.osx.deployment_target = '10.9'
   s.requires_arc = true
-
-  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.0' }
 
   s.source_files = 'Zip/*.{swift,h}', 'Zip/minizip/*.{c,h}', 'Zip/minizip/aes/*.{c,h}'
   s.public_header_files = 'Zip/*.h'
