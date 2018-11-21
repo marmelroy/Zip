@@ -96,8 +96,8 @@
 		347E3A831C1DFFB500A11FD3 /* ZipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZipTests.swift; sourceTree = "<group>"; };
 		347E3A851C1DFFB500A11FD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		347E3AD71C1E04C900A11FD3 /* Zip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zip.swift; sourceTree = "<group>"; };
-		34940A221C58876200D41574 /* 3crBXeO.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 3crBXeO.gif; path = Images/3crBXeO.gif; sourceTree = "<group>"; };
-		34940A231C58876200D41574 /* kYkLkPf.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = kYkLkPf.gif; path = Images/kYkLkPf.gif; sourceTree = "<group>"; };
+		34940A221C58876200D41574 /* 3crBXeO.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 3crBXeO.gif; sourceTree = "<group>"; };
+		34940A231C58876200D41574 /* kYkLkPf.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = kYkLkPf.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +144,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07E4424421A5C385009BE4AB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				305237171E64595700CA46D1 /* unsupported_permissions.zip */,
+				303B4F6D1E4CBE5000DC1633 /* permissions.zip */,
+				34940A221C58876200D41574 /* 3crBXeO.gif */,
+				34940A231C58876200D41574 /* kYkLkPf.gif */,
+				3443A3FC1C4AD199004AD173 /* bb8.zip */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		342FC0D01C5044DC0023A3C3 /* minizip */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,11 +210,7 @@
 		347E3A821C1DFFB500A11FD3 /* ZipTests */ = {
 			isa = PBXGroup;
 			children = (
-				305237171E64595700CA46D1 /* unsupported_permissions.zip */,
-				303B4F6D1E4CBE5000DC1633 /* permissions.zip */,
-				34940A221C58876200D41574 /* 3crBXeO.gif */,
-				34940A231C58876200D41574 /* kYkLkPf.gif */,
-				3443A3FC1C4AD199004AD173 /* bb8.zip */,
+				07E4424421A5C385009BE4AB /* Resources */,
 				347E3A831C1DFFB500A11FD3 /* ZipTests.swift */,
 				347E3A851C1DFFB500A11FD3 /* Info.plist */,
 			);
@@ -683,6 +691,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = Xcode;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -736,6 +745,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = Xcode;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
