@@ -53,7 +53,7 @@ catch {
 ## Custom File Extensions
 
 Zip supports '.zip' and '.cbz' files out of the box. To support additional zip-derivative file extensions:
-```
+```swift
 Zip.addCustomFileExtension("file-extension-here")
 ```
 
@@ -63,19 +63,15 @@ source 'https://github.com/CocoaPods/Specs.git'
 pod 'Zip', '~> 1.1'
 ```
 
-### Setting up with Carthage
-
-[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that automates the process of adding frameworks to your Cocoa application.
-
-You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
-
-```bash
-$ brew update
-$ brew install carthage
-```
-
+### Setting up with [Carthage](https://github.com/Carthage/Carthage)
 To integrate Zip into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "marmelroy/Zip"
+github "marmelroy/Zip" ~> 1.1
+```
+
+### Setting up with [Swift Package Manager](https://swift.org/package-manager)
+To use Zip with Swift Package Manager, add it to your package's dependencies:
+```swift
+.package(url: "https://github.com/marmelroy/Zip.git", .upToNextMinor(from: "1.1.0"))
 ```
