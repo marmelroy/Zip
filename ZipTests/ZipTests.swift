@@ -10,13 +10,25 @@ import XCTest
 @testable import Zip
 
 class ZipTests: XCTestCase {
-    
+
+    #if os(Linux)
+    private let tearDownBlocksQueue = DispatchQueue(label: "XCTest.XCTestCase.tearDownBlocks.lock")
+    private var tearDownBlocks: [() -> Void] = []
+    func addTeardownBlock(_ block: @escaping () -> Void) {
+        tearDownBlocksQueue.sync { tearDownBlocks.append(block) }
+    }
+    #endif
+
     override func setUp() {
         super.setUp()
     }
     
     override func tearDown() {
         super.tearDown()
+        #if os(Linux)
+        var blocks = tearDownBlocksQueue.sync { tearDownBlocks }
+        while let next = blocks.popLast() { next() }
+        #endif
     }
 
     private func url(forResource resource: String, withExtension ext: String? = nil) -> URL? {
@@ -96,8 +108,7 @@ class ZipTests: XCTestCase {
     }
     
     func testImplicitProgressUnzip() throws {
-        let progress = Progress()
-        progress.totalUnitCount = 1
+        let progress = Progress(totalUnitCount: 1)
 
         let filePath = url(forResource: "bb8", withExtension: "zip")!
         let destinationPath = try autoRemovingSandbox()
@@ -110,8 +121,7 @@ class ZipTests: XCTestCase {
     }
     
     func testImplicitProgressZip() throws {
-        let progress = Progress()
-        progress.totalUnitCount = 1
+        let progress = Progress(totalUnitCount: 1)
 
         let imageURL1 = url(forResource: "3crBXeO", withExtension: "gif")!
         let imageURL2 = url(forResource: "kYkLkPf", withExtension: "gif")!
