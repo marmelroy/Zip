@@ -173,14 +173,12 @@ class ZipTests: XCTestCase {
     func testZipUnzipPassword() throws {
         let imageURL1 = url(forResource: "3crBXeO", withExtension: "gif")!
         let imageURL2 = url(forResource: "kYkLkPf", withExtension: "gif")!
-        let sandboxFolder = try autoRemovingSandbox()
-        let zipFilePath = sandboxFolder.appendingPathComponent("archive.zip")
+        let zipFilePath = try autoRemovingSandbox().appendingPathComponent("archive.zip")
         try Zip.zipFiles(paths: [imageURL1, imageURL2], zipFilePath: zipFilePath, password: "password", progress: nil)
         let fileManager = FileManager.default
         XCTAssertTrue(fileManager.fileExists(atPath: zipFilePath.path))
         let directoryName = zipFilePath.lastPathComponent.replacingOccurrences(of: ".\(zipFilePath.pathExtension)", with: "")
-        let documentsUrl = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let destinationUrl = documentsUrl.appendingPathComponent(directoryName, isDirectory: true)
+        let destinationUrl = try autoRemovingSandbox().appendingPathComponent(directoryName, isDirectory: true)
         try Zip.unzipFile(zipFilePath, destination: destinationUrl, overwrite: true, password: "password", progress: nil)
         XCTAssertTrue(fileManager.fileExists(atPath: destinationUrl.path))
     }
