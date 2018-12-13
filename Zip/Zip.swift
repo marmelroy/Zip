@@ -180,8 +180,16 @@ public class Zip {
 
             let creationDate = Date()
 
-            let directoryAttributes = [FileAttributeKey.creationDate : creationDate,
-                                       FileAttributeKey.modificationDate : creationDate]
+            let directoryAttributes: [FileAttributeKey: Any]?
+            #if os(Linux)
+                // On Linux, setting attributes is not yet really implemented.
+                // In Swift 4.2, the only settable attribute is `.posixPermissions`.
+                // See https://github.com/apple/swift-corelibs-foundation/blob/swift-4.2-branch/Foundation/FileManager.swift#L182-L196
+                directoryAttributes = nil
+            #else
+                directoryAttributes = [.creationDate : creationDate,
+                                       .modificationDate : creationDate]
+            #endif
 
             do {
                 if isDirectory {
