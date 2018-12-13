@@ -7,16 +7,23 @@ let package = Package(
     products: [
         .library(name: "Zip", targets: ["Zip"])
     ],
+    dependencies: [
+        // .package(url: "https://github.com/apple/swift-nio-zlib-support.git", from: "1.0.0"),
+    ],
     targets: [
+        .systemLibrary(
+            name: "CZlib",
+            path: "Zip/zlib",
+            pkgConfig: "zlib"),
         .target(
-            name: "minizip",
-            dependencies: [],
+            name: "Minizip",
+            dependencies: ["CZlib"],
             path: "Zip/minizip"),
         .target(
             name: "Zip",
-            dependencies: ["minizip"],
+            dependencies: ["Minizip"],
             path: "Zip",
-            exclude: ["minizip"]),
+            exclude: ["minizip", "zlib"]),
         .testTarget(
             name: "ZipTests",
             dependencies: ["Zip"],
