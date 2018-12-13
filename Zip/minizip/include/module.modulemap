@@ -1,5 +1,6 @@
 module Minizip [system][extern_c] {
     header "../unzip.h"
     header "../zip.h"
+    link "z"
     export *
 }
