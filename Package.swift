@@ -7,9 +7,6 @@ let package = Package(
     products: [
         .library(name: "Zip", targets: ["Zip"])
     ],
-    dependencies: [
-        // .package(url: "https://github.com/apple/swift-nio-zlib-support.git", from: "1.0.0"),
-    ],
     targets: [
         .systemLibrary(
             name: "CZlib",
