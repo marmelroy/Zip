@@ -10,7 +10,7 @@ import Foundation
 import Minizip
 
 /// Zip error type
-public enum ZipError: Error {
+public enum ZipError: LocalizedError {
     /// File not found
     case fileNotFound
     /// Unzip fail
@@ -19,7 +19,7 @@ public enum ZipError: Error {
     case zipFail
     
     /// User readable description
-    public var description: String {
+    public var errorDescription: String? {
         switch self {
         case .fileNotFound: return NSLocalizedString("File not found.", comment: "")
         case .unzipFail: return NSLocalizedString("Failed to unzip file.", comment: "")
