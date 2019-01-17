@@ -12,8 +12,8 @@
    See the accompanying LICENSE file for the full text of the license.
 */
 
-#ifndef _ZIP_H
-#define _ZIP_H
+#ifndef _MZ_ZIP_H
+#define _MZ_ZIP_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -195,4 +195,4 @@ extern int ZEXPORT zipClose OF((zipFile file, const char* global_comment));
 }
 #endif
 
-#endif /* _ZIP_H */
+#endif /* _MZ_ZIP_H */

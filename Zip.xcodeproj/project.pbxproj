@@ -13,10 +13,10 @@
 		342545921CE525B200336074 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0EB1C5044DC0023A3C3 /* unzip.c */; };
 		342545941CE525B200336074 /* QuickZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3443A3F51C4AB8A3004AD173 /* QuickZip.swift */; };
 		342545951CE525B200336074 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0E81C5044DC0023A3C3 /* ioapi.c */; };
-		342545991CE525B200336074 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0ED1C5044DC0023A3C3 /* zip.c */; };
+		342545991CE525B200336074 /* mz_zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0ED1C5044DC0023A3C3 /* mz_zip.c */; };
 		3425459A1CE525B200336074 /* ZipUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343625BA1C5827DC0023C4C6 /* ZipUtilities.swift */; };
 		3425459E1CE525B200336074 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3430F61F1C45C805007473A6 /* libz.tbd */; };
-		342545A11CE525B200336074 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0EE1C5044DC0023A3C3 /* zip.h */; };
+		342545A11CE525B200336074 /* mz_zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0EE1C5044DC0023A3C3 /* mz_zip.h */; };
 		342545A41CE525B200336074 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0EC1C5044DC0023A3C3 /* unzip.h */; };
 		342545A71CE525B200336074 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0E71C5044DC0023A3C3 /* crypt.h */; };
 		342545AB1CE525B200336074 /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0E91C5044DC0023A3C3 /* ioapi.h */; };
@@ -26,8 +26,8 @@
 		342FC1061C5044DC0023A3C3 /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0E91C5044DC0023A3C3 /* ioapi.h */; };
 		342FC1071C5044DC0023A3C3 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0EB1C5044DC0023A3C3 /* unzip.c */; };
 		342FC1081C5044DC0023A3C3 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0EC1C5044DC0023A3C3 /* unzip.h */; };
-		342FC1091C5044DC0023A3C3 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0ED1C5044DC0023A3C3 /* zip.c */; };
-		342FC10A1C5044DC0023A3C3 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0EE1C5044DC0023A3C3 /* zip.h */; };
+		342FC1091C5044DC0023A3C3 /* mz_zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0ED1C5044DC0023A3C3 /* mz_zip.c */; };
+		342FC10A1C5044DC0023A3C3 /* mz_zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0EE1C5044DC0023A3C3 /* mz_zip.h */; };
 		3430F6201C45C805007473A6 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3430F61F1C45C805007473A6 /* libz.tbd */; };
 		343625BB1C5827DC0023C4C6 /* ZipUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343625BA1C5827DC0023C4C6 /* ZipUtilities.swift */; };
 		343F51091C8DAEEC0028C434 /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 343F50FF1C8DAEEC0028C434 /* Zip.framework */; };
@@ -39,8 +39,8 @@
 		343F511B1C8DAFDB0028C434 /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0E91C5044DC0023A3C3 /* ioapi.h */; };
 		343F511C1C8DAFE00028C434 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0EB1C5044DC0023A3C3 /* unzip.c */; };
 		343F511D1C8DAFE30028C434 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0EC1C5044DC0023A3C3 /* unzip.h */; };
-		343F511E1C8DAFE50028C434 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0ED1C5044DC0023A3C3 /* zip.c */; };
-		343F511F1C8DAFE80028C434 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0EE1C5044DC0023A3C3 /* zip.h */; };
+		343F511E1C8DAFE50028C434 /* mz_zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0ED1C5044DC0023A3C3 /* mz_zip.c */; };
+		343F511F1C8DAFE80028C434 /* mz_zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0EE1C5044DC0023A3C3 /* mz_zip.h */; };
 		343F51351C8DB0480028C434 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3430F61F1C45C805007473A6 /* libz.tbd */; };
 		343F51361C8DB0720028C434 /* Zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 347E3A771C1DFFB500A11FD3 /* Zip.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3443A3F61C4AB8A3004AD173 /* QuickZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3443A3F51C4AB8A3004AD173 /* QuickZip.swift */; };
@@ -80,8 +80,8 @@
 		342FC0EA1C5044DC0023A3C3 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		342FC0EB1C5044DC0023A3C3 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
 		342FC0EC1C5044DC0023A3C3 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
-		342FC0ED1C5044DC0023A3C3 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
-		342FC0EE1C5044DC0023A3C3 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		342FC0ED1C5044DC0023A3C3 /* mz_zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mz_zip.c; sourceTree = "<group>"; };
+		342FC0EE1C5044DC0023A3C3 /* mz_zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mz_zip.h; sourceTree = "<group>"; };
 		3430F61F1C45C805007473A6 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		343625BA1C5827DC0023C4C6 /* ZipUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipUtilities.swift; sourceTree = "<group>"; };
 		343F50FF1C8DAEEC0028C434 /* Zip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Zip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,8 +153,8 @@
 				342FC0EA1C5044DC0023A3C3 /* module.modulemap */,
 				342FC0EB1C5044DC0023A3C3 /* unzip.c */,
 				342FC0EC1C5044DC0023A3C3 /* unzip.h */,
-				342FC0ED1C5044DC0023A3C3 /* zip.c */,
-				342FC0EE1C5044DC0023A3C3 /* zip.h */,
+				342FC0ED1C5044DC0023A3C3 /* mz_zip.c */,
+				342FC0EE1C5044DC0023A3C3 /* mz_zip.h */,
 			);
 			path = minizip;
 			sourceTree = "<group>";
@@ -216,7 +216,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				342545A11CE525B200336074 /* zip.h in Headers */,
+				342545A11CE525B200336074 /* mz_zip.h in Headers */,
 				342545A41CE525B200336074 /* unzip.h in Headers */,
 				342545A71CE525B200336074 /* crypt.h in Headers */,
 				342545AB1CE525B200336074 /* ioapi.h in Headers */,
@@ -231,7 +231,7 @@
 				343F51361C8DB0720028C434 /* Zip.h in Headers */,
 				343F511B1C8DAFDB0028C434 /* ioapi.h in Headers */,
 				343F51191C8DAFD50028C434 /* crypt.h in Headers */,
-				343F511F1C8DAFE80028C434 /* zip.h in Headers */,
+				343F511F1C8DAFE80028C434 /* mz_zip.h in Headers */,
 				343F511D1C8DAFE30028C434 /* unzip.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,7 +240,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				342FC10A1C5044DC0023A3C3 /* zip.h in Headers */,
+				342FC10A1C5044DC0023A3C3 /* mz_zip.h in Headers */,
 				342FC1081C5044DC0023A3C3 /* unzip.h in Headers */,
 				342FC1041C5044DC0023A3C3 /* crypt.h in Headers */,
 				342FC1061C5044DC0023A3C3 /* ioapi.h in Headers */,
@@ -440,7 +440,7 @@
 				342545921CE525B200336074 /* unzip.c in Sources */,
 				342545941CE525B200336074 /* QuickZip.swift in Sources */,
 				342545951CE525B200336074 /* ioapi.c in Sources */,
-				342545991CE525B200336074 /* zip.c in Sources */,
+				342545991CE525B200336074 /* mz_zip.c in Sources */,
 				3425459A1CE525B200336074 /* ZipUtilities.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -452,7 +452,7 @@
 				343F51161C8DAF3F0028C434 /* ZipUtilities.swift in Sources */,
 				343F511C1C8DAFE00028C434 /* unzip.c in Sources */,
 				343F51171C8DAF410028C434 /* QuickZip.swift in Sources */,
-				343F511E1C8DAFE50028C434 /* zip.c in Sources */,
+				343F511E1C8DAFE50028C434 /* mz_zip.c in Sources */,
 				343F511A1C8DAFD90028C434 /* ioapi.c in Sources */,
 				343F51181C8DAF450028C434 /* Zip.swift in Sources */,
 			);
@@ -473,7 +473,7 @@
 				342FC1071C5044DC0023A3C3 /* unzip.c in Sources */,
 				3443A3F61C4AB8A3004AD173 /* QuickZip.swift in Sources */,
 				342FC1051C5044DC0023A3C3 /* ioapi.c in Sources */,
-				342FC1091C5044DC0023A3C3 /* zip.c in Sources */,
+				342FC1091C5044DC0023A3C3 /* mz_zip.c in Sources */,
 				343625BB1C5827DC0023C4C6 /* ZipUtilities.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

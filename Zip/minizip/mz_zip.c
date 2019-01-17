@@ -1,4 +1,4 @@
-/* zip.c -- IO on .zip files using zlib
+/* mz_zip.c -- IO on .zip files using zlib
    Version 1.1, February 14h, 2010
    part of the MiniZip project
 
@@ -19,7 +19,7 @@
 #include <string.h>
 #include <time.h>
 #include "zlib.h"
-#include "zip.h"
+#include "mz_zip.h"
 
 #ifdef STDC
 #  include <stddef.h>
