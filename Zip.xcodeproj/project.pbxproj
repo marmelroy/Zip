@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0770AECE224BDC030040B364 /* Minizip.h in Headers */ = {isa = PBXBuildFile; fileRef = 0770AECD224BDC030040B364 /* Minizip.h */; };
+		0770AECF224BDC120040B364 /* Minizip.h in Headers */ = {isa = PBXBuildFile; fileRef = 0770AECD224BDC030040B364 /* Minizip.h */; };
+		0770AED0224BDC130040B364 /* Minizip.h in Headers */ = {isa = PBXBuildFile; fileRef = 0770AECD224BDC030040B364 /* Minizip.h */; };
 		07B2360221C2C697001E8634 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 07B235FD21C2C674001E8634 /* crypt.h */; };
 		07B2360321C2C697001E8634 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 07B235FE21C2C674001E8634 /* zip.h */; };
 		07B2360421C2C697001E8634 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = 07B235FF21C2C674001E8634 /* unzip.h */; };
@@ -71,10 +74,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0770AECD224BDC030040B364 /* Minizip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Minizip.h; sourceTree = "<group>"; };
+		0770AED3224BDF080040B364 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		07B235FD21C2C674001E8634 /* crypt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
 		07B235FE21C2C674001E8634 /* zip.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
 		07B235FF21C2C674001E8634 /* unzip.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
-		07B2360021C2C674001E8634 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		07B2360121C2C674001E8634 /* ioapi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
 		303B4F6D1E4CBE5000DC1633 /* permissions.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = permissions.zip; sourceTree = "<group>"; };
 		305237171E64595700CA46D1 /* unsupported_permissions.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = unsupported_permissions.zip; sourceTree = "<group>"; };
@@ -144,14 +148,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0770AED2224BDF080040B364 /* module */ = {
+			isa = PBXGroup;
+			children = (
+				0770AED3224BDF080040B364 /* module.modulemap */,
+			);
+			path = module;
+			sourceTree = "<group>";
+		};
 		07B235FC21C2C674001E8634 /* include */ = {
 			isa = PBXGroup;
 			children = (
+				0770AECD224BDC030040B364 /* Minizip.h */,
 				07B235FD21C2C674001E8634 /* crypt.h */,
 				07B235FE21C2C674001E8634 /* zip.h */,
 				07B235FF21C2C674001E8634 /* unzip.h */,
 				07B2360121C2C674001E8634 /* ioapi.h */,
-				07B2360021C2C674001E8634 /* module.modulemap */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -171,6 +183,7 @@
 		342FC0D01C5044DC0023A3C3 /* minizip */ = {
 			isa = PBXGroup;
 			children = (
+				0770AED2224BDF080040B364 /* module */,
 				07B235FC21C2C674001E8634 /* include */,
 				342FC0E81C5044DC0023A3C3 /* ioapi.c */,
 				342FC0EB1C5044DC0023A3C3 /* unzip.c */,
@@ -235,6 +248,7 @@
 				07B2360B21C2C698001E8634 /* zip.h in Headers */,
 				342545AE1CE525B200336074 /* Zip.h in Headers */,
 				07B2360A21C2C698001E8634 /* crypt.h in Headers */,
+				0770AED0224BDC130040B364 /* Minizip.h in Headers */,
 				07B2360C21C2C698001E8634 /* unzip.h in Headers */,
 				07B2360D21C2C698001E8634 /* ioapi.h in Headers */,
 			);
@@ -247,6 +261,7 @@
 				07B2360721C2C697001E8634 /* zip.h in Headers */,
 				343F51361C8DB0720028C434 /* Zip.h in Headers */,
 				07B2360621C2C697001E8634 /* crypt.h in Headers */,
+				0770AECF224BDC120040B364 /* Minizip.h in Headers */,
 				07B2360821C2C697001E8634 /* unzip.h in Headers */,
 				07B2360921C2C697001E8634 /* ioapi.h in Headers */,
 			);
@@ -259,6 +274,7 @@
 				347E3A781C1DFFB500A11FD3 /* Zip.h in Headers */,
 				07B2360221C2C697001E8634 /* crypt.h in Headers */,
 				07B2360521C2C697001E8634 /* ioapi.h in Headers */,
+				0770AECE224BDC030040B364 /* Minizip.h in Headers */,
 				07B2360421C2C697001E8634 /* unzip.h in Headers */,
 				07B2360321C2C697001E8634 /* zip.h in Headers */,
 			);
@@ -364,7 +380,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Roy Marmelstein";
 				TargetAttributes = {
 					343F50FE1C8DAEEC0028C434 = {
@@ -385,10 +401,11 @@
 			};
 			buildConfigurationList = 347E3A6E1C1DFFB500A11FD3 /* Build configuration list for PBXProject "Zip" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 347E3A6A1C1DFFB500A11FD3;
 			productRefGroup = 347E3A751C1DFFB500A11FD3 /* Products */;
@@ -652,6 +669,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -701,7 +719,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = Xcode;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -713,6 +731,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -755,7 +774,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = Xcode;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
