@@ -326,7 +326,7 @@ public class Zip {
         for path in processedPaths {
             let filePath = path.filePath()
             var isDirectory: ObjCBool = false
-            fileManager.fileExists(atPath: filePath, isDirectory: &isDirectory)
+            _ = fileManager.fileExists(atPath: filePath, isDirectory: &isDirectory)
             if !isDirectory.boolValue {
                 let input = fopen(filePath, "r")
                 if input == nil {
