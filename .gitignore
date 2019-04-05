@@ -3,6 +3,8 @@
 # Xcode
 #
 build/
+.build/
+build
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -11,6 +13,7 @@ build/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
+*.xcodeproj
 xcuserdata
 *.xccheckout
 *.moved-aside

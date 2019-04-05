@@ -1,877 +1,866 @@
 // !$*UTF8*$!
 {
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		303B4F6E1E4CBE5000DC1633 /* permissions.zip in Resources */ = {isa = PBXBuildFile; fileRef = 303B4F6D1E4CBE5000DC1633 /* permissions.zip */; };
-		305237181E64595700CA46D1 /* unsupported_permissions.zip in Resources */ = {isa = PBXBuildFile; fileRef = 305237171E64595700CA46D1 /* unsupported_permissions.zip */; };
-		342545901CE525B200336074 /* Zip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347E3AD71C1E04C900A11FD3 /* Zip.swift */; };
-		342545921CE525B200336074 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0EB1C5044DC0023A3C3 /* unzip.c */; };
-		342545941CE525B200336074 /* QuickZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3443A3F51C4AB8A3004AD173 /* QuickZip.swift */; };
-		342545951CE525B200336074 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0E81C5044DC0023A3C3 /* ioapi.c */; };
-		342545991CE525B200336074 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0ED1C5044DC0023A3C3 /* zip.c */; };
-		3425459A1CE525B200336074 /* ZipUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343625BA1C5827DC0023C4C6 /* ZipUtilities.swift */; };
-		3425459E1CE525B200336074 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3430F61F1C45C805007473A6 /* libz.tbd */; };
-		342545A11CE525B200336074 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0EE1C5044DC0023A3C3 /* zip.h */; };
-		342545A41CE525B200336074 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0EC1C5044DC0023A3C3 /* unzip.h */; };
-		342545A71CE525B200336074 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0E71C5044DC0023A3C3 /* crypt.h */; };
-		342545AB1CE525B200336074 /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0E91C5044DC0023A3C3 /* ioapi.h */; };
-		342545AE1CE525B200336074 /* Zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 347E3A771C1DFFB500A11FD3 /* Zip.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		342FC1041C5044DC0023A3C3 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0E71C5044DC0023A3C3 /* crypt.h */; };
-		342FC1051C5044DC0023A3C3 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0E81C5044DC0023A3C3 /* ioapi.c */; };
-		342FC1061C5044DC0023A3C3 /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0E91C5044DC0023A3C3 /* ioapi.h */; };
-		342FC1071C5044DC0023A3C3 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0EB1C5044DC0023A3C3 /* unzip.c */; };
-		342FC1081C5044DC0023A3C3 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0EC1C5044DC0023A3C3 /* unzip.h */; };
-		342FC1091C5044DC0023A3C3 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0ED1C5044DC0023A3C3 /* zip.c */; };
-		342FC10A1C5044DC0023A3C3 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0EE1C5044DC0023A3C3 /* zip.h */; };
-		3430F6201C45C805007473A6 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3430F61F1C45C805007473A6 /* libz.tbd */; };
-		343625BB1C5827DC0023C4C6 /* ZipUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343625BA1C5827DC0023C4C6 /* ZipUtilities.swift */; };
-		343F51091C8DAEEC0028C434 /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 343F50FF1C8DAEEC0028C434 /* Zip.framework */; };
-		343F51161C8DAF3F0028C434 /* ZipUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343625BA1C5827DC0023C4C6 /* ZipUtilities.swift */; };
-		343F51171C8DAF410028C434 /* QuickZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3443A3F51C4AB8A3004AD173 /* QuickZip.swift */; };
-		343F51181C8DAF450028C434 /* Zip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347E3AD71C1E04C900A11FD3 /* Zip.swift */; };
-		343F51191C8DAFD50028C434 /* crypt.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0E71C5044DC0023A3C3 /* crypt.h */; };
-		343F511A1C8DAFD90028C434 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0E81C5044DC0023A3C3 /* ioapi.c */; };
-		343F511B1C8DAFDB0028C434 /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0E91C5044DC0023A3C3 /* ioapi.h */; };
-		343F511C1C8DAFE00028C434 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0EB1C5044DC0023A3C3 /* unzip.c */; };
-		343F511D1C8DAFE30028C434 /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0EC1C5044DC0023A3C3 /* unzip.h */; };
-		343F511E1C8DAFE50028C434 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 342FC0ED1C5044DC0023A3C3 /* zip.c */; };
-		343F511F1C8DAFE80028C434 /* zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 342FC0EE1C5044DC0023A3C3 /* zip.h */; };
-		343F51351C8DB0480028C434 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3430F61F1C45C805007473A6 /* libz.tbd */; };
-		343F51361C8DB0720028C434 /* Zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 347E3A771C1DFFB500A11FD3 /* Zip.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3443A3F61C4AB8A3004AD173 /* QuickZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3443A3F51C4AB8A3004AD173 /* QuickZip.swift */; };
-		3443A3FD1C4AD199004AD173 /* bb8.zip in Resources */ = {isa = PBXBuildFile; fileRef = 3443A3FC1C4AD199004AD173 /* bb8.zip */; };
-		347E3A781C1DFFB500A11FD3 /* Zip.h in Headers */ = {isa = PBXBuildFile; fileRef = 347E3A771C1DFFB500A11FD3 /* Zip.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		347E3A7F1C1DFFB500A11FD3 /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 347E3A741C1DFFB500A11FD3 /* Zip.framework */; };
-		347E3A841C1DFFB500A11FD3 /* ZipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347E3A831C1DFFB500A11FD3 /* ZipTests.swift */; };
-		347E3AD81C1E04C900A11FD3 /* Zip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347E3AD71C1E04C900A11FD3 /* Zip.swift */; };
-		34940A241C58876200D41574 /* 3crBXeO.gif in Resources */ = {isa = PBXBuildFile; fileRef = 34940A221C58876200D41574 /* 3crBXeO.gif */; };
-		34940A251C58876200D41574 /* kYkLkPf.gif in Resources */ = {isa = PBXBuildFile; fileRef = 34940A231C58876200D41574 /* kYkLkPf.gif */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		343F510A1C8DAEEC0028C434 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 347E3A6B1C1DFFB500A11FD3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 343F50FE1C8DAEEC0028C434;
-			remoteInfo = "Zip OSX";
-		};
-		347E3A801C1DFFB500A11FD3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 347E3A6B1C1DFFB500A11FD3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 347E3A731C1DFFB500A11FD3;
-			remoteInfo = Zip;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXFileReference section */
-		303B4F6D1E4CBE5000DC1633 /* permissions.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = permissions.zip; sourceTree = "<group>"; };
-		305237171E64595700CA46D1 /* unsupported_permissions.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = unsupported_permissions.zip; sourceTree = "<group>"; };
-		342545B51CE525B200336074 /* Zip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Zip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		342FC0E71C5044DC0023A3C3 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
-		342FC0E81C5044DC0023A3C3 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
-		342FC0E91C5044DC0023A3C3 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
-		342FC0EA1C5044DC0023A3C3 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
-		342FC0EB1C5044DC0023A3C3 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
-		342FC0EC1C5044DC0023A3C3 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
-		342FC0ED1C5044DC0023A3C3 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
-		342FC0EE1C5044DC0023A3C3 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
-		3430F61F1C45C805007473A6 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		343625BA1C5827DC0023C4C6 /* ZipUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipUtilities.swift; sourceTree = "<group>"; };
-		343F50FF1C8DAEEC0028C434 /* Zip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Zip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		343F51081C8DAEEC0028C434 /* Zip OSXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Zip OSXTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		344050D91CE28F59001AFF0F /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
-		3443A3F51C4AB8A3004AD173 /* QuickZip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickZip.swift; sourceTree = "<group>"; };
-		3443A3FC1C4AD199004AD173 /* bb8.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = bb8.zip; sourceTree = "<group>"; };
-		347E3A741C1DFFB500A11FD3 /* Zip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Zip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		347E3A771C1DFFB500A11FD3 /* Zip.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Zip.h; sourceTree = "<group>"; };
-		347E3A791C1DFFB500A11FD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		347E3A7E1C1DFFB500A11FD3 /* ZipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		347E3A831C1DFFB500A11FD3 /* ZipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZipTests.swift; sourceTree = "<group>"; };
-		347E3A851C1DFFB500A11FD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		347E3AD71C1E04C900A11FD3 /* Zip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zip.swift; sourceTree = "<group>"; };
-		34940A221C58876200D41574 /* 3crBXeO.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 3crBXeO.gif; path = Images/3crBXeO.gif; sourceTree = "<group>"; };
-		34940A231C58876200D41574 /* kYkLkPf.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = kYkLkPf.gif; path = Images/kYkLkPf.gif; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		3425459D1CE525B200336074 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3425459E1CE525B200336074 /* libz.tbd in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		343F50FB1C8DAEEC0028C434 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				343F51351C8DB0480028C434 /* libz.tbd in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		343F51051C8DAEEC0028C434 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				343F51091C8DAEEC0028C434 /* Zip.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		347E3A701C1DFFB500A11FD3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3430F6201C45C805007473A6 /* libz.tbd in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		347E3A7B1C1DFFB500A11FD3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				347E3A7F1C1DFFB500A11FD3 /* Zip.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		342FC0D01C5044DC0023A3C3 /* minizip */ = {
-			isa = PBXGroup;
-			children = (
-				342FC0E71C5044DC0023A3C3 /* crypt.h */,
-				342FC0E81C5044DC0023A3C3 /* ioapi.c */,
-				342FC0E91C5044DC0023A3C3 /* ioapi.h */,
-				342FC0EA1C5044DC0023A3C3 /* module.modulemap */,
-				342FC0EB1C5044DC0023A3C3 /* unzip.c */,
-				342FC0EC1C5044DC0023A3C3 /* unzip.h */,
-				342FC0ED1C5044DC0023A3C3 /* zip.c */,
-				342FC0EE1C5044DC0023A3C3 /* zip.h */,
-			);
-			path = minizip;
-			sourceTree = "<group>";
-		};
-		347E3A6A1C1DFFB500A11FD3 = {
-			isa = PBXGroup;
-			children = (
-				347E3A761C1DFFB500A11FD3 /* Zip */,
-				347E3A821C1DFFB500A11FD3 /* ZipTests */,
-				347E3A751C1DFFB500A11FD3 /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		347E3A751C1DFFB500A11FD3 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				347E3A741C1DFFB500A11FD3 /* Zip.framework */,
-				347E3A7E1C1DFFB500A11FD3 /* ZipTests.xctest */,
-				343F50FF1C8DAEEC0028C434 /* Zip.framework */,
-				343F51081C8DAEEC0028C434 /* Zip OSXTests.xctest */,
-				342545B51CE525B200336074 /* Zip.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		347E3A761C1DFFB500A11FD3 /* Zip */ = {
-			isa = PBXGroup;
-			children = (
-				342FC0D01C5044DC0023A3C3 /* minizip */,
-				347E3A771C1DFFB500A11FD3 /* Zip.h */,
-				347E3A791C1DFFB500A11FD3 /* Info.plist */,
-				344050D91CE28F59001AFF0F /* Info-tvOS.plist */,
-				347E3AD71C1E04C900A11FD3 /* Zip.swift */,
-				343625BA1C5827DC0023C4C6 /* ZipUtilities.swift */,
-				3443A3F51C4AB8A3004AD173 /* QuickZip.swift */,
-				3430F61F1C45C805007473A6 /* libz.tbd */,
-			);
-			path = Zip;
-			sourceTree = "<group>";
-		};
-		347E3A821C1DFFB500A11FD3 /* ZipTests */ = {
-			isa = PBXGroup;
-			children = (
-				305237171E64595700CA46D1 /* unsupported_permissions.zip */,
-				303B4F6D1E4CBE5000DC1633 /* permissions.zip */,
-				34940A221C58876200D41574 /* 3crBXeO.gif */,
-				34940A231C58876200D41574 /* kYkLkPf.gif */,
-				3443A3FC1C4AD199004AD173 /* bb8.zip */,
-				347E3A831C1DFFB500A11FD3 /* ZipTests.swift */,
-				347E3A851C1DFFB500A11FD3 /* Info.plist */,
-			);
-			path = ZipTests;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXHeadersBuildPhase section */
-		3425459F1CE525B200336074 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				342545A11CE525B200336074 /* zip.h in Headers */,
-				342545A41CE525B200336074 /* unzip.h in Headers */,
-				342545A71CE525B200336074 /* crypt.h in Headers */,
-				342545AB1CE525B200336074 /* ioapi.h in Headers */,
-				342545AE1CE525B200336074 /* Zip.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		343F50FC1C8DAEEC0028C434 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				343F51361C8DB0720028C434 /* Zip.h in Headers */,
-				343F511B1C8DAFDB0028C434 /* ioapi.h in Headers */,
-				343F51191C8DAFD50028C434 /* crypt.h in Headers */,
-				343F511F1C8DAFE80028C434 /* zip.h in Headers */,
-				343F511D1C8DAFE30028C434 /* unzip.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		347E3A711C1DFFB500A11FD3 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				342FC10A1C5044DC0023A3C3 /* zip.h in Headers */,
-				342FC1081C5044DC0023A3C3 /* unzip.h in Headers */,
-				342FC1041C5044DC0023A3C3 /* crypt.h in Headers */,
-				342FC1061C5044DC0023A3C3 /* ioapi.h in Headers */,
-				347E3A781C1DFFB500A11FD3 /* Zip.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
-/* Begin PBXNativeTarget section */
-		3425458C1CE525B200336074 /* Zip tvOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 342545B21CE525B200336074 /* Build configuration list for PBXNativeTarget "Zip tvOS" */;
-			buildPhases = (
-				3425458D1CE525B200336074 /* Sources */,
-				3425459D1CE525B200336074 /* Frameworks */,
-				3425459F1CE525B200336074 /* Headers */,
-				342545B11CE525B200336074 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Zip tvOS";
-			productName = Zip;
-			productReference = 342545B51CE525B200336074 /* Zip.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		343F50FE1C8DAEEC0028C434 /* Zip OSX */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 343F51141C8DAEEC0028C434 /* Build configuration list for PBXNativeTarget "Zip OSX" */;
-			buildPhases = (
-				343F50FA1C8DAEEC0028C434 /* Sources */,
-				343F50FB1C8DAEEC0028C434 /* Frameworks */,
-				343F50FC1C8DAEEC0028C434 /* Headers */,
-				343F50FD1C8DAEEC0028C434 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Zip OSX";
-			productName = "Zip OSX";
-			productReference = 343F50FF1C8DAEEC0028C434 /* Zip.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		343F51071C8DAEEC0028C434 /* Zip OSXTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 343F51151C8DAEEC0028C434 /* Build configuration list for PBXNativeTarget "Zip OSXTests" */;
-			buildPhases = (
-				343F51041C8DAEEC0028C434 /* Sources */,
-				343F51051C8DAEEC0028C434 /* Frameworks */,
-				343F51061C8DAEEC0028C434 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				343F510B1C8DAEEC0028C434 /* PBXTargetDependency */,
-			);
-			name = "Zip OSXTests";
-			productName = "Zip OSXTests";
-			productReference = 343F51081C8DAEEC0028C434 /* Zip OSXTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		347E3A731C1DFFB500A11FD3 /* Zip */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 347E3A881C1DFFB500A11FD3 /* Build configuration list for PBXNativeTarget "Zip" */;
-			buildPhases = (
-				347E3A6F1C1DFFB500A11FD3 /* Sources */,
-				347E3A701C1DFFB500A11FD3 /* Frameworks */,
-				347E3A711C1DFFB500A11FD3 /* Headers */,
-				347E3A721C1DFFB500A11FD3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Zip;
-			productName = Zip;
-			productReference = 347E3A741C1DFFB500A11FD3 /* Zip.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		347E3A7D1C1DFFB500A11FD3 /* ZipTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 347E3A8B1C1DFFB500A11FD3 /* Build configuration list for PBXNativeTarget "ZipTests" */;
-			buildPhases = (
-				347E3A7A1C1DFFB500A11FD3 /* Sources */,
-				347E3A7B1C1DFFB500A11FD3 /* Frameworks */,
-				347E3A7C1C1DFFB500A11FD3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				347E3A811C1DFFB500A11FD3 /* PBXTargetDependency */,
-			);
-			name = ZipTests;
-			productName = ZipTests;
-			productReference = 347E3A7E1C1DFFB500A11FD3 /* ZipTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		347E3A6B1C1DFFB500A11FD3 /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 1000;
-				ORGANIZATIONNAME = "Roy Marmelstein";
-				TargetAttributes = {
-					343F50FE1C8DAEEC0028C434 = {
-						CreatedOnToolsVersion = 7.2.1;
-					};
-					343F51071C8DAEEC0028C434 = {
-						CreatedOnToolsVersion = 7.2.1;
-					};
-					347E3A731C1DFFB500A11FD3 = {
-						CreatedOnToolsVersion = 7.2;
-						LastSwiftMigration = 0900;
-					};
-					347E3A7D1C1DFFB500A11FD3 = {
-						CreatedOnToolsVersion = 7.2;
-						LastSwiftMigration = 0900;
-					};
-				};
-			};
-			buildConfigurationList = 347E3A6E1C1DFFB500A11FD3 /* Build configuration list for PBXProject "Zip" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-			);
-			mainGroup = 347E3A6A1C1DFFB500A11FD3;
-			productRefGroup = 347E3A751C1DFFB500A11FD3 /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				347E3A731C1DFFB500A11FD3 /* Zip */,
-				347E3A7D1C1DFFB500A11FD3 /* ZipTests */,
-				343F50FE1C8DAEEC0028C434 /* Zip OSX */,
-				343F51071C8DAEEC0028C434 /* Zip OSXTests */,
-				3425458C1CE525B200336074 /* Zip tvOS */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		342545B11CE525B200336074 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		343F50FD1C8DAEEC0028C434 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		343F51061C8DAEEC0028C434 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		347E3A721C1DFFB500A11FD3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		347E3A7C1C1DFFB500A11FD3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				305237181E64595700CA46D1 /* unsupported_permissions.zip in Resources */,
-				303B4F6E1E4CBE5000DC1633 /* permissions.zip in Resources */,
-				34940A251C58876200D41574 /* kYkLkPf.gif in Resources */,
-				3443A3FD1C4AD199004AD173 /* bb8.zip in Resources */,
-				34940A241C58876200D41574 /* 3crBXeO.gif in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		3425458D1CE525B200336074 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				342545901CE525B200336074 /* Zip.swift in Sources */,
-				342545921CE525B200336074 /* unzip.c in Sources */,
-				342545941CE525B200336074 /* QuickZip.swift in Sources */,
-				342545951CE525B200336074 /* ioapi.c in Sources */,
-				342545991CE525B200336074 /* zip.c in Sources */,
-				3425459A1CE525B200336074 /* ZipUtilities.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		343F50FA1C8DAEEC0028C434 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				343F51161C8DAF3F0028C434 /* ZipUtilities.swift in Sources */,
-				343F511C1C8DAFE00028C434 /* unzip.c in Sources */,
-				343F51171C8DAF410028C434 /* QuickZip.swift in Sources */,
-				343F511E1C8DAFE50028C434 /* zip.c in Sources */,
-				343F511A1C8DAFD90028C434 /* ioapi.c in Sources */,
-				343F51181C8DAF450028C434 /* Zip.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		343F51041C8DAEEC0028C434 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		347E3A6F1C1DFFB500A11FD3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				347E3AD81C1E04C900A11FD3 /* Zip.swift in Sources */,
-				342FC1071C5044DC0023A3C3 /* unzip.c in Sources */,
-				3443A3F61C4AB8A3004AD173 /* QuickZip.swift in Sources */,
-				342FC1051C5044DC0023A3C3 /* ioapi.c in Sources */,
-				342FC1091C5044DC0023A3C3 /* zip.c in Sources */,
-				343625BB1C5827DC0023C4C6 /* ZipUtilities.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		347E3A7A1C1DFFB500A11FD3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				347E3A841C1DFFB500A11FD3 /* ZipTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		343F510B1C8DAEEC0028C434 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 343F50FE1C8DAEEC0028C434 /* Zip OSX */;
-			targetProxy = 343F510A1C8DAEEC0028C434 /* PBXContainerItemProxy */;
-		};
-		347E3A811C1DFFB500A11FD3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 347E3A731C1DFFB500A11FD3 /* Zip */;
-			targetProxy = 347E3A801C1DFFB500A11FD3 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin XCBuildConfiguration section */
-		342545B31CE525B200336074 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 12;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Zip/Info-tvOS.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.roymarmelstein.Zip;
-				PRODUCT_NAME = Zip;
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/Zip/minizip/**";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Debug;
-		};
-		342545B41CE525B200336074 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 12;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Zip/Info-tvOS.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.roymarmelstein.Zip;
-				PRODUCT_NAME = Zip;
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/Zip/minizip/**";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Release;
-		};
-		343F51101C8DAEEC0028C434 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 12;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 12;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Zip/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_BUNDLE_IDENTIFIER = com.roymarmelstein.Zip;
-				PRODUCT_NAME = Zip;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/Zip/minizip/**";
-			};
-			name = Debug;
-		};
-		343F51111C8DAEEC0028C434 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 12;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 12;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Zip/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_BUNDLE_IDENTIFIER = com.roymarmelstein.Zip;
-				PRODUCT_NAME = Zip;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/Zip/minizip/**";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-			};
-			name = Release;
-		};
-		343F51121C8DAEEC0028C434 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = NO;
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "Zip OSXTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.roymarmelstein.Zip-OSXTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-			};
-			name = Debug;
-		};
-		343F51131C8DAEEC0028C434 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = NO;
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "Zip OSXTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.roymarmelstein.Zip-OSXTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-			};
-			name = Release;
-		};
-		347E3A861C1DFFB500A11FD3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 12;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		347E3A871C1DFFB500A11FD3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 12;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		347E3A891C1DFFB500A11FD3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 12;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Zip/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.roymarmelstein.Zip;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/Zip/minizip/**";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		347E3A8A1C1DFFB500A11FD3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 12;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Zip/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.roymarmelstein.Zip;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_INCLUDE_PATHS = "${SRCROOT}/Zip/minizip/**";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-			};
-			name = Release;
-		};
-		347E3A8C1C1DFFB500A11FD3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = NO;
-				INFOPLIST_FILE = ZipTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.roymarmelstein.ZipTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		347E3A8D1C1DFFB500A11FD3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = NO;
-				INFOPLIST_FILE = ZipTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.roymarmelstein.ZipTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		342545B21CE525B200336074 /* Build configuration list for PBXNativeTarget "Zip tvOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				342545B31CE525B200336074 /* Debug */,
-				342545B41CE525B200336074 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		343F51141C8DAEEC0028C434 /* Build configuration list for PBXNativeTarget "Zip OSX" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				343F51101C8DAEEC0028C434 /* Debug */,
-				343F51111C8DAEEC0028C434 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		343F51151C8DAEEC0028C434 /* Build configuration list for PBXNativeTarget "Zip OSXTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				343F51121C8DAEEC0028C434 /* Debug */,
-				343F51131C8DAEEC0028C434 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		347E3A6E1C1DFFB500A11FD3 /* Build configuration list for PBXProject "Zip" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				347E3A861C1DFFB500A11FD3 /* Debug */,
-				347E3A871C1DFFB500A11FD3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		347E3A881C1DFFB500A11FD3 /* Build configuration list for PBXNativeTarget "Zip" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				347E3A891C1DFFB500A11FD3 /* Debug */,
-				347E3A8A1C1DFFB500A11FD3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		347E3A8B1C1DFFB500A11FD3 /* Build configuration list for PBXNativeTarget "ZipTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				347E3A8C1C1DFFB500A11FD3 /* Debug */,
-				347E3A8D1C1DFFB500A11FD3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = 347E3A6B1C1DFFB500A11FD3 /* Project object */;
+   archiveVersion = "1";
+   objectVersion = "46";
+   objects = {
+      "OBJ_1" = {
+         isa = "PBXProject";
+         attributes = {
+            LastSwiftMigration = "9999";
+            LastUpgradeCheck = "9999";
+         };
+         buildConfigurationList = "OBJ_2";
+         compatibilityVersion = "Xcode 3.2";
+         developmentRegion = "English";
+         hasScannedForEncodings = "0";
+         knownRegions = (
+            "en"
+         );
+         mainGroup = "OBJ_5";
+         productRefGroup = "OBJ_27";
+         projectDirPath = ".";
+         targets = (
+            "Zip::Zip",
+            "Zip::SwiftPMPackageDescription",
+            "Zip::ZipPackageTests::ProductTarget",
+            "Zip::ZipTests",
+            "Zip::minizip"
+         );
+      };
+      "OBJ_10" = {
+         isa = "PBXFileReference";
+         path = "QuickZip.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_11" = {
+         isa = "PBXFileReference";
+         path = "Zip.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_12" = {
+         isa = "PBXFileReference";
+         path = "ZipUtilities.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_13" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_14",
+            "OBJ_15",
+            "OBJ_16",
+            "OBJ_17"
+         );
+         name = "minizip";
+         path = "Sources/minizip";
+         sourceTree = "SOURCE_ROOT";
+      };
+      "OBJ_14" = {
+         isa = "PBXFileReference";
+         path = "ioapi.c";
+         sourceTree = "<group>";
+      };
+      "OBJ_15" = {
+         isa = "PBXFileReference";
+         path = "unzip.c";
+         sourceTree = "<group>";
+      };
+      "OBJ_16" = {
+         isa = "PBXFileReference";
+         path = "zip.c";
+         sourceTree = "<group>";
+      };
+      "OBJ_17" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_18",
+            "OBJ_19",
+            "OBJ_20",
+            "OBJ_21",
+            "OBJ_22",
+            "OBJ_23"
+         );
+         name = "include";
+         path = "include";
+         sourceTree = "<group>";
+      };
+      "OBJ_18" = {
+         isa = "PBXFileReference";
+         path = "minizip.h";
+         sourceTree = "<group>";
+      };
+      "OBJ_19" = {
+         isa = "PBXFileReference";
+         path = "crypt.h";
+         sourceTree = "<group>";
+      };
+      "OBJ_2" = {
+         isa = "XCConfigurationList";
+         buildConfigurations = (
+            "OBJ_3",
+            "OBJ_4"
+         );
+         defaultConfigurationIsVisible = "0";
+         defaultConfigurationName = "Release";
+      };
+      "OBJ_20" = {
+         isa = "PBXFileReference";
+         path = "zip.h";
+         sourceTree = "<group>";
+      };
+      "OBJ_21" = {
+         isa = "PBXFileReference";
+         path = "unzip.h";
+         sourceTree = "<group>";
+      };
+      "OBJ_22" = {
+         isa = "PBXFileReference";
+         path = "ioapi.h";
+         sourceTree = "<group>";
+      };
+      "OBJ_23" = {
+         isa = "PBXFileReference";
+         name = "module.modulemap";
+         path = "/Users/adamfowler/Documents/dev/macOS/lib/Zip/Sources/minizip/include/module.modulemap";
+         sourceTree = "<group>";
+      };
+      "OBJ_24" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_25"
+         );
+         name = "Tests";
+         path = "";
+         sourceTree = "SOURCE_ROOT";
+      };
+      "OBJ_25" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_26"
+         );
+         name = "ZipTests";
+         path = "ZipTests";
+         sourceTree = "SOURCE_ROOT";
+      };
+      "OBJ_26" = {
+         isa = "PBXFileReference";
+         path = "ZipTests.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_27" = {
+         isa = "PBXGroup";
+         children = (
+            "Zip::ZipTests::Product",
+            "Zip::Zip::Product",
+            "Zip::minizip::Product"
+         );
+         name = "Products";
+         path = "";
+         sourceTree = "BUILT_PRODUCTS_DIR";
+      };
+      "OBJ_3" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            CLANG_ENABLE_OBJC_ARC = "YES";
+            COMBINE_HIDPI_IMAGES = "YES";
+            COPY_PHASE_STRIP = "NO";
+            DEBUG_INFORMATION_FORMAT = "dwarf";
+            DYLIB_INSTALL_NAME_BASE = "@rpath";
+            ENABLE_NS_ASSERTIONS = "YES";
+            GCC_OPTIMIZATION_LEVEL = "0";
+            GCC_PREPROCESSOR_DEFINITIONS = (
+               "$(inherited)",
+               "SWIFT_PACKAGE=1",
+               "DEBUG=1"
+            );
+            MACOSX_DEPLOYMENT_TARGET = "10.10";
+            ONLY_ACTIVE_ARCH = "YES";
+            OTHER_SWIFT_FLAGS = (
+               "-DXcode"
+            );
+            PRODUCT_NAME = "$(TARGET_NAME)";
+            SDKROOT = "macosx";
+            SUPPORTED_PLATFORMS = (
+               "macosx",
+               "iphoneos",
+               "iphonesimulator",
+               "appletvos",
+               "appletvsimulator",
+               "watchos",
+               "watchsimulator"
+            );
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)",
+               "SWIFT_PACKAGE",
+               "DEBUG"
+            );
+            SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+            USE_HEADERMAP = "NO";
+         };
+         name = "Debug";
+      };
+      "OBJ_31" = {
+         isa = "PBXFileReference";
+         path = "ZipTests";
+         sourceTree = "SOURCE_ROOT";
+      };
+      "OBJ_32" = {
+         isa = "PBXFileReference";
+         path = "examples";
+         sourceTree = "SOURCE_ROOT";
+      };
+      "OBJ_33" = {
+         isa = "PBXFileReference";
+         path = "LICENSE";
+         sourceTree = "<group>";
+      };
+      "OBJ_34" = {
+         isa = "PBXFileReference";
+         path = "CHANGELOG.md";
+         sourceTree = "<group>";
+      };
+      "OBJ_35" = {
+         isa = "PBXFileReference";
+         path = "README.md";
+         sourceTree = "<group>";
+      };
+      "OBJ_36" = {
+         isa = "PBXFileReference";
+         path = "build.sh";
+         sourceTree = "<group>";
+      };
+      "OBJ_37" = {
+         isa = "PBXFileReference";
+         path = "Zip.podspec";
+         sourceTree = "<group>";
+      };
+      "OBJ_39" = {
+         isa = "XCConfigurationList";
+         buildConfigurations = (
+            "OBJ_40",
+            "OBJ_41"
+         );
+         defaultConfigurationIsVisible = "0";
+         defaultConfigurationName = "Release";
+      };
+      "OBJ_4" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            CLANG_ENABLE_OBJC_ARC = "YES";
+            COMBINE_HIDPI_IMAGES = "YES";
+            COPY_PHASE_STRIP = "YES";
+            DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+            DYLIB_INSTALL_NAME_BASE = "@rpath";
+            GCC_OPTIMIZATION_LEVEL = "s";
+            GCC_PREPROCESSOR_DEFINITIONS = (
+               "$(inherited)",
+               "SWIFT_PACKAGE=1"
+            );
+            MACOSX_DEPLOYMENT_TARGET = "10.10";
+            OTHER_SWIFT_FLAGS = (
+               "-DXcode"
+            );
+            PRODUCT_NAME = "$(TARGET_NAME)";
+            SDKROOT = "macosx";
+            SUPPORTED_PLATFORMS = (
+               "macosx",
+               "iphoneos",
+               "iphonesimulator",
+               "appletvos",
+               "appletvsimulator",
+               "watchos",
+               "watchsimulator"
+            );
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)",
+               "SWIFT_PACKAGE"
+            );
+            SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+            USE_HEADERMAP = "NO";
+         };
+         name = "Release";
+      };
+      "OBJ_40" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            ENABLE_TESTABILITY = "YES";
+            FRAMEWORK_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
+            );
+            HEADER_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(SRCROOT)/Sources/minizip/include"
+            );
+            INFOPLIST_FILE = "Zip.xcodeproj/Zip_Info.plist";
+            IPHONEOS_DEPLOYMENT_TARGET = "8.0";
+            LD_RUNPATH_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx"
+            );
+            MACOSX_DEPLOYMENT_TARGET = "10.10";
+            OTHER_CFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_LDFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_SWIFT_FLAGS = (
+               "$(inherited)",
+               "-Xcc",
+               "-fmodule-map-file=$(SRCROOT)/Sources/minizip/include/module.modulemap"
+            );
+            PRODUCT_BUNDLE_IDENTIFIER = "Zip";
+            PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+            PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+            SKIP_INSTALL = "YES";
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)"
+            );
+            SWIFT_VERSION = "5.0";
+            TARGET_NAME = "Zip";
+            TVOS_DEPLOYMENT_TARGET = "9.0";
+            WATCHOS_DEPLOYMENT_TARGET = "2.0";
+         };
+         name = "Debug";
+      };
+      "OBJ_41" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            ENABLE_TESTABILITY = "YES";
+            FRAMEWORK_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
+            );
+            HEADER_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(SRCROOT)/Sources/minizip/include"
+            );
+            INFOPLIST_FILE = "Zip.xcodeproj/Zip_Info.plist";
+            IPHONEOS_DEPLOYMENT_TARGET = "8.0";
+            LD_RUNPATH_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx"
+            );
+            MACOSX_DEPLOYMENT_TARGET = "10.10";
+            OTHER_CFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_LDFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_SWIFT_FLAGS = (
+               "$(inherited)",
+               "-Xcc",
+               "-fmodule-map-file=$(SRCROOT)/Sources/minizip/include/module.modulemap"
+            );
+            PRODUCT_BUNDLE_IDENTIFIER = "Zip";
+            PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+            PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+            SKIP_INSTALL = "YES";
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)"
+            );
+            SWIFT_VERSION = "5.0";
+            TARGET_NAME = "Zip";
+            TVOS_DEPLOYMENT_TARGET = "9.0";
+            WATCHOS_DEPLOYMENT_TARGET = "2.0";
+         };
+         name = "Release";
+      };
+      "OBJ_42" = {
+         isa = "PBXSourcesBuildPhase";
+         files = (
+            "OBJ_43",
+            "OBJ_44",
+            "OBJ_45"
+         );
+      };
+      "OBJ_43" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_10";
+      };
+      "OBJ_44" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_11";
+      };
+      "OBJ_45" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_12";
+      };
+      "OBJ_46" = {
+         isa = "PBXFrameworksBuildPhase";
+         files = (
+            "OBJ_47"
+         );
+      };
+      "OBJ_47" = {
+         isa = "PBXBuildFile";
+         fileRef = "Zip::minizip::Product";
+      };
+      "OBJ_48" = {
+         isa = "PBXTargetDependency";
+         target = "Zip::minizip";
+      };
+      "OBJ_5" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_6",
+            "OBJ_7",
+            "OBJ_24",
+            "OBJ_27",
+            "OBJ_31",
+            "OBJ_32",
+            "OBJ_33",
+            "OBJ_34",
+            "OBJ_35",
+            "OBJ_36",
+            "OBJ_37"
+         );
+         path = "";
+         sourceTree = "<group>";
+      };
+      "OBJ_51" = {
+         isa = "XCConfigurationList";
+         buildConfigurations = (
+            "OBJ_52",
+            "OBJ_53"
+         );
+         defaultConfigurationIsVisible = "0";
+         defaultConfigurationName = "Release";
+      };
+      "OBJ_52" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            LD = "/usr/bin/true";
+            OTHER_SWIFT_FLAGS = (
+               "-swift-version",
+               "5",
+               "-I",
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2",
+               "-target",
+               "x86_64-apple-macosx10.10",
+               "-sdk",
+               "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk"
+            );
+            SWIFT_VERSION = "5.0";
+         };
+         name = "Debug";
+      };
+      "OBJ_53" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            LD = "/usr/bin/true";
+            OTHER_SWIFT_FLAGS = (
+               "-swift-version",
+               "5",
+               "-I",
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2",
+               "-target",
+               "x86_64-apple-macosx10.10",
+               "-sdk",
+               "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk"
+            );
+            SWIFT_VERSION = "5.0";
+         };
+         name = "Release";
+      };
+      "OBJ_54" = {
+         isa = "PBXSourcesBuildPhase";
+         files = (
+            "OBJ_55"
+         );
+      };
+      "OBJ_55" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_6";
+      };
+      "OBJ_57" = {
+         isa = "XCConfigurationList";
+         buildConfigurations = (
+            "OBJ_58",
+            "OBJ_59"
+         );
+         defaultConfigurationIsVisible = "0";
+         defaultConfigurationName = "Release";
+      };
+      "OBJ_58" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+         };
+         name = "Debug";
+      };
+      "OBJ_59" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+         };
+         name = "Release";
+      };
+      "OBJ_6" = {
+         isa = "PBXFileReference";
+         explicitFileType = "sourcecode.swift";
+         path = "Package.swift";
+         sourceTree = "<group>";
+      };
+      "OBJ_60" = {
+         isa = "PBXTargetDependency";
+         target = "Zip::ZipTests";
+      };
+      "OBJ_62" = {
+         isa = "XCConfigurationList";
+         buildConfigurations = (
+            "OBJ_63",
+            "OBJ_64"
+         );
+         defaultConfigurationIsVisible = "0";
+         defaultConfigurationName = "Release";
+      };
+      "OBJ_63" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            CLANG_ENABLE_MODULES = "YES";
+            EMBEDDED_CONTENT_CONTAINS_SWIFT = "YES";
+            FRAMEWORK_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
+            );
+            HEADER_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(SRCROOT)/Sources/minizip/include"
+            );
+            INFOPLIST_FILE = "Zip.xcodeproj/ZipTests_Info.plist";
+            IPHONEOS_DEPLOYMENT_TARGET = "8.0";
+            LD_RUNPATH_SEARCH_PATHS = (
+               "$(inherited)",
+               "@loader_path/../Frameworks",
+               "@loader_path/Frameworks"
+            );
+            MACOSX_DEPLOYMENT_TARGET = "10.10";
+            OTHER_CFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_LDFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_SWIFT_FLAGS = (
+               "$(inherited)",
+               "-Xcc",
+               "-fmodule-map-file=$(SRCROOT)/Sources/minizip/include/module.modulemap"
+            );
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)"
+            );
+            SWIFT_VERSION = "5.0";
+            TARGET_NAME = "ZipTests";
+            TVOS_DEPLOYMENT_TARGET = "9.0";
+            WATCHOS_DEPLOYMENT_TARGET = "2.0";
+         };
+         name = "Debug";
+      };
+      "OBJ_64" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            CLANG_ENABLE_MODULES = "YES";
+            EMBEDDED_CONTENT_CONTAINS_SWIFT = "YES";
+            FRAMEWORK_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
+            );
+            HEADER_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(SRCROOT)/Sources/minizip/include"
+            );
+            INFOPLIST_FILE = "Zip.xcodeproj/ZipTests_Info.plist";
+            IPHONEOS_DEPLOYMENT_TARGET = "8.0";
+            LD_RUNPATH_SEARCH_PATHS = (
+               "$(inherited)",
+               "@loader_path/../Frameworks",
+               "@loader_path/Frameworks"
+            );
+            MACOSX_DEPLOYMENT_TARGET = "10.10";
+            OTHER_CFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_LDFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_SWIFT_FLAGS = (
+               "$(inherited)",
+               "-Xcc",
+               "-fmodule-map-file=$(SRCROOT)/Sources/minizip/include/module.modulemap"
+            );
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)"
+            );
+            SWIFT_VERSION = "5.0";
+            TARGET_NAME = "ZipTests";
+            TVOS_DEPLOYMENT_TARGET = "9.0";
+            WATCHOS_DEPLOYMENT_TARGET = "2.0";
+         };
+         name = "Release";
+      };
+      "OBJ_65" = {
+         isa = "PBXSourcesBuildPhase";
+         files = (
+            "OBJ_66"
+         );
+      };
+      "OBJ_66" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_26";
+      };
+      "OBJ_67" = {
+         isa = "PBXFrameworksBuildPhase";
+         files = (
+            "OBJ_68",
+            "OBJ_69"
+         );
+      };
+      "OBJ_68" = {
+         isa = "PBXBuildFile";
+         fileRef = "Zip::Zip::Product";
+      };
+      "OBJ_69" = {
+         isa = "PBXBuildFile";
+         fileRef = "Zip::minizip::Product";
+      };
+      "OBJ_7" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_8",
+            "OBJ_13"
+         );
+         name = "Sources";
+         path = "";
+         sourceTree = "SOURCE_ROOT";
+      };
+      "OBJ_70" = {
+         isa = "PBXTargetDependency";
+         target = "Zip::Zip";
+      };
+      "OBJ_71" = {
+         isa = "PBXTargetDependency";
+         target = "Zip::minizip";
+      };
+      "OBJ_72" = {
+         isa = "XCConfigurationList";
+         buildConfigurations = (
+            "OBJ_73",
+            "OBJ_74"
+         );
+         defaultConfigurationIsVisible = "0";
+         defaultConfigurationName = "Release";
+      };
+      "OBJ_73" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            DEFINES_MODULE = "NO";
+            ENABLE_TESTABILITY = "YES";
+            FRAMEWORK_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
+            );
+            HEADER_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(SRCROOT)/Sources/minizip/include"
+            );
+            INFOPLIST_FILE = "Zip.xcodeproj/minizip_Info.plist";
+            IPHONEOS_DEPLOYMENT_TARGET = "8.0";
+            LD_RUNPATH_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx"
+            );
+            MACOSX_DEPLOYMENT_TARGET = "10.10";
+            OTHER_CFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_LDFLAGS = (
+               "$(inherited)",
+               "-lz"
+            );
+            OTHER_SWIFT_FLAGS = (
+               "$(inherited)"
+            );
+            PRODUCT_BUNDLE_IDENTIFIER = "minizip";
+            PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+            PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+            SKIP_INSTALL = "YES";
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)"
+            );
+            TARGET_NAME = "minizip";
+            TVOS_DEPLOYMENT_TARGET = "9.0";
+            WATCHOS_DEPLOYMENT_TARGET = "2.0";
+         };
+         name = "Debug";
+      };
+      "OBJ_74" = {
+         isa = "XCBuildConfiguration";
+         buildSettings = {
+            DEFINES_MODULE = "NO";
+            ENABLE_TESTABILITY = "YES";
+            FRAMEWORK_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(PLATFORM_DIR)/Developer/Library/Frameworks"
+            );
+            HEADER_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(SRCROOT)/Sources/minizip/include"
+            );
+            INFOPLIST_FILE = "Zip.xcodeproj/minizip_Info.plist";
+            IPHONEOS_DEPLOYMENT_TARGET = "8.0";
+            LD_RUNPATH_SEARCH_PATHS = (
+               "$(inherited)",
+               "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx"
+            );
+            MACOSX_DEPLOYMENT_TARGET = "10.10";
+            OTHER_CFLAGS = (
+               "$(inherited)"
+            );
+            OTHER_LDFLAGS = (
+               "$(inherited)",
+               "-lz"
+            );
+            OTHER_SWIFT_FLAGS = (
+               "$(inherited)"
+            );
+            PRODUCT_BUNDLE_IDENTIFIER = "minizip";
+            PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+            PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+            SKIP_INSTALL = "YES";
+            SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+               "$(inherited)"
+            );
+            TARGET_NAME = "minizip";
+            TVOS_DEPLOYMENT_TARGET = "9.0";
+            WATCHOS_DEPLOYMENT_TARGET = "2.0";
+         };
+         name = "Release";
+      };
+      "OBJ_75" = {
+         isa = "PBXSourcesBuildPhase";
+         files = (
+            "OBJ_76",
+            "OBJ_77",
+            "OBJ_78"
+         );
+      };
+      "OBJ_76" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_14";
+      };
+      "OBJ_77" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_15";
+      };
+      "OBJ_78" = {
+         isa = "PBXBuildFile";
+         fileRef = "OBJ_16";
+      };
+      "OBJ_79" = {
+         isa = "PBXFrameworksBuildPhase";
+         files = (
+         );
+      };
+      "OBJ_8" = {
+         isa = "PBXGroup";
+         children = (
+            "OBJ_9",
+            "OBJ_10",
+            "OBJ_11",
+            "OBJ_12"
+         );
+         name = "Zip";
+         path = "Sources/Zip";
+         sourceTree = "SOURCE_ROOT";
+      };
+      "OBJ_9" = {
+         isa = "PBXFileReference";
+         path = "Zip.h";
+         sourceTree = "<group>";
+      };
+      "Zip::SwiftPMPackageDescription" = {
+         isa = "PBXNativeTarget";
+         buildConfigurationList = "OBJ_51";
+         buildPhases = (
+            "OBJ_54"
+         );
+         dependencies = (
+         );
+         name = "ZipPackageDescription";
+         productName = "ZipPackageDescription";
+         productType = "com.apple.product-type.framework";
+      };
+      "Zip::Zip" = {
+         isa = "PBXNativeTarget";
+         buildConfigurationList = "OBJ_39";
+         buildPhases = (
+            "OBJ_42",
+            "OBJ_46"
+         );
+         dependencies = (
+            "OBJ_48"
+         );
+         name = "Zip";
+         productName = "Zip";
+         productReference = "Zip::Zip::Product";
+         productType = "com.apple.product-type.framework";
+      };
+      "Zip::Zip::Product" = {
+         isa = "PBXFileReference";
+         path = "Zip.framework";
+         sourceTree = "BUILT_PRODUCTS_DIR";
+      };
+      "Zip::ZipPackageTests::ProductTarget" = {
+         isa = "PBXAggregateTarget";
+         buildConfigurationList = "OBJ_57";
+         buildPhases = (
+         );
+         dependencies = (
+            "OBJ_60"
+         );
+         name = "ZipPackageTests";
+         productName = "ZipPackageTests";
+      };
+      "Zip::ZipTests" = {
+         isa = "PBXNativeTarget";
+         buildConfigurationList = "OBJ_62";
+         buildPhases = (
+            "OBJ_65",
+            "OBJ_67"
+         );
+         dependencies = (
+            "OBJ_70",
+            "OBJ_71"
+         );
+         name = "ZipTests";
+         productName = "ZipTests";
+         productReference = "Zip::ZipTests::Product";
+         productType = "com.apple.product-type.bundle.unit-test";
+      };
+      "Zip::ZipTests::Product" = {
+         isa = "PBXFileReference";
+         path = "ZipTests.xctest";
+         sourceTree = "BUILT_PRODUCTS_DIR";
+      };
+      "Zip::minizip" = {
+         isa = "PBXNativeTarget";
+         buildConfigurationList = "OBJ_72";
+         buildPhases = (
+            "OBJ_75",
+            "OBJ_79"
+         );
+         dependencies = (
+         );
+         name = "minizip";
+         productName = "minizip";
+         productReference = "Zip::minizip::Product";
+         productType = "com.apple.product-type.framework";
+      };
+      "Zip::minizip::Product" = {
+         isa = "PBXFileReference";
+         path = "minizip.framework";
+         sourceTree = "BUILT_PRODUCTS_DIR";
+      };
+   };
+   rootObject = "OBJ_1";
 }
