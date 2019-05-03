@@ -8,15 +8,14 @@ let package = Package(
         .library(name: "Zip", targets: ["Zip"])
     ],
     targets: [
-        .systemLibrary(
-            name: "CZlib",
-            path: "Zip/zlib",
-            pkgConfig: "zlib"),
         .target(
             name: "Minizip",
-            dependencies: ["CZlib"],
+            dependencies: [],
             path: "Zip/minizip",
-            exclude: ["module"]),
+            exclude: ["module"],
+            linkerSettings: [
+                .linkedLibrary("z")
+            ]),
         .target(
             name: "Zip",
             dependencies: ["Minizip"],
