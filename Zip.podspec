@@ -8,10 +8,10 @@
 
 Pod::Spec.new do |s|
   s.name             = "Zip"
-  s.version          = "1.2.0"
+  s.version          = "1.3.0"
   s.summary          = "Zip and unzip files in Swift."
-  s.swift_version    = "5.0"
-  s.swift_versions   = ["4.2", "5.0"]
+  s.swift_version    = "5.1"
+  s.swift_versions   = ["4.2", "5.0", "5.1"]
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
