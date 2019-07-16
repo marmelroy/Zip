@@ -18,6 +18,6 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(name: "Zip", dependencies: ["minizip"]),
         .target(name: "minizip", dependencies: [], linkerSettings: [.linkedLibrary("z")]),
-        .testTarget( name: "ZipTests", dependencies: ["Zip"], path: "./ZipTests")
+        .testTarget( name: "ZipTests", dependencies: ["Zip"])
     ]
 )

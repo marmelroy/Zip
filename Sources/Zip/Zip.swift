@@ -180,9 +180,12 @@ public class Zip {
 
             let creationDate = Date()
 
+#if !os(Linux)
             let directoryAttributes = [FileAttributeKey.creationDate : creationDate,
                                        FileAttributeKey.modificationDate : creationDate]
-
+#else
+	    let directoryAttributes : [FileAttributeKey : Any] = [:]
+#endif
             do {
                 if isDirectory {
                     try fileManager.createDirectory(atPath: fullPath, withIntermediateDirectories: true, attributes: directoryAttributes)

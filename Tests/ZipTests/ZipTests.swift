@@ -19,9 +19,16 @@ class ZipTests: XCTestCase {
         super.tearDown()
     }
     
+    func resourcePath(_ filename: String) -> URL {
+        return URL(fileURLWithPath: #file)
+            .deletingLastPathComponent()
+            .appendingPathComponent("Resources", isDirectory: true)
+            .appendingPathComponent(filename)
+    }
+    
     func testQuickUnzip() {
         do {
-            let filePath = Bundle(for: ZipTests.self).url(forResource: "bb8", withExtension: "zip")!
+            let filePath = resourcePath("bb8.zip")
             let destinationURL = try Zip.quickUnzipFile(filePath)
             let fileManager = FileManager.default
             XCTAssertTrue(fileManager.fileExists(atPath: destinationURL.path))
@@ -33,9 +40,8 @@ class ZipTests: XCTestCase {
     
     func testQuickUnzipNonExistingPath() {
         do {
-            let filePathURL = Bundle(for: ZipTests.self).resourcePath
-            let filePath = NSURL(string:"\(filePathURL!)/bb9.zip")
-            let destinationURL = try Zip.quickUnzipFile(filePath! as URL)
+            let filePath = resourcePath("bb9.zip")
+            let destinationURL = try Zip.quickUnzipFile(filePath)
             let fileManager = FileManager.default
             XCTAssertFalse(fileManager.fileExists(atPath:destinationURL.path))
         }
@@ -46,7 +52,7 @@ class ZipTests: XCTestCase {
     
     func testQuickUnzipNonZipPath() {
         do {
-            let filePath = Bundle(for: ZipTests.self).url(forResource: "3crBXeO", withExtension: "gif")!
+            let filePath = resourcePath("3crBXeO.gif")
             let destinationURL = try Zip.quickUnzipFile(filePath)
             let fileManager = FileManager.default
             XCTAssertFalse(fileManager.fileExists(atPath:destinationURL.path))
@@ -58,7 +64,7 @@ class ZipTests: XCTestCase {
     
     func testQuickUnzipProgress() {
         do {
-            let filePath = Bundle(for: ZipTests.self).url(forResource: "bb8", withExtension: "zip")!
+            let filePath = resourcePath("bb8.zip")
             _ = try Zip.quickUnzipFile(filePath, progress: { (progress) -> () in
                 XCTAssert(true)
             })
@@ -82,7 +88,7 @@ class ZipTests: XCTestCase {
     
     func testUnzip() {
         do {
-            let filePath = Bundle(for: ZipTests.self).url(forResource: "bb8", withExtension: "zip")!
+            let filePath = resourcePath("bb8.zip")
             let documentsFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as NSURL
             
             try Zip.unzipFile(filePath, destination: documentsFolder as URL, overwrite: true, password: "password", progress: { (progress) -> () in
@@ -99,10 +105,9 @@ class ZipTests: XCTestCase {
     
     func testImplicitProgressUnzip() {
         do {
-            let progress = Progress()
-            progress.totalUnitCount = 1
+            let progress = Progress(totalUnitCount: 1)
             
-            let filePath = Bundle(for: ZipTests.self).url(forResource: "bb8", withExtension: "zip")!
+            let filePath = resourcePath("bb8.zip")
             let documentsFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as NSURL
             
             progress.becomeCurrent(withPendingUnitCount: 1)
@@ -119,11 +124,10 @@ class ZipTests: XCTestCase {
     
     func testImplicitProgressZip() {
         do {
-            let progress = Progress()
-            progress.totalUnitCount = 1
+            let progress = Progress(totalUnitCount:1)
             
-            let imageURL1 = Bundle(for: ZipTests.self).url(forResource: "3crBXeO", withExtension: "gif")!
-            let imageURL2 = Bundle(for: ZipTests.self).url(forResource: "kYkLkPf", withExtension: "gif")!
+            let imageURL1 = resourcePath("3crBXeO.gif")
+            let imageURL2 = resourcePath("kYkLkPf.gif")
             let documentsFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as NSURL
             let zipFilePath = documentsFolder.appendingPathComponent("archive.zip")
             
@@ -141,8 +145,8 @@ class ZipTests: XCTestCase {
     
     func testQuickZip() {
         do {
-            let imageURL1 = Bundle(for: ZipTests.self).url(forResource: "3crBXeO", withExtension: "gif")!
-            let imageURL2 = Bundle(for: ZipTests.self).url(forResource: "kYkLkPf", withExtension: "gif")!
+            let imageURL1 = resourcePath("3crBXeO.gif")
+            let imageURL2 = resourcePath("kYkLkPf.gif")
             let destinationURL = try Zip.quickZipFiles([imageURL1, imageURL2], fileName: "archive")
             let fileManager = FileManager.default
             XCTAssertTrue(fileManager.fileExists(atPath:destinationURL.path))
@@ -155,9 +159,9 @@ class ZipTests: XCTestCase {
     func testQuickZipFolder() {
         do {
             let fileManager = FileManager.default
-            let imageURL1 = Bundle(for: ZipTests.self).url(forResource: "3crBXeO", withExtension: "gif")!
-            let imageURL2 = Bundle(for: ZipTests.self).url(forResource: "kYkLkPf", withExtension: "gif")!
-            let folderURL = Bundle(for: ZipTests.self).bundleURL.appendingPathComponent("Directory")
+            let imageURL1 = resourcePath("3crBXeO.gif")
+            let imageURL2 = resourcePath("kYkLkPf.gif")
+            let folderURL = resourcePath("Directory")
             let targetImageURL1 = folderURL.appendingPathComponent("3crBXeO.gif")
             let targetImageURL2 = folderURL.appendingPathComponent("kYkLkPf.gif")
             if fileManager.fileExists(atPath:folderURL.path) {
@@ -177,8 +181,8 @@ class ZipTests: XCTestCase {
     
     func testZip() {
         do {
-            let imageURL1 = Bundle(for: ZipTests.self).url(forResource: "3crBXeO", withExtension: "gif")!
-            let imageURL2 = Bundle(for: ZipTests.self).url(forResource: "kYkLkPf", withExtension: "gif")!
+            let imageURL1 = resourcePath("3crBXeO.gif")
+            let imageURL2 = resourcePath("kYkLkPf.gif")
             let documentsFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as NSURL
             let zipFilePath = documentsFolder.appendingPathComponent("archive.zip")
             try Zip.zipFiles(paths: [imageURL1, imageURL2], zipFilePath: zipFilePath!, password: nil, progress: { (progress) -> () in
@@ -194,8 +198,8 @@ class ZipTests: XCTestCase {
     
     func testZipUnzipPassword() {
         do {
-            let imageURL1 = Bundle(for: ZipTests.self).url(forResource: "3crBXeO", withExtension: "gif")!
-            let imageURL2 = Bundle(for: ZipTests.self).url(forResource: "kYkLkPf", withExtension: "gif")!
+            let imageURL1 = resourcePath("3crBXeO.gif")
+            let imageURL2 = resourcePath("kYkLkPf.gif")
             let documentsFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as NSURL
             let zipFilePath = documentsFolder.appendingPathComponent("archive.zip")
             try Zip.zipFiles(paths: [imageURL1, imageURL2], zipFilePath: zipFilePath!, password: "password", progress: { (progress) -> () in
@@ -219,7 +223,7 @@ class ZipTests: XCTestCase {
 
     func testUnzipWithUnsupportedPermissions() {
         do {
-            let permissionsURL = Bundle(for: ZipTests.self).url(forResource: "unsupported_permissions", withExtension: "zip")!
+            let permissionsURL = resourcePath("unsupported_permissions.zip")
             let unzipDestination = try Zip.quickUnzipFile(permissionsURL)
             print(unzipDestination)
             let fileManager = FileManager.default
@@ -237,7 +241,7 @@ class ZipTests: XCTestCase {
 
     func testUnzipPermissions() {
         do {
-            let permissionsURL = Bundle(for: ZipTests.self).url(forResource: "permissions", withExtension: "zip")!
+            let permissionsURL = resourcePath("permissions.zip")
             let unzipDestination = try Zip.quickUnzipFile(permissionsURL)
             let fileManager = FileManager.default
             let permission777 = unzipDestination.appendingPathComponent("permission_777").appendingPathExtension("txt")
@@ -261,7 +265,7 @@ class ZipTests: XCTestCase {
     
     func testQuickUnzipSubDir() {
         do {
-            let bookURL = Bundle(for: ZipTests.self).url(forResource: "bb8", withExtension: "zip")!
+            let bookURL = resourcePath("bb8.zip")
             let unzipDestination = try Zip.quickUnzipFile(bookURL)
             let fileManager = FileManager.default
             let subDir = unzipDestination.appendingPathComponent("subDir")
@@ -313,6 +317,32 @@ class ZipTests: XCTestCase {
         Zip.removeCustomFileExtension("cbz")
         XCTAssertTrue(Zip.isValidFileExtension("zip"))
         XCTAssertTrue(Zip.isValidFileExtension("cbz"))
+    }
+
+    static var allTests : [(String, (ZipTests) -> () throws -> Void)] {
+        return [
+            ("testQuickUnzip", testQuickUnzip),
+            ("testQuickUnzipNonExistingPath", testQuickUnzipNonExistingPath),
+            ("testQuickUnzipNonZipPath", testQuickUnzipNonZipPath),
+            ("testQuickUnzipProgress", testQuickUnzipProgress),
+            ("testQuickUnzipOnlineURL", testQuickUnzipOnlineURL),
+            ("testUnzip", testUnzip),
+            ("testImplicitProgressUnzip", testImplicitProgressUnzip),
+            ("testImplicitProgressZip", testImplicitProgressZip),
+            ("testQuickZip", testQuickZip),
+            ("testQuickZipFolder", testQuickZipFolder),
+            ("testZip", testZip),
+            ("testZipUnzipPassword", testZipUnzipPassword),
+            ("testUnzipWithUnsupportedPermissions", testUnzipWithUnsupportedPermissions),
+            ("testUnzipPermissions", testUnzipPermissions),
+            ("testQuickUnzipSubDir", testQuickUnzipSubDir),
+            ("testFileExtensionIsNotInvalidForValidUrl", testFileExtensionIsNotInvalidForValidUrl),
+            ("testFileExtensionIsInvalidForInvalidUrl", testFileExtensionIsInvalidForInvalidUrl),
+            ("testAddedCustomFileExtensionIsValid", testAddedCustomFileExtensionIsValid),
+            ("testRemovedCustomFileExtensionIsInvalid", testRemovedCustomFileExtensionIsInvalid),
+            ("testDefaultFileExtensionsIsValid", testDefaultFileExtensionsIsValid),
+            ("testDefaultFileExtensionsIsNotRemoved", testDefaultFileExtensionsIsNotRemoved),
+        ]
     }
     
 }
