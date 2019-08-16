@@ -14,17 +14,12 @@ function trap_handler() {
 }
 trap trap_handler INT TERM EXIT
 
+swift package generate-xcodeproj
 
 MODE="$1"
 
 if [ "$MODE" = "framework" ]; then
-    echo "Building and testing Zip."
-    xcodebuild \
-        -project Zip.xcodeproj \
-        -scheme Zip \
-        -sdk "$SDK" \
-        -destination "$PLATFORM" \
-        test
+    swift test
     trap - EXIT
     exit 0
 fi
