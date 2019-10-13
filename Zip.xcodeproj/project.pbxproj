@@ -359,20 +359,21 @@
 					};
 					347E3A731C1DFFB500A11FD3 = {
 						CreatedOnToolsVersion = 7.2;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1110;
 					};
 					347E3A7D1C1DFFB500A11FD3 = {
 						CreatedOnToolsVersion = 7.2;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1110;
 					};
 				};
 			};
 			buildConfigurationList = 347E3A6E1C1DFFB500A11FD3 /* Build configuration list for PBXProject "Zip" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 347E3A6A1C1DFFB500A11FD3;
 			productRefGroup = 347E3A751C1DFFB500A11FD3 /* Products */;
@@ -765,6 +766,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/Zip/minizip/**";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -788,6 +790,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/Zip/minizip/**";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -799,6 +802,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.roymarmelstein.ZipTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -811,6 +815,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.roymarmelstein.ZipTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
