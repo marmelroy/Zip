@@ -17,13 +17,16 @@ public enum ZipError: Error {
     case unzipFail
     /// Zip fail
     case zipFail
-    
+    /// Operation Cancelled
+    case operationCancelled
+
     /// User readable description
     public var description: String {
         switch self {
         case .fileNotFound: return NSLocalizedString("File not found.", comment: "")
         case .unzipFail: return NSLocalizedString("Failed to unzip file.", comment: "")
         case .zipFail: return NSLocalizedString("Failed to zip file.", comment: "")
+        case .operationCancelled: return NSLocalizedString("Operation cancelled", comment: "")
         }
     }
 }
@@ -64,11 +67,15 @@ public struct ArchiveFile {
 
 /// Zip class
 public class Zip {
-    
     /**
      Set of vaild file extensions
      */
     internal static var customFileExtensions: Set<String> = []
+    
+    /**
+     Cancellation block. This is set once the progress tracker is has been created
+    */
+    public static var cancelCurrentOperation: (()->Void) = { }
     
     // MARK: Lifecycle
     
@@ -126,6 +133,8 @@ public class Zip {
         progressTracker.isCancellable = false
         progressTracker.isPausable = false
         progressTracker.kind = ProgressKind.file
+        
+        cancelCurrentOperation = { progressTracker.cancel() }
         
         // Begin unzipping
         let zip = unzOpen64(path)
@@ -250,8 +259,12 @@ public class Zip {
             }
             
             progressTracker.completedUnitCount = Int64(currentPosition)
-            
-        } while (ret == UNZ_OK && ret != UNZ_END_OF_LIST_OF_FILE)
+                        
+        } while (ret == UNZ_OK && ret != UNZ_END_OF_LIST_OF_FILE) && !progressTracker.isCancelled
+        
+        guard !progressTracker.isCancelled else {
+            throw ZipError.operationCancelled
+        }
         
         // Completed. Update progress handler.
         if let progressHandler = progress{
@@ -259,7 +272,6 @@ public class Zip {
         }
         
         progressTracker.completedUnitCount = Int64(totalSize)
-        
     }
     
     // MARK: Zip
@@ -313,6 +325,8 @@ public class Zip {
         progressTracker.isPausable = false
         progressTracker.kind = ProgressKind.file
         
+        cancelCurrentOperation = { progressTracker.cancel() }
+        
         // Begin Zipping
         let zip = zipOpen(destinationPath, APPEND_STATUS_CREATE)
         for path in processedPaths {
@@ -354,6 +368,10 @@ public class Zip {
                 }
                 var length: Int = 0
                 while (feof(input) == 0) {
+                    guard !progressTracker.isCancelled else {
+                        throw ZipError.operationCancelled
+                    }
+                    
                     length = fread(buffer, 1, chunkSize, input)
                     zipWriteInFileInZip(zip, buffer, UInt32(length))
                 }
