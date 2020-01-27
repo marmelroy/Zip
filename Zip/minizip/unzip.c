@@ -24,7 +24,7 @@
 #  define NOUNCRYPT
 #endif*/
 
-#include "zlib.h"
+#include <zlib.h>
 #include "unzip.h"
 
 #ifdef STDC
@@ -635,7 +635,7 @@ local int unzGoToNextDisk(unzFile file)
         }
         else
         {
-            s->filestream = ZOPENDISK64(s->z_filefunc, s->filestream_with_CD, number_disk_next,
+            s->filestream = ZOPENDISK64(s->z_filefunc, s->filestream_with_CD, (int)number_disk_next,
                 ZLIB_FILEFUNC_MODE_READ | ZLIB_FILEFUNC_MODE_EXISTING);
         }
 
@@ -1455,19 +1455,19 @@ extern int ZEXPORT unzReadCurrentFile(unzFile file, voidp buf, unsigned len)
             s->pfile_in_zip_read->bstream.avail_in       = s->pfile_in_zip_read->stream.avail_in;
             s->pfile_in_zip_read->bstream.total_in_lo32  = (uInt)s->pfile_in_zip_read->stream.total_in;
             s->pfile_in_zip_read->bstream.total_in_hi32  = s->pfile_in_zip_read->stream.total_in >> 32;
-            
+
             s->pfile_in_zip_read->bstream.next_out       = (char*)s->pfile_in_zip_read->stream.next_out;
             s->pfile_in_zip_read->bstream.avail_out      = s->pfile_in_zip_read->stream.avail_out;
             s->pfile_in_zip_read->bstream.total_out_lo32 = (uInt)s->pfile_in_zip_read->stream.total_out;
             s->pfile_in_zip_read->bstream.total_out_hi32 = s->pfile_in_zip_read->stream.total_out >> 32;
 
-            total_out_before = s->pfile_in_zip_read->bstream.total_out_lo32 + 
+            total_out_before = s->pfile_in_zip_read->bstream.total_out_lo32 +
                 (((uLong)s->pfile_in_zip_read->bstream.total_out_hi32) << 32);
             buf_before = (const Bytef *)s->pfile_in_zip_read->bstream.next_out;
 
             err = BZ2_bzDecompress(&s->pfile_in_zip_read->bstream);
 
-            total_out_after = s->pfile_in_zip_read->bstream.total_out_lo32 + 
+            total_out_after = s->pfile_in_zip_read->bstream.total_out_lo32 +
                 (((uLong)s->pfile_in_zip_read->bstream.total_out_hi32) << 32);
 
             out_bytes = total_out_after-total_out_before;
