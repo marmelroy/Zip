@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # **** Update me when new Xcode versions are released! ****
-PLATFORM="platform=iOS Simulator,OS=13.0,name=iPhone 8"
+PLATFORM="platform=iOS Simulator,OS=14.0,name=iPhone 11"
 SDK="iphonesimulator"
 
 # It is pitch black.
@@ -39,9 +39,8 @@ if [ "$MODE" = "examples" ]; then
 
     for example in examples/*/; do
         echo "Building $example."
-        pod install --project-directory=$example
         xcodebuild \
-            -workspace "${example}Sample.xcworkspace" \
+            -project Sample.xcodeproj \
             -scheme Sample \
             -sdk "$SDK" \
             -destination "$PLATFORM"
