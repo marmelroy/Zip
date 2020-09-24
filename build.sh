@@ -40,7 +40,7 @@ if [ "$MODE" = "examples" ]; then
     for example in examples/*/; do
         echo "Building $example."
         xcodebuild \
-            -project Sample.xcodeproj \
+            -project "${example}Sample.xcodeproj" \
             -scheme Sample \
             -sdk "$SDK" \
             -destination "$PLATFORM"
