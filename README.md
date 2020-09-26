@@ -60,19 +60,19 @@ Zip.addCustomFileExtension("file-extension-here")
 ### [Preferred] Setting up with [Swift Package Manager](https://swift.org/package-manager)
 To use Zip with Swift Package Manager, add it to your package's dependencies:
 ```swift
-.package(url: "https://github.com/marmelroy/Zip.git", .upToNextMinor(from: "2.1.0"))
+.package(url: "https://github.com/marmelroy/Zip.git", .upToNextMinor(from: "2.1"))
 ```
 
 ### Setting up with [CocoaPods](http://cocoapods.org/?q=Zip)
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
-pod 'Zip', '~> 2.1.0'
+pod 'Zip', '~> 2.1'
 ```
 
 ### Setting up with [Carthage](https://github.com/Carthage/Carthage)
 To integrate Zip into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "marmelroy/Zip" ~> 2.1.0
+github "marmelroy/Zip" ~> 2.1
 ```
 
