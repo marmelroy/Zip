@@ -104,7 +104,7 @@ class FileBrowser: UIViewController, UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let filePath = files[(indexPath as NSIndexPath).row]
-        if let index = selectedFiles.index(of: filePath) , selectedFiles.contains(filePath) {
+        if let index = selectedFiles.firstIndex(of: filePath), selectedFiles.contains(filePath) {
             selectedFiles.remove(at: index)
         }
         else {

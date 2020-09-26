@@ -10,6 +10,27 @@ import Foundation
 
 internal class ZipUtilities {
     
+    /*
+     Include root directory.
+     Default is true.
+     
+     e.g. The Test directory contains two files A.txt and B.txt.
+     
+     As true:
+     $ zip -r Test.zip Test/
+     $ unzip -l Test.zip
+        Test/
+        Test/A.txt
+        Test/B.txt
+     
+     As false:
+     $ zip -r Test.zip Test/
+     $ unzip -l Test.zip
+        A.txt
+        B.txt
+    */
+    let includeRootDirectory = true
+
     // File manager
     let fileManager = FileManager.default
 
@@ -39,7 +60,7 @@ internal class ZipUtilities {
         for path in paths {
             let filePath = path.path
             var isDirectory: ObjCBool = false
-            fileManager.fileExists(atPath: filePath, isDirectory: &isDirectory)
+            _ = fileManager.fileExists(atPath: filePath, isDirectory: &isDirectory)
             if !isDirectory.boolValue {
                 let processedPath = ProcessedFilePath(filePathURL: path, fileName: path.lastPathComponent)
                 processedFilePaths.append(processedPath)
@@ -54,7 +75,7 @@ internal class ZipUtilities {
     
     
     /**
-     Recursive function to expand directory contents and parse them into ProcessedFilePath structs.
+     Expand directory contents and parse them into ProcessedFilePath structs.
      
      - parameter directory: Path of folder as NSURL.
      
@@ -67,12 +88,15 @@ internal class ZipUtilities {
             while let filePathComponent = enumerator.nextObject() as? String {
                 let path = directory.appendingPathComponent(filePathComponent)
                 let filePath = path.path
-                let directoryName = directory.lastPathComponent
 
                 var isDirectory: ObjCBool = false
-                fileManager.fileExists(atPath: filePath, isDirectory: &isDirectory)
+                _ = fileManager.fileExists(atPath: filePath, isDirectory: &isDirectory)
                 if !isDirectory.boolValue {
-                    let fileName = (directoryName as NSString).appendingPathComponent(filePathComponent)
+                    var fileName = filePathComponent
+                    if includeRootDirectory {
+                        let directoryName = directory.lastPathComponent
+                        fileName = (directoryName as NSString).appendingPathComponent(filePathComponent)
+                    }
                     let processedPath = ProcessedFilePath(filePathURL: path, fileName: fileName)
                     processedFilePaths.append(processedPath)
                 }

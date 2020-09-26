@@ -18,7 +18,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include "zlib.h"
+#include <zlib.h>
 #include "zip.h"
 
 #ifdef STDC
@@ -183,7 +183,7 @@ typedef struct
 } zip64_internal;
 
 /* Allocate a new data block */
-local linkedlist_datablock_internal* allocate_new_datablock OF(());
+local linkedlist_datablock_internal* allocate_new_datablock OF((void));
 local linkedlist_datablock_internal* allocate_new_datablock()
 {
     linkedlist_datablock_internal* ldi;
