@@ -268,7 +268,7 @@ public class Zip {
     /// check if zip is password protected
     /// - Parameter path: path to zip file
     /// - Returns: true if file at path is password protected
-    func zipIsPasswordProtected(at path: String) -> Bool {
+    public class func zipIsPasswordProtected(at path: String) -> Bool {
         let zip = unzOpen64(path)
         var ret: Int32 = unzGoToFirstFile( zip )
         if ret == UNZ_OK {
