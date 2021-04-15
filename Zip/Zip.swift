@@ -265,6 +265,34 @@ public class Zip {
         progress?.completedUnitCount = Int64(totalSize)
     }
     
+    /// check if zip is password protected
+    /// - Parameter path: path to zip file
+    /// - Returns: true if file at path is password protected
+    func zipIsPasswordProtected(at path: String) -> Bool {
+        let zip = unzOpen64(path)
+        var ret: Int32 = unzGoToFirstFile( zip )
+        if ret == UNZ_OK {
+            while( ret==UNZ_OK && UNZ_OK != UNZ_END_OF_LIST_OF_FILE ) {
+                ret = unzOpenCurrentFile( zip )
+                if( ret != UNZ_OK ) {
+                    return false;
+                }
+                var fileInfo: unz_file_info = unz_file_info()
+                ret = unzGetCurrentFileInfo(zip, &fileInfo, nil, 0, nil, 0, nil, 0)
+                if (ret != UNZ_OK) {
+                    return false
+                } else if((fileInfo.flag & 1) == 1) {
+                    return true
+                }
+
+                unzCloseCurrentFile( zip )
+                ret = unzGoToNextFile( zip )
+            }
+        }
+
+        return false
+    }
+    
     // MARK: Zip
     
     
