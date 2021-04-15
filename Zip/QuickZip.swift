@@ -44,7 +44,7 @@ extension Zip {
      Quick unzip a file. Unzips to a new folder inside the app's documents folder with the zip file's name.
      
      - parameter path: Path of zipped file. NSURL.
-     - parameter progress: A progress closure called after unzipping each file in the archive. Double value betweem 0 and 1.
+     - parameter progress: A Cancellable progress
      
      - throws: Error if unzipping fails or if file is not found. Can be printed with a description variable.
      
@@ -52,7 +52,7 @@ extension Zip {
      
      - returns: NSURL of the destination folder.
      */
-    public class func quickUnzipFile(_ path: URL, progress: ((_ progress: Double) -> ())?) throws -> URL {
+    public class func quickUnzipFile(_ path: URL, progress: Progress?) throws -> URL {
         let fileManager = FileManager.default
 
         let fileExtension = path.pathExtension

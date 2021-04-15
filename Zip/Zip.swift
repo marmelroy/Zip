@@ -17,6 +17,8 @@ public enum ZipError: Error {
     case unzipFail
     /// Zip fail
     case zipFail
+    /// User Cancelled
+    case userCancelled
     
     /// User readable description
     public var description: String {
@@ -24,6 +26,7 @@ public enum ZipError: Error {
         case .fileNotFound: return NSLocalizedString("File not found.", comment: "")
         case .unzipFail: return NSLocalizedString("Failed to unzip file.", comment: "")
         case .zipFail: return NSLocalizedString("Failed to zip file.", comment: "")
+        case .userCancelled: return NSLocalizedString("Cancelled", comment: "")
         }
     }
 }
@@ -89,14 +92,14 @@ public class Zip {
      - parameter destination: Local file path to unzip to. NSURL.
      - parameter overwrite:   Overwrite bool.
      - parameter password:    Optional password if file is protected.
-     - parameter progress: A progress closure called after unzipping each file in the archive. Double value betweem 0 and 1.
+     - parameter progress: A cancellable progress.
      
      - throws: Error if unzipping fails or if fail is not found. Can be printed with a description variable.
      
      - notes: Supports implicit progress composition
      */
     
-    public class func unzipFile(_ zipFilePath: URL, destination: URL, overwrite: Bool, password: String?, progress: ((_ progress: Double) -> ())? = nil, fileOutputHandler: ((_ unzippedFile: URL) -> Void)? = nil) throws {
+    public class func unzipFile(_ zipFilePath: URL, destination: URL, overwrite: Bool, password: String?, progress: Progress? = nil, fileOutputHandler: ((_ unzippedFile: URL) -> Void)? = nil) throws {
         
         // File manager
         let fileManager = FileManager.default
@@ -245,29 +248,21 @@ public class Zip {
             }
 
             ret = unzGoToNextFile(zip)
-            
-            // Update progress handler
-            if let progressHandler = progress{
-                progressHandler((currentPosition/totalSize))
-            }
-            
             if let fileHandler = fileOutputHandler,
                 let encodedString = fullPath.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
                 let fileUrl = URL(string: encodedString) {
                 fileHandler(fileUrl)
             }
-            
-            progressTracker.completedUnitCount = Int64(currentPosition)
+            //unzip process cancelled
+            if progress?.isCancelled ?? false {
+                try fileManager.removeItem(atPath: path)
+                try fileManager.removeItem(atPath: fullPath)
+                throw ZipError.userCancelled
+            }
+            progress?.completedUnitCount = Int64(currentPosition)
             
         } while (ret == UNZ_OK && ret != UNZ_END_OF_LIST_OF_FILE)
-        
-        // Completed. Update progress handler.
-        if let progressHandler = progress{
-            progressHandler(1.0)
-        }
-        
-        progressTracker.completedUnitCount = Int64(totalSize)
-        
+        progress?.completedUnitCount = Int64(totalSize)
     }
     
     // MARK: Zip
