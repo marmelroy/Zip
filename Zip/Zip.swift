@@ -144,6 +144,7 @@ public class Zip {
         
         let path = zipFilePath.path
         let totalSize = try getTotalSize(path: path)
+        progress?.totalUnitCount = Int64(totalSize)
         
         try unzip(zipFilePath,
               destination: destination,
