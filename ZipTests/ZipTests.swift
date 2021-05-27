@@ -85,7 +85,7 @@ class ZipTests: XCTestCase {
     
     func testQuickUnzipProgress() throws {
         let filePath = url(forResource: "bb8", withExtension: "zip")!
-        let destinationURL = try Zip.quickUnzipFile(filePath, progress: { progress in
+        let destinationURL = try Zip.quickUnzipFile(filePath, progressCallback: { progress in
             XCTAssertFalse(progress.isNaN)
         })
         addTeardownBlock {
@@ -102,7 +102,7 @@ class ZipTests: XCTestCase {
         let filePath = url(forResource: "bb8", withExtension: "zip")!
         let destinationPath = try autoRemovingSandbox()
 
-        try Zip.unzipFile(filePath, destination: destinationPath, overwrite: true, password: "password", progress: nil)
+        try Zip.unzipFile(filePath, destination: destinationPath, overwrite: true, password: "password", progressCallback: nil)
 
         XCTAssertTrue(FileManager.default.fileExists(atPath: destinationPath.path))
     }

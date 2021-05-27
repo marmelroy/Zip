@@ -44,6 +44,42 @@ extension Zip {
      Quick unzip a file. Unzips to a new folder inside the app's documents folder with the zip file's name.
      
      - parameter path: Path of zipped file. NSURL.
+     - parameter progress: A Cancellable progress
+     
+     - throws: Error if unzipping fails or if file is not found. Can be printed with a description variable.
+     
+     - notes: Supports implicit progress composition
+     
+     - returns: NSURL of the destination folder.
+     */
+    public class func quickUnzipFile(_ path: URL, progress: Progress?) throws -> URL {
+        let fileManager = FileManager.default
+        
+        let fileExtension = path.pathExtension
+        let fileName = path.lastPathComponent
+        
+        let directoryName = fileName.replacingOccurrences(of: ".\(fileExtension)", with: "")
+        
+        #if os(Linux)
+        // urls(for:in:) is not yet implemented on Linux
+        // See https://github.com/apple/swift-corelibs-foundation/blob/swift-4.2-branch/Foundation/FileManager.swift#L125
+        let documentsUrl = fileManager.temporaryDirectory
+        #else
+        let documentsUrl = fileManager.urls(for: self.searchPathDirectory(), in: .userDomainMask)[0]
+        #endif
+        do {
+            let destinationUrl = documentsUrl.appendingPathComponent(directoryName, isDirectory: true)
+            try self.unzipFile(path, destination: destinationUrl, overwrite: true, password: nil, progress: progress)
+            return destinationUrl
+        }catch{
+            throw(ZipError.unzipFail)
+        }
+    }
+    
+    /**
+     Quick unzip a file. Unzips to a new folder inside the app's documents folder with the zip file's name.
+     
+     - parameter path: Path of zipped file. NSURL.
      - parameter progress: A progress closure called after unzipping each file in the archive. Double value betweem 0 and 1.
      
      - throws: Error if unzipping fails or if file is not found. Can be printed with a description variable.
@@ -52,7 +88,7 @@ extension Zip {
      
      - returns: NSURL of the destination folder.
      */
-    public class func quickUnzipFile(_ path: URL, progress: ((_ progress: Double) -> ())?) throws -> URL {
+    public class func quickUnzipFile(_ path: URL, progressCallback: ((_ progress: Double) -> ())?) throws -> URL {
         let fileManager = FileManager.default
 
         let fileExtension = path.pathExtension
@@ -69,7 +105,7 @@ extension Zip {
         #endif
         do {
             let destinationUrl = documentsUrl.appendingPathComponent(directoryName, isDirectory: true)
-            try self.unzipFile(path, destination: destinationUrl, overwrite: true, password: nil, progress: progress)
+            try self.unzipFile(path, destination: destinationUrl, overwrite: true, password: nil, progressCallback: progressCallback)
             return destinationUrl
         }catch{
             throw(ZipError.unzipFail)
