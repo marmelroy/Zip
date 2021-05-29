@@ -60,7 +60,7 @@ internal class ZipUtilities {
         for path in paths {
             let filePath = path.path
             var isDirectory: ObjCBool = false
-            fileManager.fileExists(atPath: filePath, isDirectory: &isDirectory)
+            _ = fileManager.fileExists(atPath: filePath, isDirectory: &isDirectory)
             if !isDirectory.boolValue {
                 let processedPath = ProcessedFilePath(filePathURL: path, fileName: path.lastPathComponent)
                 processedFilePaths.append(processedPath)
@@ -90,7 +90,7 @@ internal class ZipUtilities {
                 let filePath = path.path
 
                 var isDirectory: ObjCBool = false
-                fileManager.fileExists(atPath: filePath, isDirectory: &isDirectory)
+                _ = fileManager.fileExists(atPath: filePath, isDirectory: &isDirectory)
                 if !isDirectory.boolValue {
                     var fileName = filePathComponent
                     if includeRootDirectory {

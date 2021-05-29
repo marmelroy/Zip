@@ -22,7 +22,7 @@ extern "C" {
 #endif
 
 #ifndef _ZLIB_H
-#include "zlib.h"
+#include <zlib.h>
 #endif
 
 #ifndef _ZLIBIOAPI_H
@@ -133,13 +133,13 @@ extern unzFile ZEXPORT unzOpen OF((const char *path));
 extern unzFile ZEXPORT unzOpen64 OF((const void *path));
 /* Open a Zip file.
 
-   path should contain the full pathname (by example, on a Windows XP computer 
-      "c:\\zlib\\zlib113.zip" or on an Unix computer "zlib/zlib113.zip". 
+   path should contain the full pathname (by example, on a Windows XP computer
+      "c:\\zlib\\zlib113.zip" or on an Unix computer "zlib/zlib113.zip".
    return NULL if zipfile cannot be opened or doesn't exist
    return unzFile handle if no error
 
    NOTE: The "64" function take a const void* pointer, because  the path is just the value passed to the
-   open64_file_func callback. Under Windows, if UNICODE is defined, using fill_fopen64_filefunc, the path 
+   open64_file_func callback. Under Windows, if UNICODE is defined, using fill_fopen64_filefunc, the path
    is a pointer to a wide unicode string  (LPCTSTR is LPCWSTR), so const char* does not describe the reality */
 
 extern unzFile ZEXPORT unzOpen2 OF((const char *path, zlib_filefunc_def* pzlib_filefunc_def));
@@ -199,17 +199,17 @@ extern int ZEXPORT unzReadCurrentFile OF((unzFile file, voidp buf, unsigned len)
    return 0 if the end of file was reached
    return <0 with error code if there is an error (UNZ_ERRNO for IO error, or zLib error for uncompress error) */
 
-extern int ZEXPORT unzGetCurrentFileInfo OF((unzFile file, unz_file_info *pfile_info, char *filename, 
+extern int ZEXPORT unzGetCurrentFileInfo OF((unzFile file, unz_file_info *pfile_info, char *filename,
     uLong filename_size, void *extrafield, uLong extrafield_size, char *comment, uLong comment_size));
 extern int ZEXPORT unzGetCurrentFileInfo64 OF((unzFile file, unz_file_info64 *pfile_info, char *filename,
     uLong filename_size, void *extrafield, uLong extrafield_size, char *comment, uLong comment_size));
 /* Get Info about the current file
 
    pfile_info if != NULL, the *pfile_info structure will contain somes info about the current file
-   filename if != NULL, the file name string will be copied in filename 
+   filename if != NULL, the file name string will be copied in filename
    filename_size is the size of the filename buffer
    extrafield if != NULL, the extra field information from the central header will be copied in to
-   extrafield_size is the size of the extraField buffer 
+   extrafield_size is the size of the extraField buffer
    comment if != NULL, the comment string of the file will be copied in to
    comment_size is the size of the comment buffer */
 
@@ -245,7 +245,7 @@ extern int ZEXPORT unzGoToFirstFile OF((unzFile file));
 
 extern int ZEXPORT unzGoToFirstFile2 OF((unzFile file, unz_file_info64 *pfile_info, char *filename,
     uLong filename_size, void *extrafield, uLong extrafield_size, char *comment, uLong comment_size));
-/* Set the current file of the zipfile to the first file and retrieves the current info on success. 
+/* Set the current file of the zipfile to the first file and retrieves the current info on success.
    Not as seek intensive as unzGoToFirstFile + unzGetCurrentFileInfo.
 
    return UNZ_OK if no error */
@@ -258,7 +258,7 @@ extern int ZEXPORT unzGoToNextFile OF((unzFile file));
 
 extern int ZEXPORT unzGoToNextFile2 OF((unzFile file, unz_file_info64 *pfile_info, char *filename,
     uLong filename_size, void *extrafield, uLong extrafield_size, char *comment, uLong comment_size));
-/* Set the current file of the zipfile to the next file and retrieves the current 
+/* Set the current file of the zipfile to the next file and retrieves the current
    info on success. Does less seeking around than unzGotoNextFile + unzGetCurrentFileInfo.
 
    return UNZ_OK if no error

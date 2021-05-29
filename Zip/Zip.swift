@@ -180,8 +180,16 @@ public class Zip {
 
             let creationDate = Date()
 
-            let directoryAttributes = [FileAttributeKey.creationDate : creationDate,
-                                       FileAttributeKey.modificationDate : creationDate]
+            let directoryAttributes: [FileAttributeKey: Any]?
+            #if os(Linux)
+                // On Linux, setting attributes is not yet really implemented.
+                // In Swift 4.2, the only settable attribute is `.posixPermissions`.
+                // See https://github.com/apple/swift-corelibs-foundation/blob/swift-4.2-branch/Foundation/FileManager.swift#L182-L196
+                directoryAttributes = nil
+            #else
+                directoryAttributes = [.creationDate : creationDate,
+                                       .modificationDate : creationDate]
+            #endif
 
             do {
                 if isDirectory {
@@ -316,7 +324,7 @@ public class Zip {
         for path in processedPaths {
             let filePath = path.filePath()
             var isDirectory: ObjCBool = false
-            fileManager.fileExists(atPath: filePath, isDirectory: &isDirectory)
+            _ = fileManager.fileExists(atPath: filePath, isDirectory: &isDirectory)
             if !isDirectory.boolValue {
                 let input = fopen(filePath, "r")
                 if input == nil {
@@ -356,9 +364,11 @@ public class Zip {
                     zipWriteInFileInZip(zip, buffer, UInt32(length))
                 }
                 
-                // Update progress handler
-                if let progressHandler = progress{
-                    progressHandler((currentPosition/totalSize))
+                // Update progress handler, only if progress is not 1, because
+                // if we call it when progress == 1, the user will receive
+                // a progress handler call with value 1.0 twice.
+                if let progressHandler = progress, currentPosition / totalSize != 1 {
+                    progressHandler(currentPosition/totalSize)
                 }
                 
                 progressTracker.completedUnitCount = Int64(currentPosition)
