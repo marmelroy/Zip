@@ -350,7 +350,7 @@ public class Zip {
                     }
                 }
                 catch {}
-                let buffer = malloc(chunkSize)
+                let buffer = malloc(chunkSize)!
                 if let password = password, let fileName = fileName {
                     zipOpenNewFileInZip3(zip, fileName, &zipInfo, nil, 0, nil, 0, nil,Z_DEFLATED, compression.minizipCompression, 0, -MAX_WBITS, DEF_MEM_LEVEL, Z_DEFAULT_STRATEGY, password, 0)
                 }
