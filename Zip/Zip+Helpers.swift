@@ -1,13 +1,11 @@
 //
 //  Zip+Helpers.swift
-//  3dScannerApp
+//  Create Zip with file filter
 //
 //  Created by CC Laan on 11/24/21.
-//  Copyright © 2021 Laan Labs. All rights reserved.
 //
 
 import Foundation
-//import Zip
 import Minizip
 
 extension Zip {
