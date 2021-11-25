@@ -8,7 +8,7 @@
 
 import Foundation
 //import Zip
-import minizip
+import Minizip
 
 extension Zip {
     
