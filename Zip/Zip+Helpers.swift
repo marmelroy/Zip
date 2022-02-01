@@ -113,7 +113,13 @@ extension Zip {
                 var length: Int = 0
                 while (feof(input) == 0) {
                     length = fread(buffer, 1, chunkSize, input)
-                    zipWriteInFileInZip(zip, buffer, UInt32(length))
+                    
+                    let ret = zipWriteInFileInZip(zip, buffer, UInt32(length));
+                    if (ret != ZIP_OK) {
+                        fclose(input);
+                        zipCloseFileInZip(zip);
+                        throw ZipError.zipFail
+                    }
                 }
                 
                 // Update progress handler
