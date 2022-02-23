@@ -328,10 +328,10 @@ public class Zip {
             var isDirectory: ObjCBool = false
             _ = fileManager.fileExists(atPath: filePath, isDirectory: &isDirectory)
             if !isDirectory.boolValue {
-                let input = fopen(filePath, "r")
-                if input == nil {
+                guard let input = fopen(filePath, "r") else {
                     throw ZipError.zipFail
                 }
+                defer { fclose(input) }
                 let fileName = path.fileName
                 var zipInfo: zip_fileinfo = zip_fileinfo(tmz_date: tm_zip(tm_sec: 0, tm_min: 0, tm_hour: 0, tm_mday: 0, tm_mon: 0, tm_year: 0), dosDate: 0, internal_fa: 0, external_fa: 0)
                 do {
@@ -350,7 +350,9 @@ public class Zip {
                     }
                 }
                 catch {}
-                let buffer = malloc(chunkSize)
+                guard let buffer = malloc(chunkSize) else {
+                    throw ZipError.zipFail
+                }
                 if let password = password, let fileName = fileName {
                     zipOpenNewFileInZip3(zip, fileName, &zipInfo, nil, 0, nil, 0, nil,Z_DEFLATED, compression.minizipCompression, 0, -MAX_WBITS, DEF_MEM_LEVEL, Z_DEFAULT_STRATEGY, password, 0)
                 }
@@ -377,7 +379,6 @@ public class Zip {
                 
                 zipCloseFileInZip(zip)
                 free(buffer)
-                fclose(input)
             }
         }
         zipClose(zip, nil)
