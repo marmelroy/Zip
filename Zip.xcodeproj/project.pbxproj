@@ -287,9 +287,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 342545B21CE525B200336074 /* Build configuration list for PBXNativeTarget "Zip tvOS" */;
 			buildPhases = (
+				3425459F1CE525B200336074 /* Headers */,
 				3425458D1CE525B200336074 /* Sources */,
 				3425459D1CE525B200336074 /* Frameworks */,
-				3425459F1CE525B200336074 /* Headers */,
 				342545B11CE525B200336074 /* Resources */,
 			);
 			buildRules = (
@@ -305,9 +305,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 343F51141C8DAEEC0028C434 /* Build configuration list for PBXNativeTarget "Zip OSX" */;
 			buildPhases = (
+				343F50FC1C8DAEEC0028C434 /* Headers */,
 				343F50FA1C8DAEEC0028C434 /* Sources */,
 				343F50FB1C8DAEEC0028C434 /* Frameworks */,
-				343F50FC1C8DAEEC0028C434 /* Headers */,
 				343F50FD1C8DAEEC0028C434 /* Resources */,
 			);
 			buildRules = (
@@ -341,9 +341,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 347E3A881C1DFFB500A11FD3 /* Build configuration list for PBXNativeTarget "Zip" */;
 			buildPhases = (
+				347E3A711C1DFFB500A11FD3 /* Headers */,
 				347E3A6F1C1DFFB500A11FD3 /* Sources */,
 				347E3A701C1DFFB500A11FD3 /* Frameworks */,
-				347E3A711C1DFFB500A11FD3 /* Headers */,
 				347E3A721C1DFFB500A11FD3 /* Resources */,
 			);
 			buildRules = (
