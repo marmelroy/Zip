@@ -26,6 +26,7 @@ extension ZipTests {
         ("testUnzipPermissions", testUnzipPermissions),
         ("testUnzipWithUnsupportedPermissions", testUnzipWithUnsupportedPermissions),
         ("testZip", testZip),
+        ("testZipPermissions", testZipPermissions),
         ("testZipUnzipPassword", testZipUnzipPassword),
     ]
 }

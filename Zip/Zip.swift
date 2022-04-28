@@ -231,10 +231,10 @@ public class Zip {
                 throw ZipError.unzipFail
             }
 
-            //Set file permissions from current fileInfo
+            // Set file permissions from current fileInfo
             if fileInfo.external_fa != 0 {
                 let permissions = (fileInfo.external_fa >> 16) & 0x1FF
-                //We will devifne a valid permission range between Owner read only to full access
+                // We will define a valid permission range between Owner read only to full access
                 if permissions >= 0o400 && permissions <= 0o777 {
                     do {
                         try fileManager.setAttributes([.posixPermissions : permissions], ofItemAtPath: fullPath)
@@ -347,6 +347,18 @@ public class Zip {
                     }
                     if let fileSize = fileAttributes[FileAttributeKey.size] as? Double {
                         currentPosition += fileSize
+                    }
+                    if let permissions = fileAttributes[FileAttributeKey.posixPermissions] as? UInt {
+                        // We will store a valid permission range between Owner read only to full access
+                        if permissions >= 0o400 && permissions <= 0o777 {
+                            var new_external_fa: UInt = zipInfo.external_fa
+                            let permissionsBits: UInt = 0o777 << 16
+                            // set bits responsible for permissions
+                            new_external_fa = new_external_fa & ~permissionsBits
+                            new_external_fa = new_external_fa | (permissions << UInt(16))
+
+                            zipInfo.external_fa = new_external_fa
+                        }
                     }
                 }
                 catch {}

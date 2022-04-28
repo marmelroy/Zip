@@ -271,4 +271,24 @@ class ZipTests: XCTestCase {
         XCTAssertTrue(Zip.isValidFileExtension("zip"))
         XCTAssertTrue(Zip.isValidFileExtension("cbz"))
     }
+
+    func testZipPermissions() throws {
+        let executionURL = url(forResource: "execution")!
+        let zipDestination = try Zip.quickZipFiles([executionURL], fileName: "execution.zip")
+        addTeardownBlock {
+            try? FileManager.default.removeItem(at: zipDestination)
+        }
+        let unzipDestination = try Zip.quickUnzipFile(zipDestination)
+        addTeardownBlock {
+            try? FileManager.default.removeItem(at: unzipDestination)
+        }
+
+        let fileManager = FileManager.default
+        let unzippedFile = unzipDestination.appendingPathComponent("execution")
+        let unzippedFileAttributes = try fileManager.attributesOfItem(atPath: unzippedFile.path)
+        let permissions = unzippedFileAttributes[.posixPermissions] as? Int ?? 0
+        // Git stores only the owner execution bit - observe only that
+        let ownerExecutionBit = 0o100
+        XCTAssertEqual(permissions & ownerExecutionBit, ownerExecutionBit)
+    }
 }
