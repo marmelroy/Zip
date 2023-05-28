@@ -33,7 +33,7 @@ class ZipTests: XCTestCase {
 
     private func url(forResource resource: String, withExtension ext: String? = nil) -> URL? {
         #if Xcode
-        return Bundle(for: ZipTests.self).url(forResource: resource, withExtension: ext)
+        return Bundle.module.url(forResource: resource, withExtension: ext)
         #else
         let testDirPath = URL(fileURLWithPath: String(#file)).deletingLastPathComponent()
         let resourcePath = testDirPath.appendingPathComponent("Resources").appendingPathComponent(resource)
@@ -270,5 +270,14 @@ class ZipTests: XCTestCase {
         Zip.removeCustomFileExtension("cbz")
         XCTAssertTrue(Zip.isValidFileExtension("zip"))
         XCTAssertTrue(Zip.isValidFileExtension("cbz"))
+    }
+    
+    func testGB2312File() throws {
+        let filePath = url(forResource: "gb2312", withExtension: "zip")!
+        let destinationURL = try Zip.quickUnzipFile(filePath)
+        addTeardownBlock {
+            try? FileManager.default.removeItem(at: destinationURL)
+        }
+        XCTAssertTrue(FileManager.default.fileExists(atPath: destinationURL.path))
     }
 }

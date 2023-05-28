@@ -160,8 +160,15 @@ public class Zip {
             unzGetCurrentFileInfo64(zip, &fileInfo, fileName, UInt(fileNameSize), nil, 0, nil, 0)
             fileName[Int(fileInfo.size_filename)] = 0
 
-            var pathString = String(cString: fileName)
-            
+            let encodingPathString = ZipUtilities.AutoEncodingString(data: .init(bytes: fileName, count: fileNameSize)).text()
+            var pathString = encodingPathString.isEmpty ? String(cString: fileName):encodingPathString
+#if DEBUG
+            if encodingPathString.isEmpty {
+                print("encoding string failed, use cString \(pathString)")
+            }   else    {
+                print("encoding string \(pathString)")
+            }
+#endif
             guard pathString.count > 0 else {
                 throw ZipError.unzipFail
             }

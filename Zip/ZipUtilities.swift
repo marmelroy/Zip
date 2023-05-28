@@ -105,4 +105,21 @@ internal class ZipUtilities {
         return processedFilePaths
     }
 
+    internal struct AutoEncodingString {
+        /// Raw sting data
+        let data: Data
+        
+        /// Auto detect string encode
+        /// - Returns: string with valid encoding, it will be empty string if encoding failed.
+        func text() -> String {
+            var lossy = ObjCBool(false)
+            let encodingValue = NSString.stringEncoding(for: data, encodingOptions: nil, convertedString: nil, usedLossyConversion: &lossy)
+            let encoding = String.Encoding(rawValue: encodingValue)
+    #if DEBUG
+            print("[\(type(of: self))] detect string encoding \(encoding), usedLossyConversion \(lossy.boolValue)")
+    #endif
+            let string = String(data: data, encoding: encoding)
+            return string ?? ""
+        }
+    }
 }
