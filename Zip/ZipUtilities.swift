@@ -7,6 +7,14 @@
 //
 
 import Foundation
+import Logging
+
+#if SYSTEM_ICONV && canImport(iconv) && canImport(EncodingWrapper)
+import iconv
+import EncodingWrapper
+#endif
+
+fileprivate let logger = Logger(label: "com.zip.utilties")
 
 internal class ZipUtilities {
     
@@ -19,21 +27,21 @@ internal class ZipUtilities {
      As true:
      $ zip -r Test.zip Test/
      $ unzip -l Test.zip
-        Test/
-        Test/A.txt
-        Test/B.txt
+     Test/
+     Test/A.txt
+     Test/B.txt
      
      As false:
      $ zip -r Test.zip Test/
      $ unzip -l Test.zip
-        A.txt
-        B.txt
-    */
+     A.txt
+     B.txt
+     */
     let includeRootDirectory = true
-
+    
     // File manager
     let fileManager = FileManager.default
-
+    
     /**
      *  ProcessedFilePath struct
      */
@@ -49,12 +57,12 @@ internal class ZipUtilities {
     //MARK: Path processing
     
     /**
-    Process zip paths
-    
-    - parameter paths: Paths as NSURL.
-    
-    - returns: Array of ProcessedFilePath structs.
-    */
+     Process zip paths
+     
+     - parameter paths: Paths as NSURL.
+     
+     - returns: Array of ProcessedFilePath structs.
+     */
     internal func processZipPaths(_ paths: [URL]) -> [ProcessedFilePath]{
         var processedFilePaths = [ProcessedFilePath]()
         for path in paths {
@@ -88,7 +96,7 @@ internal class ZipUtilities {
             while let filePathComponent = enumerator.nextObject() as? String {
                 let path = directory.appendingPathComponent(filePathComponent)
                 let filePath = path.path
-
+                
                 var isDirectory: ObjCBool = false
                 _ = fileManager.fileExists(atPath: filePath, isDirectory: &isDirectory)
                 if !isDirectory.boolValue {
@@ -104,22 +112,48 @@ internal class ZipUtilities {
         }
         return processedFilePaths
     }
-
+    
     internal struct AutoEncodingString {
         /// Raw sting data
         let data: Data
         
+#if SYSTEM_ICONV && canImport(iconv) && canImport(EncodingWrapper)
+        /// Auto detect string encode
+        /// - Returns: string with valid encoding, it will be empty string if encoding failed.
+        func text() -> String {
+            do {
+                let encodeName = try EncodingWrapper(data).style(.iconv).guessAllLanguageFoEncodingString()
+                let sourceCodePage = try Iconv.CodePage(name: encodeName)
+                let buffer = data.withUnsafeBytes(Array.init(_:))
+                let unicodeString = try Iconv(from: sourceCodePage, to: .UTF8).utf8(buf: buffer)
+                return unicodeString ?? ""
+            } catch {
+                logger.error("string encoding process failed, \(error)")
+                return ""
+            }
+        }
+#else
         /// Auto detect string encode
         /// - Returns: string with valid encoding, it will be empty string if encoding failed.
         func text() -> String {
             var lossy = ObjCBool(false)
             let encodingValue = NSString.stringEncoding(for: data, encodingOptions: nil, convertedString: nil, usedLossyConversion: &lossy)
             let encoding = String.Encoding(rawValue: encodingValue)
-    #if DEBUG
-            print("[\(type(of: self))] detect string encoding \(encoding), usedLossyConversion \(lossy.boolValue)")
-    #endif
+            logger.info("detect string encoding \(encoding), usedLossyConversion \(lossy.boolValue)")
             let string = String(data: data, encoding: encoding)
             return string ?? ""
         }
+#endif
     }
 }
+
+#if SYSTEM_ICONV && canImport(iconv) && canImport(EncodingWrapper)
+extension Iconv.CodePage {
+    init(name: String) throws {
+        guard let sourceCodePage = Iconv.CodePage(rawValue: name) else {
+            throw CocoaError(.fileReadUnknownStringEncoding)
+        }
+        self = sourceCodePage
+    }
+}
+#endif
