@@ -129,6 +129,10 @@ public struct AutoEncodingString {
     /// Raw sting data
     public let data: Data
     
+    init(data: Data) {
+        self.data = data
+    }
+    
 #if SYSTEM_ICONV && canImport(iconv) && canImport(EncodingWrapper)
     /// Auto detect string encode
     /// - Returns: string with valid encoding, it will be empty string if encoding failed.
