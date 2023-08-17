@@ -112,39 +112,6 @@ internal class ZipUtilities {
         }
         return processedFilePaths
     }
-    
-    internal struct AutoEncodingString {
-        /// Raw sting data
-        let data: Data
-        
-#if SYSTEM_ICONV && canImport(iconv) && canImport(EncodingWrapper)
-        /// Auto detect string encode
-        /// - Returns: string with valid encoding, it will be empty string if encoding failed.
-        func text() -> String {
-            do {
-                let encodeName = try EncodingWrapper(data).style(.iconv).guessAllLanguageFoEncodingString()
-                let sourceCodePage = try Iconv.CodePage(name: encodeName)
-                let buffer = data.withUnsafeBytes(Array.init(_:))
-                let unicodeString = try Iconv(from: sourceCodePage, to: .UTF8).utf8(buf: buffer)
-                return unicodeString ?? ""
-            } catch {
-                logger.error("string encoding process failed, \(error)")
-                return ""
-            }
-        }
-#else
-        /// Auto detect string encode
-        /// - Returns: string with valid encoding, it will be empty string if encoding failed.
-        func text() -> String {
-            var lossy = ObjCBool(false)
-            let encodingValue = NSString.stringEncoding(for: data, encodingOptions: nil, convertedString: nil, usedLossyConversion: &lossy)
-            let encoding = String.Encoding(rawValue: encodingValue)
-            logger.info("detect string encoding \(encoding), usedLossyConversion \(lossy.boolValue)")
-            let string = String(data: data, encoding: encoding)
-            return string ?? ""
-        }
-#endif
-    }
 }
 
 #if SYSTEM_ICONV && canImport(iconv) && canImport(EncodingWrapper)
@@ -157,3 +124,36 @@ extension Iconv.CodePage {
     }
 }
 #endif
+
+public struct AutoEncodingString {
+    /// Raw sting data
+    public let data: Data
+    
+#if SYSTEM_ICONV && canImport(iconv) && canImport(EncodingWrapper)
+    /// Auto detect string encode
+    /// - Returns: string with valid encoding, it will be empty string if encoding failed.
+    public func text() -> String {
+        do {
+            let encodeName = try EncodingWrapper(data).style(.iconv).guessAllLanguageFoEncodingString()
+            let sourceCodePage = try Iconv.CodePage(name: encodeName)
+            let buffer = data.withUnsafeBytes(Array.init(_:))
+            let unicodeString = try Iconv(from: sourceCodePage, to: .UTF8).utf8(buf: buffer)
+            return unicodeString ?? ""
+        } catch {
+            logger.error("string encoding process failed, \(error)")
+            return ""
+        }
+    }
+#else
+    /// Auto detect string encode
+    /// - Returns: string with valid encoding, it will be empty string if encoding failed.
+    public func text() -> String {
+        var lossy = ObjCBool(false)
+        let encodingValue = NSString.stringEncoding(for: data, encodingOptions: nil, convertedString: nil, usedLossyConversion: &lossy)
+        let encoding = String.Encoding(rawValue: encodingValue)
+        logger.info("detect string encoding \(encoding), usedLossyConversion \(lossy.boolValue)")
+        let string = String(data: data, encoding: encoding)
+        return string ?? ""
+    }
+#endif
+}
