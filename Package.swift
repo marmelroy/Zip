@@ -16,8 +16,12 @@ let products: [Target.Dependency] = [
     .product(name: "EncodingWrapper", package: "CEnca"),
 ]
 #else
-let dependencies: [PackageDescription.Package.Dependency] = []
-let products: [Target.Dependency] = []
+let dependencies: [PackageDescription.Package.Dependency] = [
+    .package(url: "https://github.com/apple/swift-log.git", from: "1.5.2"),
+]
+let products: [Target.Dependency] = [
+    .product(name: "Logging", package: "swift-log"),
+]
 #endif
 
 let package = Package(
@@ -39,7 +43,8 @@ let package = Package(
             name: "Zip",
             dependencies: ["Minizip"] + products,
             path: "Zip",
-            exclude: ["minizip", "zlib"]),
+            exclude: ["minizip", "zlib"],
+            swiftSettings: defines),
         .testTarget(
             name: "ZipTests",
             dependencies: ["Zip"],
