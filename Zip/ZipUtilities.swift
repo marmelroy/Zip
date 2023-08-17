@@ -140,7 +140,10 @@ public struct AutoEncodingString {
         do {
             let encodeName = try EncodingWrapper(data).style(.iconv).guessAllLanguageFoEncodingString()
             let sourceCodePage = try Iconv.CodePage(name: encodeName)
-            let buffer = data.withUnsafeBytes(Array.init(_:))
+            var buffer = data.withUnsafeBytes(Array.init(_:))
+            if buffer.last != 0 {
+                buffer.append(0)
+            }
             let unicodeString = try Iconv(from: sourceCodePage, to: .UTF8).utf8(buf: buffer)
             return unicodeString ?? ""
         } catch {
