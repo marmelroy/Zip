@@ -38,3 +38,6 @@ Carthage/Build
 .build/
 .swiftpm/
 Packages/
+
+# vim
+.*.sw?
