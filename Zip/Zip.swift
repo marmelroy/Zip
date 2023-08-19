@@ -158,7 +158,7 @@ public class Zip {
             let fileName = UnsafeMutablePointer<CChar>.allocate(capacity: fileNameSize)
             defer { fileName.deallocate() }
 
-            unzGetCurrentFileInfo64(zip, &fileInfo, fileName, UInt(fileNameSize), nil, 0, nil, 0)
+            unzGetCurrentFileInfo64(zip, &fileInfo, fileName, uLong(fileNameSize), nil, 0, nil, 0)
             fileName[Int(fileInfo.size_filename)] = 0
 
             var pathString = String(cString: fileName)
