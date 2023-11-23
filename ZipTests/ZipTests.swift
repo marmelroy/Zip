@@ -216,7 +216,22 @@ class ZipTests: XCTestCase {
         XCTAssertEqual(attributes600[.posixPermissions] as? Int, 0o600)
         XCTAssertEqual(attributes604[.posixPermissions] as? Int, 0o604)
     }
-    
+
+    // Tests if https://github.com/marmelroy/Zip/issues/245 does not uccor anymore.
+    func testUnzipProtectsAgainstPathTraversal() throws {
+        let filePath = url(forResource: "pathTraversal", withExtension: "zip")!
+        let destinationPath = try autoRemovingSandbox()
+
+        do {
+            try Zip.unzipFile(filePath, destination: destinationPath, overwrite: true, password: "password", progress: nil)
+            XCTFail("ZipError.unzipFail expected.")
+        }
+        catch {}
+        
+        let fileManager = FileManager.default
+        XCTAssertFalse(fileManager.fileExists(atPath: destinationPath.appendingPathComponent("../naughtyFile.txt").path))
+    }
+
     func testQuickUnzipSubDir() throws {
         let bookURL = url(forResource: "bb8", withExtension: "zip")!
         let unzipDestination = try Zip.quickUnzipFile(bookURL)

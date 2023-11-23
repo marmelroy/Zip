@@ -176,7 +176,12 @@ public class Zip {
                 pathString = pathString.replacingOccurrences(of: "\\", with: "/")
             }
 
-            let fullPath = destination.appendingPathComponent(pathString).path
+            let fullPath = destination.appendingPathComponent(pathString).standardized.path
+            // .standardized removes any ".. to move a level up".
+            // If we then check that the fullPath starts with the destination directory we know we are not extracting "outside" te destination.
+            guard fullPath.starts(with: destination.standardized.path) else {
+                throw ZipError.unzipFail
+            }
 
             let creationDate = Date()
 

@@ -24,6 +24,7 @@ extension ZipTests {
         ("testRemovedCustomFileExtensionIsInvalid", testRemovedCustomFileExtensionIsInvalid),
         ("testUnzip", testUnzip),
         ("testUnzipPermissions", testUnzipPermissions),
+        ("testUnzipProtectsAgainstPathTraversal", testUnzipProtectsAgainstPathTraversal),
         ("testUnzipWithUnsupportedPermissions", testUnzipWithUnsupportedPermissions),
         ("testZip", testZip),
         ("testZipUnzipPassword", testZipUnzipPassword),
