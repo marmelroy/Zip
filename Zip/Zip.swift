@@ -256,10 +256,8 @@ public class Zip {
                 progressHandler((currentPosition/totalSize))
             }
             
-            if let fileHandler = fileOutputHandler,
-                let encodedString = fullPath.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-                let fileUrl = URL(string: encodedString) {
-                fileHandler(fileUrl)
+            if let fileHandler = fileOutputHandler {
+                fileHandler(URL(fileURLWithPath: fullPath))
             }
             
             progressTracker.completedUnitCount = Int64(currentPosition)
