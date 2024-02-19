@@ -190,6 +190,8 @@ class ZipTests: XCTestCase {
         let foundPermissions = try FileManager.default.attributesOfItem(atPath: permission644.path)[.posixPermissions] as? Int
         #if os(Linux)
         let expectedPermissions = 0o664
+        #elseif os(Windows)
+        let expectedPermissions = 0o700
         #else
         let expectedPermissions = 0o644
         #endif
@@ -212,9 +214,15 @@ class ZipTests: XCTestCase {
         let attributes777 = try fileManager.attributesOfItem(atPath: permission777.path)
         let attributes600 = try fileManager.attributesOfItem(atPath: permission600.path)
         let attributes604 = try fileManager.attributesOfItem(atPath: permission604.path)
+        #if os(Windows)
+        XCTAssertEqual(attributes777[.posixPermissions] as? Int, 0o700)
+        XCTAssertEqual(attributes600[.posixPermissions] as? Int, 0o700)
+        XCTAssertEqual(attributes604[.posixPermissions] as? Int, 0o700)
+        #else
         XCTAssertEqual(attributes777[.posixPermissions] as? Int, 0o777)
         XCTAssertEqual(attributes600[.posixPermissions] as? Int, 0o600)
         XCTAssertEqual(attributes604[.posixPermissions] as? Int, 0o604)
+        #endif
     }
 
     // Tests if https://github.com/marmelroy/Zip/issues/245 does not uccor anymore.
