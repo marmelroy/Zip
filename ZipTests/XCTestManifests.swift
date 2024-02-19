@@ -27,6 +27,7 @@ extension ZipTests {
         ("testUnzipProtectsAgainstPathTraversal", testUnzipProtectsAgainstPathTraversal),
         ("testUnzipWithUnsupportedPermissions", testUnzipWithUnsupportedPermissions),
         ("testZip", testZip),
+        ("testZipPermissions", testZipPermissions),
         ("testZipUnzipPassword", testZipUnzipPassword),
     ]
 }
