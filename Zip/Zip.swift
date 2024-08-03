@@ -213,7 +213,7 @@ public class Zip {
             var writeBytes: UInt64 = 0
             var filePointer: UnsafeMutablePointer<FILE>?
             filePointer = fopen(fullPath, "wb")
-            while filePointer != nil {
+            while let filePointer = filePointer {
                 let readBytes = unzReadCurrentFile(zip, &buffer, bufferSize)
                 if readBytes > 0 {
                     guard fwrite(buffer, Int(readBytes), 1, filePointer) == 1 else {
