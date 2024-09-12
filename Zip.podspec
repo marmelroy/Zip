@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '9.0'
   s.tvos.deployment_target = '9.0'
   s.watchos.deployment_target = '3.0'
-  s.osx.deployment_target = '10.9'
+  s.osx.deployment_target = '12'
   s.requires_arc = true
 
   s.source_files = 'Zip/*.{swift,h}', 'Zip/minizip/*.{c,h}', 'Zip/minizip/include/*.{c,h}'
