@@ -32,7 +32,7 @@ class ZipTests: XCTestCase {
     }
 
     private func url(forResource resource: String, withExtension ext: String? = nil) -> URL? {
-        #if Xcode
+        #if Xcode || os(Android)
         return Bundle(for: ZipTests.self).url(forResource: resource, withExtension: ext)
         #else
         let testDirPath = URL(fileURLWithPath: String(#file)).deletingLastPathComponent()

@@ -211,7 +211,11 @@ public class Zip {
             }
 
             var writeBytes: UInt64 = 0
+            #if os(Android)
+            var filePointer: OpaquePointer!
+            #else
             var filePointer: UnsafeMutablePointer<FILE>?
+            #endif
             filePointer = fopen(fullPath, "wb")
             while filePointer != nil {
                 let readBytes = unzReadCurrentFile(zip, &buffer, bufferSize)

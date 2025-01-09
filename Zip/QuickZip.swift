@@ -60,7 +60,7 @@ extension Zip {
 
         let directoryName = fileName.replacingOccurrences(of: ".\(fileExtension)", with: "")
 
-        #if os(Linux)
+        #if os(Linux) || os(Android)
         // urls(for:in:) is not yet implemented on Linux
         // See https://github.com/apple/swift-corelibs-foundation/blob/swift-4.2-branch/Foundation/FileManager.swift#L125
         let documentsUrl = fileManager.temporaryDirectory
@@ -109,7 +109,7 @@ extension Zip {
      */
     public class func quickZipFiles(_ paths: [URL], fileName: String, progress: ((_ progress: Double) -> ())?) throws -> URL {
         let fileManager = FileManager.default
-        #if os(Linux)
+        #if os(Linux) || os(Android)
         // urls(for:in:) is not yet implemented on Linux
         // See https://github.com/apple/swift-corelibs-foundation/blob/swift-4.2-branch/Foundation/FileManager.swift#L125
         let documentsUrl = fileManager.temporaryDirectory
