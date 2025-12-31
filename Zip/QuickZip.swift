@@ -90,8 +90,8 @@ extension Zip {
      
      - returns: NSURL of the destination folder.
      */
-    public class func quickZipFiles(_ paths: [URL], fileName: String) throws -> URL {
-        return try quickZipFiles(paths, fileName: fileName, progress: nil)
+    public class func quickZipFiles(_ paths: [URL], fileName: String, password: String) throws -> URL {
+        return try quickZipFiles(paths, fileName: fileName, password: password, progress: nil)
     }
     
     /**
@@ -107,7 +107,7 @@ extension Zip {
      
      - returns: NSURL of the destination folder.
      */
-    public class func quickZipFiles(_ paths: [URL], fileName: String, progress: ((_ progress: Double) -> ())?) throws -> URL {
+    public class func quickZipFiles(_ paths: [URL], fileName: String, password: String, progress: ((_ progress: Double) -> ())?) throws -> URL {
         let fileManager = FileManager.default
         #if os(Linux)
         // urls(for:in:) is not yet implemented on Linux
@@ -117,7 +117,7 @@ extension Zip {
         let documentsUrl = fileManager.urls(for: self.searchPathDirectory(), in: .userDomainMask)[0] as URL
         #endif
         let destinationUrl = documentsUrl.appendingPathComponent("\(fileName).zip")
-        try self.zipFiles(paths: paths, zipFilePath: destinationUrl, password: nil, progress: progress)
+        try self.zipFiles(paths: paths, zipFilePath: destinationUrl, password: password, progress: progress)
         return destinationUrl
     }
     
